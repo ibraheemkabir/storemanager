@@ -60,7 +60,7 @@
     "build": "babel src -d dist",
     "migrate": " babel-node sequelize db:migrate:undo:all --env test && sequelize db:migrate --env test",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test": "sequelize db:migrate && nyc mocha --compilers js:babel-core/register server/test/ -t 5000 --exit"
+    "test": " nyc mocha --compilers js:babel-core/register server/test/ -t 5000 --exit"
   },
   "author": "",
   "license": "ISC"
