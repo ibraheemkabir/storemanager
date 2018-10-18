@@ -17,9 +17,9 @@ const request = require('supertest');
 chai.use(chaiHttp);
 
 const testproduct = {
-  name:'Dear diary today is my fist post',
-  price:'my first post',
-  category:'my first post',
+  name:'balertest',
+  price:'2000',
+  category:'shirts',
   size:'2016',
 };
 
