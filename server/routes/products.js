@@ -12,8 +12,10 @@ router.delete('/products/:id', auth.deleteproduct , products.deleteproduct);
 router.get('/products', auth.allproducts , products.allProducts);
 router.put('/products/:id', auth.updateproduct , products.updateproduct);
 router.get('/products/:id', auth.getproduct , products.getproduct);
-router.get('/order', products.allorders);
-router.post('/order', products.newOrder);
+router.get('/order',auth.allorders, products.allorders);
+router.post('/order',auth.newOrder, products.newOrder);
+router.get('/category', products.getcategories);
+router.post('/category', products.addcategory);
 
 export default router;
 module.exports = router;

@@ -12,7 +12,9 @@ app.use(bodyParser.json());
 
 const products = require('./server/routes/products');
 const home = require('./server/routes/index');
+const categories = require('./server/routes/products');
 
+app.use('/api/v1/', categories);
 app.use('/api/v1/', products);
 app.use('/api/v1/', home);
 

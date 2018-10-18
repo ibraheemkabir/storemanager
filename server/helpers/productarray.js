@@ -1,5 +1,6 @@
 import { Prods } from '../models/productsModel';
 import { orders } from '../models/productsModel';
+import { category } from '../models/productsModel';
 
 
 const id=0;
@@ -19,4 +20,11 @@ const Order = [new orders(
 ),
 ];
 
-export { product, Order };
+const catigory = [new category(
+  id,
+  'trousers',
+),
+];
+
+
+export { product, Order , catigory };

@@ -2,7 +2,10 @@ import express from 'express';
 
 import { product } from '../helpers/productarray';
 import { Order } from '../helpers/productarray';
+import { catigory } from '../helpers/productarray';
 import { Prods } from '../models/productsModel';
+import { category } from '../models/productsModel';
+import { orders } from '../models/productsModel';
 
 export default class Products {
 
@@ -10,9 +13,9 @@ export default class Products {
     const { name, category, price, size } = req.body ;
     const newProduct = product.push(new Prods(product.length,name,category,price,size));
     const products = await (newProduct);
-    return res.status(200).send({
+    return res.status(201).send({
       success: 'true',
-      message: 'poducts retrieved successfuly',
+      message: 'product added successfuly',
       product,
     });
   }
@@ -95,14 +98,35 @@ export default class Products {
     });
   }
 
-  static async newOrder(req, res) {
-    const { productsId } = req.body;
-    const neworder = Order.push(Order.length,productsId,total);
-    const order = await (neworder);
+  static async addcategory(req, res) {
+    const { Category } = req.body ;
+    const newcategory = catigory.push(new category(catigory.length,Category));
+    const categorys = await (newcategory);
+    return res.status(201).send({
+      success: 'true',
+      message: 'category added successfuly',
+      catigory,
+    });
+  }
+
+  static async getcategories(req, res) {
     return res.status(200).send({
       success: 'true',
-      message: 'orders created successfuly',
-      order,
+      message: 'categories retrieved successfuly',
+      catigory,
+    });
+  }
+
+
+  static async newOrder(req, res) {
+    const { productsId } = req.body;
+    const { total } = req.body;
+    const neworder = Order.push(new orders(Order.length,productsId,total));
+    const order = await (neworder);
+    return res.status(201).send({
+      success: 'true',
+      message: 'order created successfuly',
+      Order,
     });
   }
 

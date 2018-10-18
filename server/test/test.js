@@ -23,14 +23,46 @@ const testproduct = {
   size:'2016',
 };
 
-describe('/POST entry', () => {
+const testorder = {
+  productsId:'2',
+  total:'2000',
+};
+
+
+const testcategory = {
+  Category:'trousers',
+};
+
+describe('/POST products', () => {
 
   it('it should add new products', (done) => {
     request(app)
       .post('/api/v1/products/')
       .send(testproduct)
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(201);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+
+  it('it should add new order', (done) => {
+    request(app)
+      .post('/api/v1/order/')
+      .send(testorder)
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+
+  it('it should add new categories', (done) => {
+    request(app)
+      .post('/api/v1/category/')
+      .send(testcategory)
+      .end((err, res) => {
+        res.should.have.status(201);
         res.body.should.be.a('object');
         done();
       });

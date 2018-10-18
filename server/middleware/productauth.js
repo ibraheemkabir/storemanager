@@ -71,26 +71,16 @@ export default class Productauth{
     }
 
     static async newOrder(req, res, next) {
-        if (!req.body.name) {
+        if (!req.body.productsId) {
           res.status(400).send({
             success: 'false',
-            message: 'product name is required',
+            message: 'productsId is required',
           });
-        } else if (!req.body.size) {
+        } else if (!req.body.total) {
           res.status(400).send({
             success: 'false',
-            message: 'size is required',
+            message: 'total is required',
           });
-        } else if (!req.body.price) {
-            res.status(400).send({
-              success: 'false',
-              message: 'price is required',
-        });
-        } else if (!req.body.category) {
-            res.status(400).send({
-              success: 'false',
-              message: 'category is required',
-        });
         }
         return next();
     }
@@ -99,5 +89,4 @@ export default class Productauth{
         return next();
     }
 
-    
 }

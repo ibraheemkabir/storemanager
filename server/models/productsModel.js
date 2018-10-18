@@ -16,4 +16,10 @@ const orders = (id,products_id,total) =>{
     return {id,products_id,total}
 }
 
-export { Prods, orders };
+const category = (id,category) =>{
+    id:Number;
+    category:String;
+    return {id,category}
+}
+
+export { Prods, orders, category };
