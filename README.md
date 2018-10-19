@@ -5,3 +5,5 @@
 [![Build Status](https://travis-ci.org/ibraheemkabir/storemanager.svg?branch=develop)](https://travis-ci.org/ibraheemkabir/storemanager)
 
 # storemanager
+
+## Features
