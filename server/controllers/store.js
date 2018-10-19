@@ -6,12 +6,12 @@ import { catigory } from '../helpers/productarray';
 import { Prods } from '../models/productsModel';
 import { category } from '../models/productsModel';
 import { orders } from '../models/productsModel';
+import queries from '../models/queries';
 
 export default class Products {
 
   static async addProduct(req, res) {
-    const { name, category, price, size } = req.body ;
-    const newProduct = product.push(new Prods(product.length,name,category,price,size));
+    const newProduct = queries.addProduct;
     const products = await (newProduct);
     return res.status(201).send({
       success: 'true',
@@ -29,8 +29,8 @@ export default class Products {
   }
 
   static async deleteproduct(req, res) {
-    const arr = product.find(c => c.id === parseInt(req.params.id, 10));
-    const products = await (arr);
+    const delproduct = queries.addProduct;
+    const products = await (delproduct);
     if (products) {
       product.splice(products.id, 1);
       return res.status(200).send({
@@ -49,11 +49,12 @@ export default class Products {
   static async getproduct(req, res) {
     const id = parseInt(req.params.id, 10);
     const arr = product.find(c => c.id === parseInt(req.params.id, 10));
+    const produc = await (arr);
     if (arr) {
       return res.status(200).send({
         success: 'true',
         message: 'product retrieved successfully',
-        products_list: arr,
+        products_list: produc,
       });
     }
     return res.status(404).send({
@@ -64,7 +65,8 @@ export default class Products {
 
 
   static async updateproduct(req, res) {
-    const arr = product.find(c => c.id === parseInt(req.params.id, 10));
+    const update = queries.updateproduct;
+    const arr = await (update);
     if (!arr) {
       return res.status(404).send({
         success: 'false',
