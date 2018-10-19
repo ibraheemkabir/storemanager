@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/ibraheemkabir/storemanager/badge.svg)](https://coveralls.io/github/ibraheemkabir/storemanager)
+[![Coverage Status](https://coveralls.io/repos/github/ibraheemkabir/storemanager/badge.svg?branch=develop)](https://coveralls.io/github/ibraheemkabir/storemanager?branch=develop)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/841601697d850f317d67/maintainability)](https://codeclimate.com/github/ibraheemkabir/storemanager/maintainability)
 
