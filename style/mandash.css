@@ -628,6 +628,11 @@ padding-top: 13%;
       font-weight:300;
        margin: 0 0 1.5em 0;
   }
+
+  .scroll{
+    background-color: #000;
+
+  }
   
   h1, h2 {
       letter-spacing: -1px;
@@ -720,7 +725,7 @@ article {
 }
 article > header {
   width: 90%;
-    position: fixed;
+    position: absolute;
     height: 50px;
     border-bottom: 1px solid #2a3843;
 }
@@ -755,6 +760,7 @@ article > header .interval {
 article > header .interval ul {
   padding: 0;
   list-style: none;
+  margin:0px;
 }
 article > header .interval ul li {
   float: right;
@@ -790,14 +796,14 @@ article section .inlineChart {
 }
 article section .inlineChart  {
   border-right-style: solid;
-    border-right-width: 0.1px;
-    width: 27.5vw;
-    display: flex;
-    padding-bottom: 20px;
-    /* float: left; */
-    text-align: center;
-    /* border-right-style: none; */
-    margin: 7.3px;
+  border-right-width: 0.1px;
+  width: auto;
+  display: flex;
+  padding: 15px;
+  /* float: left; */
+  text-align: center;
+  /* border-right-style: none; */
+  margin: 7.3px;
 }
 article section .inlineChart .info {
   padding-left: 16px;

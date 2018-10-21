@@ -913,7 +913,7 @@ img#atts:hover{
   width: 90%;
     height: unset;
     overflow: unset;
-    padding-left: 60px;
+    padding-left:5vw;
 }
 
 .list .product {
