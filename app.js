@@ -16,7 +16,7 @@ const categories = require('./server/routes/products');
 
 app.use('/api/v1/', categories);
 app.use('/api/v1/', products);
-app.use('/api/v1/', home);
+app.use('/', home);
 
 app.set('port', (process.env.PORT || 3000));
 app.listen(app.get('port'), () => {
