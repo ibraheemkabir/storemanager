@@ -51,7 +51,6 @@
   "scripts": {
     "start": "nodemon app.js --exec babel-node --",
     "build": "babel src -d dist",
-    "migrate": " babel-node sequelize db:migrate:undo:all --env test && sequelize db:migrate --env test",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test": " nyc mocha --compilers js:babel-core/register server/test/ -t 5000 --exit"
   },
