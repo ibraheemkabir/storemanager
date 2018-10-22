@@ -13,7 +13,7 @@ export default class Products {
   static async addProduct(req, res) {
     const newProduct = queries.addProduct;
     const products = await (newProduct);
-    return res.status(201).send({
+    return res.status(201).json({
       success: 'true',
       message: 'product added successfuly',
       product,
@@ -21,7 +21,7 @@ export default class Products {
   }
 
   static async allProducts(req, res) {
-    return res.status(200).send({
+    return res.status(200).json({
       success: 'true',
       message: 'poducts retrieved successfuly',
       product,
@@ -33,13 +33,13 @@ export default class Products {
     const products = await (delproduct);
     if (products) {
       product.splice(products.id, 1);
-      return res.status(200).send({
+      return res.status(200).json({
         success: 'true',
         message: 'product deleted successfuly',
         products,
       });
     }
-    return res.status(404).send({
+    return res.status(404).json({
       success: 'false',
       message: 'product not found',
       arr,
@@ -51,13 +51,13 @@ export default class Products {
     const arr = product.find(c => c.id === parseInt(req.params.id, 10));
     const produc = await (arr);
     if (arr) {
-      return res.status(200).send({
+      return res.status(200).json({
         success: 'true',
         message: 'product retrieved successfully',
         products_list: produc,
       });
     }
-    return res.status(404).send({
+    return res.status(404).json({
       success: 'false',
       message: `product with the id ${id} does not exist`,
     });
@@ -68,19 +68,19 @@ export default class Products {
     const update = queries.updateproduct;
     const arr = await (update);
     if (!arr) {
-      return res.status(404).send({
+      return res.status(404).json({
         success: 'false',
         message: 'product not found',
       });
     }
 
     if (!req.body.name) {
-      return res.status(400).send({
+      return res.status(400).json({
         success: 'false',
         message: 'name is required',
       });
     } if (!req.body.category) {
-      return res.status(400).send({
+      return res.status(400).json({
         message: 'category is required',
       });
     }
@@ -93,7 +93,7 @@ export default class Products {
 
     product.splice(arr, 1, updatedproduct);
 
-    return res.status(200).send({
+    return res.status(200).json({
       success: 'true',
       message: 'product updated successfully',
       updatedproduct,
@@ -104,7 +104,7 @@ export default class Products {
     const { Category } = req.body ;
     const newcategory = catigory.push(new category(catigory.length,Category));
     const categorys = await (newcategory);
-    return res.status(201).send({
+    return res.status(201).json({
       success: 'true',
       message: 'category added successfuly',
       catigory,
@@ -112,7 +112,7 @@ export default class Products {
   }
 
   static async getcategories(req, res) {
-    return res.status(200).send({
+    return res.status(200).json({
       success: 'true',
       message: 'categories retrieved successfuly',
       catigory,
@@ -125,7 +125,7 @@ export default class Products {
     const { total } = req.body;
     const neworder = Order.push(new orders(Order.length,productsId,total));
     const order = await (neworder);
-    return res.status(201).send({
+    return res.status(201).json({
       success: 'true',
       message: 'order created successfuly',
       Order,
@@ -133,7 +133,7 @@ export default class Products {
   }
 
   static async allorders(req, res) {
-    return res.status(200).send({
+    return res.status(200).json({
       success: 'true',
       message: 'orders retrieved successfuly',
       Order,
