@@ -844,16 +844,17 @@ padding-top: 13%;
 }
 .modal2 {
   
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: inherit;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(1.1);
-  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  
 }
 .modal3 {
   
@@ -917,7 +918,7 @@ img#atts:hover{
 }
 
 .list .product {
-  width: 90%;
+  width: 30%;
     height: unset;
     overflow: unset;
     padding-left: 60px;
