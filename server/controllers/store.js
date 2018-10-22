@@ -11,7 +11,8 @@ import queries from '../models/queries';
 export default class Products {
 
   static async addProduct(req, res) {
-    const newProduct = queries.addProduct;
+    const { name, category, price, size } = req.body ;
+    const newProduct = product.push(new Prods(product.length,name,category,price,size));
     const products = await (newProduct);
     return res.status(201).send({
       success: 'true',
@@ -29,8 +30,8 @@ export default class Products {
   }
 
   static async deleteproduct(req, res) {
-    const delproduct = queries.addProduct;
-    const products = await (delproduct);
+    const arr = product.find(c => c.id === parseInt(req.params.id, 10));
+    const products = await (arr);
     if (products) {
       product.splice(products.id, 1);
       return res.status(200).send({
@@ -65,8 +66,7 @@ export default class Products {
 
 
   static async updateproduct(req, res) {
-    const update = queries.updateproduct;
-    const arr = await (update);
+    const arr = product.find(c => c.id === parseInt(req.params.id, 10));
     if (!arr) {
       return res.status(404).send({
         success: 'false',
