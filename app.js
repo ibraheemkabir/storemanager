@@ -1,9 +1,11 @@
 import config from 'dotenv';
 
+import bodyParser from 'body-parser';
+
+import express from 'express';
+
 config.config()
 
-const bodyParser = require('body-parser');
-const express = require('express');
 
 const app = express();
 

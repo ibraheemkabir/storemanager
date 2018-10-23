@@ -2,8 +2,8 @@ import express from 'express';
 
 import products from '../models/productsModel';
 
-export default class Productauth{
-    static async addproduct(req, res, next) {
+class Productauth{
+     addproduct(req, res, next) {
         if (!req.body.name) {
           res.status(400).send({
             success: 'false',
@@ -28,7 +28,7 @@ export default class Productauth{
         return next();
     }
 
-    static async deleteproduct(req, res, next) {
+     deleteproduct(req, res, next) {
         const index = parseInt(req.params.id, 10);
         if (!index) {
           res.status(400).send({
@@ -39,11 +39,11 @@ export default class Productauth{
         return next();
     }
 
-    static async allproducts(req, res, next) {
+     allproducts(req, res, next) {
         return next();
     }
 
-    static async getproduct(req, res, next) {
+     getproduct(req, res, next) {
         const index = parseInt(req.params.id, 10);
         if (!index) {
           res.status(400).send({
@@ -54,23 +54,32 @@ export default class Productauth{
         return next();
     }
 
-    static async updateproduct(req, res, next) {
-        const { name} = req.body;
-        const { size } = req.body;
-        if (!name) {
+     updateproduct(req, res, next) {
+      if (!req.body.name) {
+        res.status(400).send({
+          success: 'false',
+          message: 'product name is required',
+        });
+      } else if (!req.body.size) {
+        res.status(400).send({
+          success: 'false',
+          message: 'size is required',
+        });
+      } else if (!req.body.price) {
           res.status(400).send({
             success: 'false',
-            message: 'product is required',
-          });
-        } else if (!size) {
+            message: 'price is required',
+      });
+      } else if (!req.body.category) {
           res.status(400).send({
-            message: 'title is required',
-          });
-        }
+            success: 'false',
+            message: 'category is required',
+      });
+      }
         return next();
     }
 
-    static async newOrder(req, res, next) {
+     newOrder(req, res, next) {
         if (!req.body.productsId) {
           res.status(400).send({
             success: 'false',
@@ -85,8 +94,11 @@ export default class Productauth{
         return next();
     }
 
-    static async allorders(req, res, next) {
+     allorders(req, res, next) {
         return next();
     }
 
 }
+
+const auth = new Productauth();
+export default auth;

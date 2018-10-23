@@ -3,16 +3,11 @@ import { product } from '../helpers/productarray';
 import { Order } from '../helpers/productarray';
 import { Prods } from '../models/productsModel';
 
-process.env.NODE_ENV = 'test';
-
 const chaiHttp = require('chai-http');
 
 const chai = require('chai');
 
-const expect = chai.expect();
 const should = chai.should();
-
-const request = require('supertest');
 
 chai.use(chaiHttp);
 
@@ -36,7 +31,7 @@ const testcategory = {
 describe('/POST products', () => {
 
   it('it should add new products', (done) => {
-    request(app)
+    chai.request(app)
       .post('/api/v1/products/')
       .send(testproduct)
       .end((err, res) => {
@@ -46,8 +41,12 @@ describe('/POST products', () => {
       });
   });
 
+});
+
+describe('/POST order', () => {
+
   it('it should add new order', (done) => {
-    request(app)
+    chai.request(app)
       .post('/api/v1/order/')
       .send(testorder)
       .end((err, res) => {
@@ -56,9 +55,11 @@ describe('/POST products', () => {
         done();
       });
   });
+});
 
+describe('/POST categories', () => {
   it('it should add new categories', (done) => {
-    request(app)
+    chai.request(app)
       .post('/api/v1/category/')
       .send(testcategory)
       .end((err, res) => {
@@ -67,7 +68,9 @@ describe('/POST products', () => {
         done();
       });
   });
+});
 
+describe('/PUT products', () => {
   it('it should update product information', (done) => {
     chai.request(app)
       .put(`/api/v1/products/1`)
@@ -78,6 +81,9 @@ describe('/POST products', () => {
         done();
       });
   });
+});
+
+describe('/GET products', () => {
 
   it('it should get a particular product', (done) => {
     chai.request(app)
@@ -88,7 +94,8 @@ describe('/POST products', () => {
         done();
       });
   });
-
+});
+describe('/GET products', () => {
   it('it should GET all the products', (done) => {
     chai.request(app)
       .get('/api/v1/products')
@@ -98,7 +105,8 @@ describe('/POST products', () => {
         done();
       });
   });
-
+});
+describe('/DELETE products', () => {
   it('it should delete a product', (done) => {
     chai.request(app)
       .delete('/api/v1/products/1')
@@ -109,3 +117,4 @@ describe('/POST products', () => {
       });
   });
 });
+
