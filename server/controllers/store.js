@@ -8,24 +8,24 @@ import { categoryarray } from '../models/productsModel';
 import { orders } from '../models/productsModel';
 
 class Products {
-
   addProduct(req, res) {
     const {name, category, price, size } = req.body;
     const newProduct = product.push(new Prods(product.length+1, name, category, price, size));
-    return res.status(201).send({
       success: 'true',
       message: 'product added successfuly',
       product,
     });
   }
 
-  getProducts(req, res) {
-    return res.status(200).send({
+
+  static async allProducts(req, res) {
+    return res.status(200).json({
       success: 'true',
       message: 'poducts retrieved successfuly',
       product,
     });
   }
+
 
   deleteproduct(req, res) {
     const arr = product.findIndex(c => c.id === parseInt(req.params.id, 10));
@@ -38,7 +38,7 @@ class Products {
         products,
       });
     }
-    return res.status(404).send({
+    return res.status(404).json({
       success: 'false',
       message: 'product not found',
     });
@@ -49,18 +49,17 @@ class Products {
     const arr = product.find(c => c.id === parseInt(req.params.id, 10));
     const result = arr;
     if (arr) {
-      return res.status(200).send({
+      return res.status(200).json({
         success: 'true',
         message: 'product retrieved successfully',
         products_list: result,
       });
     }
-    return res.status(404).send({
+    return res.status(404).json({
       success: 'false',
       message: `product with the id ${id} does not exist`,
     });
   }
-
 
   updateproduct(req, res) {
     const arr = product.findIndex(c => c.id === parseInt(req.params.id, 10));
@@ -70,6 +69,7 @@ class Products {
         message: 'product not found',
       });
     }
+
     const updatedproduct = {
       id: parseInt(req.params.id, 10),
       name: req.body.name || arr.name,
@@ -80,7 +80,7 @@ class Products {
 
     product.splice(arr, 1, updatedproduct);
 
-    return res.status(200).send({
+    return res.status(200).json({
       success: 'true',
       message: 'product updated successfully',
       updatedproduct,
@@ -96,6 +96,7 @@ class Products {
       category,
     });
   }
+
 
   getcategories(req, res) {
     return res.status(200).send({
