@@ -16,4 +16,9 @@ var modal = document.querySelector(".modal");
     closeButton.addEventListener("click", toggleModal);
     window.addEventListener("click", windowOnClick);
 
-   
+window.onscroll = () => {
+        const nav = document.querySelector('.nav');
+        if(this.scrollY <= 10) nav.classList.remove("scroll"); else nav.classList.add("scroll");
+      };
+
+

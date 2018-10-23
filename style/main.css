@@ -1,0 +1,355 @@
+body{
+    margin:0;
+    width: 100%;
+    font: 'Source Sans Pro', Arial;
+  }
+
+  #gtstarted{
+    width: 25vw;
+    height: 4vw;
+    border: none;
+    font-size: 2vw;
+    letter-spacing: 2px;
+    background: #28d;
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .message {
+      padding-top: 25vh;
+      color: antiquewhite;
+  }
+
+  a{
+      color: black;
+  }
+  
+  .submit {
+   
+  }
+  
+  .wrapper{
+    width: 100%;
+      height:75vh;
+      text-align: center;
+      line-height: 100%;
+      background-image: url("../images/cashier.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+     
+  }
+
+img {
+    width: 50%;
+}
+
+  h1.title{
+   padding: 0%;
+    font-size: 7.2vw;
+    margin-bottom: 15px;
+    margin: 3vh;
+   
+  }
+  
+  h1.title2{
+    font-size: 2vw;
+    padding: 0vh;
+    letter-spacing: 1vw;
+    margin: 5vh;
+
+  }
+
+  p{
+      margin: 2vh;
+  }
+  
+  h3.title {
+      font-size:1.5vw ;
+      padding: 0vh;
+      margin: 2vh;
+     
+  }
+.main_features{
+    background-image: url("../images/landing.jpg");
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.75);
+    font-size: 2vh;
+    text-align: center;
+}
+  
+  .landing{
+  
+    height:75vh;
+      background-color: rgba(0, 0, 0, 0.75);
+     
+  }
+
+  hr{
+      width :80vw;
+  }
+  
+ 
+  
+  
+  .nav {
+    height: 6vh;
+    width: 100%;
+    position: fixed;
+  }
+  
+  
+  .nav > .nav-header {
+    display: inline;
+  }
+  
+  
+  .nav > .nav-header > .nav-title {
+    display: inline-block;
+      font-size: 1.5vw;
+      color: #fff;
+      padding: 2vw 6px 30px 3vw;
+      float: left;
+  }
+  
+  .scroll {
+    background-color: black;
+    color: #24d;
+  }
+
+  .nav > .nav-btn {
+    display: none;
+  }
+  
+  .nav > .nav-links {
+        display: inline;
+      float: right;
+      font-size: 0.5vw;
+      padding: 2vw 6px 30px 3vw;
+      padding-right: 4vw;
+  }
+  
+  .nav > .nav-links > a {
+        font-size: 1.5vw;
+      display: inline-block;
+      padding: 1px 10px 30px 10px;
+      text-decoration: none;
+      color: #efefef;
+   }   
+  
+  .nav > .nav-links > a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav > #nav-check {
+    display: none;
+  }
+
+  .main_features {
+   
+    background-color: #efefef;
+    padding-top: 10px;
+}
+
+.main_howto {
+    height: 35vh;
+    background-color: #efefef;
+}
+  
+.footer {
+    height: 7vh;
+    background-color:black;
+    padding-top: 10px;
+    color: wheat;
+}
+
+.feature{
+    width: 70vw;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+margin-left: 2vw;
+padding-bottom: 20px;
+}
+.features {
+    display: flex;
+    width: 75vw;
+    margin: 0 auto;
+    /* text-align: center; */
+    padding-bottom: 50px;
+    height: ;
+} 
+.modal {
+    
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: inherit;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal2 {
+    
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: inherit;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal3 {
+    
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: inherit;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+    padding: 2vh;
+    width: initial;
+    height: initial;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.35);
+}
+
+.fitures{
+    display:flex;
+ font-size:1vh;
+ padding: 0; 
+    margin: 0 auto;
+    height: inherit;
+    
+}
+
+.fiture{
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    /* text-align: center; */
+    height: 75%;
+    font-size: 2vh;
+    padding: 0;
+    WIDTH: 30vh;
+}
+
+.fiture:hover{
+    background-color:#699ece;
+}
+
+.modal-line {
+    width: 40vw;
+    border: 0.5vh;
+    margin:0;
+}
+
+.modal-header > h4{
+    margin: 2vh;
+}
+.close-button {
+    float: right;
+    width: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0rem;
+    background-color: lightgray;
+}
+.close-button:hover {
+    background-color: darkgray;
+}
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.main_howto{
+
+}
+.howto{
+    height:40vh;
+   width:100%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
+}
+
+.howtos-left{
+    background-image: url("../images/charts.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;    width: 30%;
+    text-align: center;
+    font-size: 5vh;
+    font-weight: 900;
+    height:40vh;
+    width: 50%;
+}
+
+
+.howtos-right{
+    top: 50%;
+    width: 50%;
+    text-align:left;
+    font-size: 1.9rem;
+    font-weight: 1000;
+    height: 40vh;
+    color: #0a375a;
+    clear: both;
+    letter-spacing: 2px;
+}
+
+ol {
+    /* Counter auf 2 setzen und Namen vergeben */
+    counter-reset: list 2;
+    display: none;
+    padding-left: 70px;
+    list-style: none;
+  }
+  
+  li {
+    /* Pro li um 5 erhöhen */
+    counter-increment: list 5;
+    
+    position: ;
+    margin-bottom: 10px;
+  }
+  
+  li::before {
+    /* Aktuellen Wert ausgeben mit "No." davor und ":" danach ausgeben */
+    content: "No. " counter(list) ":";
+  
+    position: absolute;
+    left: -70px; top: -4px;
+    
+    font-family: Arial, sans-serif;
+    background: #d25b4b;
+    color: #fff;
+    border-radius: 4px;
+    padding: 4px;
+  }
