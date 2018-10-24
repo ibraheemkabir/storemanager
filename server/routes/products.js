@@ -8,15 +8,15 @@ import queries from '../models/queries';
 
 const router = express.Router();
 
-router.post('/products', auth.addproduct,queries.addProduct , products.addProduct);
-router.delete('/products/:id', auth.deleteproduct ,queries.deleteproduct, products.deleteproduct);
-router.get('/products', auth.allproducts,queries.allProducts, products.allProducts);
-router.put('/products/:id', auth.updateproduct,queries.updateproduct, products.updateproduct);
-router.get('/products/:id', auth.getproduct , queries.getproduct, products.getproduct);
-router.get('/order',auth.allorders, products.allorders);
+router.post('/products', auth.addProduct, products.addProduct);
+router.delete('/products/:id', auth.deleteProduct, products.deleteProduct);
+router.get('/products', auth.allProducts, products.getAllProducts);
+router.put('/products/:id', auth.addProduct, products.updateProduct);
+router.get('/products/:id', auth.getProduct , products.getProduct);
+router.get('/order',auth.allOrders, products.getAllOrders);
 router.post('/order',auth.newOrder, products.newOrder);
-router.get('/category', products.getcategories);
-router.post('/category', products.addcategory);
+router.get('/category', products.getAllCategories);
+router.post('/category',auth.newCategory, products.addCategory);
 
 export default router;
-module.exports = router;
+

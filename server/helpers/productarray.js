@@ -1,30 +1,25 @@
-import { Prods } from '../models/productsModel';
-import { orders } from '../models/productsModel';
-import { category } from '../models/productsModel';
 
 
-const id=0;
-const product = [new Prods(
-  id,
-  'Dear diary today is my fist post',
-  'my first post',
-  'my first post',
-  '2016',
-),
+
+
+const id=1;
+const product = [
+  { id: id,name: 'mens jeans',size: 'medium',category:' jeans',price: '3000'}
 ];
 
-const Order = [new orders(
-  'trusers',
-  '1',
-  '2000',
-),
+const Order = [{
+  id:id,
+  products_id: '1',
+  total: '2000',
+},
 ];
 
-const catigory = [new category(
-  id,
-  'trousers',
-),
+const category = [
+  {
+    id:id,
+    category:'jeans'
+  },
 ];
 
 
-export { product, Order , catigory };
+export { product, Order , category };

@@ -2,8 +2,8 @@ import express from 'express';
 
 import products from '../models/productsModel';
 
-export default class Productauth{
-    static async addproduct(req, res, next) {
+class Productauth{
+     static addProduct(req, res, next) {
         if (!req.body.name) {
           res.status(400).send({
             success: 'false',
@@ -28,7 +28,7 @@ export default class Productauth{
         return next();
     }
 
-    static async deleteproduct(req, res, next) {
+     static deleteProduct(req, res, next) {
         const index = parseInt(req.params.id, 10);
         if (!index) {
           res.status(400).send({
@@ -39,11 +39,11 @@ export default class Productauth{
         return next();
     }
 
-    static async allproducts(req, res, next) {
+     static allProducts(req, res, next) {
         return next();
     }
 
-    static async getproduct(req, res, next) {
+      static getProduct(req, res, next) {
         const index = parseInt(req.params.id, 10);
         if (!index) {
           res.status(400).send({
@@ -54,23 +54,7 @@ export default class Productauth{
         return next();
     }
 
-    static async updateproduct(req, res, next) {
-        const { name} = req.body;
-        const { size } = req.body;
-        if (!name) {
-          res.status(400).send({
-            success: 'false',
-            message: 'product is required',
-          });
-        } else if (!size) {
-          res.status(400).send({
-            message: 'title is required',
-          });
-        }
-        return next();
-    }
-
-    static async newOrder(req, res, next) {
+   static newOrder(req, res, next) {
         if (!req.body.productsId) {
           res.status(400).send({
             success: 'false',
@@ -85,8 +69,20 @@ export default class Productauth{
         return next();
     }
 
-    static async allorders(req, res, next) {
+    static newCategory(req, res, next) {
+      if (!req.body.Category) {
+        res.status(400).send({
+          success: 'false',
+          message: 'category is required',
+        });
+      }
+      return next();
+    }
+
+     static allOrders(req, res, next) {
         return next();
     }
 
 }
+
+export default Productauth;
