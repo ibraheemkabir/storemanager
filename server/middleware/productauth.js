@@ -54,31 +54,6 @@ class Productauth{
         return next();
     }
 
-      static updateProduct(req, res, next) {
-      if (!req.body.name) {
-        res.status(400).send({
-          success: 'false',
-          message: 'product name is required',
-        });
-      } else if (!req.body.size) {
-        res.status(400).send({
-          success: 'false',
-          message: 'size is required',
-        });
-      } else if (!req.body.price) {
-          res.status(400).send({
-            success: 'false',
-            message: 'price is required',
-      });
-      } else if (!req.body.category) {
-          res.status(400).send({
-            success: 'false',
-            message: 'category is required',
-      });
-      }
-        return next();
-    }
-
    static newOrder(req, res, next) {
         if (!req.body.productsId) {
           res.status(400).send({
