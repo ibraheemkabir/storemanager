@@ -49,7 +49,7 @@
     "start": "nodemon app.js --exec babel-cli --",
     "build": "babel src -d dist",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test": " SET NODE_ENV='test' && nyc mocha --compilers js:babel-core/register server/test/ -t 5000 --exit"
+    "test": "  nyc mocha --compilers js:babel-core/register server/test/ -t 5000 --exit"
   },
   "author": "",
   "license": "ISC"
