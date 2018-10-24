@@ -19,7 +19,7 @@ class Products {
     });
   }
 
-  static getProducts(req, res) {
+  static getAllProducts(req, res) {
     return res.status(200).send({
       success: 'true',
       message: 'poducts retrieved successfuly',
@@ -97,7 +97,7 @@ class Products {
     });
   }
 
-  static getcategories(req, res) {
+  static getAllCategories(req, res) {
     return res.status(200).send({
       success: 'true',
       message: 'categories retrieved successfuly',
@@ -117,7 +117,7 @@ class Products {
     });
   }
 
-  static getOrders(req, res) {
+  static getAllOrders(req, res) {
     return res.status(200).send({
       success: 'true',
       message: 'orders retrieved successfuly',
