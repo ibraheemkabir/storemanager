@@ -7,8 +7,8 @@ const orders = (id,products_id,total) =>{
     return {id,products_id,total}
 }
 
-const categoryarray= (id,category) =>{
+const categoryArray= (id,category) =>{
     return {id,category }
 }
 
-export { Prods, orders, categoryarray };
+export { Prods, orders, categoryArray };
