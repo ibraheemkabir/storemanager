@@ -1,20 +1,13 @@
-var modal = document.querySelector(".modal");
+var modal = document.querySelector(".nav-title");
     var trigger = document.querySelector(".submit");
     var closeButton = document.querySelector(".close-button");
 
-    function toggleModal() {
-        modal.classList.toggle("show-modal");
-    }
-
-    function windowOnClick(event) {
-        if (event.target === modal) {
-            toggleModal();
-        }
-    }
-
-    trigger.addEventListener("click", toggleModal);
-    closeButton.addEventListener("click", toggleModal);
-    window.addEventListener("click", windowOnClick);
+    trigger.addEventListener("click", () => {
+        location.href = "login.html";
+    });  
+    modal.addEventListener("click", () => {
+        location.href = "index.html";
+    });  
 
 window.onscroll = () => {
         const nav = document.querySelector('.nav');

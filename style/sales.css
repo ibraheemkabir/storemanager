@@ -1801,3 +1801,7 @@ article section table thead th {
   text-transform: uppercase;
   color: #D3D3D3;
 }
+
+.scroll{
+  background-color: #000;
+}

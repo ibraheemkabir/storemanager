@@ -1,7 +1,7 @@
 body{
     margin:0;
     width: 100%;
-    font: 'Source Sans Pro', Arial;
+    font: status-bar;
   }
 
   #gtstarted{
@@ -57,7 +57,7 @@ img {
     font-size: 2vw;
     padding: 0vh;
     letter-spacing: 1vw;
-    margin: 5vh;
+    margin: 6vh;
 
   }
 
@@ -68,7 +68,7 @@ img {
   h3.title {
       font-size:1.5vw ;
       padding: 0vh;
-      margin: 2vh;
+      margin: 1vh;
      
   }
 .main_features{
@@ -97,6 +97,7 @@ img {
     height: 6vh;
     width: 100%;
     position: fixed;
+    padding-bottom:1vh;
   }
   
   
@@ -109,8 +110,9 @@ img {
     display: inline-block;
       font-size: 1.5vw;
       color: #fff;
-      padding: 2vw 6px 30px 3vw;
+      padding: 1.5vw 6px 30px 3vw;
       float: left;
+      cursor: pointer;
   }
   
   .scroll {
@@ -126,7 +128,7 @@ img {
         display: inline;
       float: right;
       font-size: 0.5vw;
-      padding: 2vw 6px 30px 3vw;
+      padding: 1.5vw 6px 30px 3vw;
       padding-right: 4vw;
   }
   
@@ -158,11 +160,12 @@ img {
 }
   
 .footer {
+    padding-top: 2px;
     height: 7vh;
     background-color:black;
-    padding-top: 10px;
     color: wheat;
 }
+
 
 .feature{
     width: 70vw;
@@ -288,7 +291,8 @@ padding-bottom: 20px;
 
 }
 .howto{
-    height:40vh;
+    background-image: url("../images/graph.jpg");
+    height:30vh;
    width:100%;
     margin: 0 auto;
     justify-content: center;
@@ -306,38 +310,43 @@ padding-bottom: 20px;
     background-repeat: no-repeat;    width: 30%;
     text-align: center;
     font-size: 5vh;
-    font-weight: 900;
-    height:40vh;
+    font-weight: 1500;
+    height:30vh;
     width: 50%;
 }
 
 
 .howtos-right{
+    
+    background-color: rgba(0, 0, 0, 0.65);
+    background-size: contain;
+    background-repeat: no-repeat;
     top: 50%;
     width: 50%;
-    text-align:left;
-    font-size: 1.9rem;
-    font-weight: 1000;
-    height: 40vh;
+    text-align:center;
+    font-size: 1.2vw;
+    font-weight: 1600;
+    height: 100%;
     color: #0a375a;
     clear: both;
     letter-spacing: 2px;
+    color:#efeded;
 }
 
-ol {
+ul {
     /* Counter auf 2 setzen und Namen vergeben */
-    counter-reset: list 2;
-    display: none;
-    padding-left: 70px;
-    list-style: none;
+    margin: 0px;
+    margin-top:7vh;
+list-style-type: none;
+
   }
   
   li {
     /* Pro li um 5 erhöhen */
-    counter-increment: list 5;
+    counter-increment: none;
     
     position: ;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
   
   li::before {

@@ -1,4 +1,5 @@
 var toggle = document.querySelector(".nav-toggle");
+
 var tog = document.querySelector("HTML");
 
 function toggleModal() {
@@ -9,12 +10,11 @@ function toggleModal() {
 
 toggle.addEventListener("click", toggleModal);
 
-
-window.onscroll = () => {
-    const nav = document.querySelector('header');
-    if(this.scrollY <= 10) nav.classList.remove("scroll"); else nav.classList.add("scroll");
+const art = document.querySelector('article');
+const nav = document.querySelector('header');
+art.onscroll = () => {
+    if(art.scrollY <= 30) nav.classList.remove("scroll"); else nav.classList.add("scroll");
   };
-
   (function(){
     /**
      * jQuery
