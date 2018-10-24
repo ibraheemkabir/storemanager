@@ -4,7 +4,7 @@ import { product } from '../helpers/productarray';
 import { Order } from '../helpers/productarray';
 import { category } from '../helpers/productarray';
 import { Prods } from '../models/productsModel';
-import { categoryarray } from '../models/productsModel';
+import { categoryArray } from '../models/productsModel';
 import { orders } from '../models/productsModel';
 
 class Products {
@@ -27,7 +27,7 @@ class Products {
     });
   }
 
-  static deleteproduct(req, res) {
+  static deleteProduct(req, res) {
     const result = product.findIndex(c => c.id === parseInt(req.params.id, 10));
     const products = result;
     if (products!=-1) {
@@ -44,7 +44,7 @@ class Products {
     });
   }
 
-  static getproduct(req, res) {
+  static getProduct(req, res) {
     const id = parseInt(req.params.id, 10);
     const result = product.find(c => c.id === parseInt(req.params.id, 10));
     const result = result;
@@ -62,7 +62,7 @@ class Products {
   }
 
 
-  static updateproduct(req, res) {
+  static updateProduct(req, res) {
     const result = product.findIndex(c => c.id === parseInt(req.params.id, 10));
     if (result === -1) {
       return res.status(404).send({
@@ -70,7 +70,7 @@ class Products {
         message: 'product not found',
       });
     }
-    const updatedproduct = {
+    const updatedProduct = {
       id: parseInt(req.params.id, 10),
       name: req.body.name || arr.name,
       category: req.body.category || arr.category,
@@ -78,7 +78,7 @@ class Products {
       price: req.body.price || arr.price,
     };
 
-    product.splice(arr, 1, updatedproduct);
+    product.splice(arr, 1, updatedProduct);
 
     return res.status(200).send({
       success: 'true',
@@ -87,9 +87,9 @@ class Products {
     });
   }
 
-  static addcategory(req, res) {
+  static addCategory(req, res) {
     const { Category } = req.body;
-    const newcategory = category.push(new categoryarray(category.length+1, Category));
+    const newCategory = category.push(new categoryArray(category.length+1, Category));
     return res.status(201).send({
       success: 'true',
       message: 'category added successfuly',
@@ -109,7 +109,7 @@ class Products {
   static newOrder(req, res) {
     const { productsId } = req.body;
     const { total } = req.body;
-    const neworder = Order.push(new orders(Order.length+1, productsId, total));
+    const newOrder = Order.push(new orders(Order.length+1, productsId, total));
     return res.status(201).send({
       success: 'true',
       message: 'order created successfuly',
@@ -117,7 +117,7 @@ class Products {
     });
   }
 
-  static getorders(req, res) {
+  static getOrders(req, res) {
     return res.status(200).send({
       success: 'true',
       message: 'orders retrieved successfuly',
