@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "[![Coverage Status](https://coveralls.io/repos/github/ibraheemkabir/storemanager/badge.svg?branch=develop)](https://coveralls.io/github/ibraheemkabir/storemanager?branch=develop)",
   "main": "index.js",
+  "engines": {
+    "node": "7.8.0"
+  },
   "dependencies": {
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
