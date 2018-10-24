@@ -60,7 +60,6 @@ class Products {
     });
   }
 
-
   static updateProduct(req, res) {
     const result = product.findIndex(c => c.id === parseInt(req.params.id, 10));
     if (result === -1) {
