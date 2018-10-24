@@ -3,7 +3,7 @@ import express from 'express';
 import products from '../models/productsModel';
 
 class Productauth{
-     addproduct(req, res, next) {
+     static addproduct(req, res, next) {
         if (!req.body.name) {
           res.status(400).send({
             success: 'false',
@@ -28,7 +28,7 @@ class Productauth{
         return next();
     }
 
-     deleteproduct(req, res, next) {
+     static deleteproduct(req, res, next) {
         const index = parseInt(req.params.id, 10);
         if (!index) {
           res.status(400).send({
@@ -43,7 +43,7 @@ class Productauth{
         return next();
     }
 
-     getproduct(req, res, next) {
+      static getproduct(req, res, next) {
         const index = parseInt(req.params.id, 10);
         if (!index) {
           res.status(400).send({
@@ -54,7 +54,7 @@ class Productauth{
         return next();
     }
 
-     updateproduct(req, res, next) {
+      static updateproduct(req, res, next) {
       if (!req.body.name) {
         res.status(400).send({
           success: 'false',
@@ -79,7 +79,7 @@ class Productauth{
         return next();
     }
 
-     newOrder(req, res, next) {
+   static newOrder(req, res, next) {
         if (!req.body.productsId) {
           res.status(400).send({
             success: 'false',
@@ -100,5 +100,4 @@ class Productauth{
 
 }
 
-const auth = new Productauth();
-export default auth;
+export default Productauth;
