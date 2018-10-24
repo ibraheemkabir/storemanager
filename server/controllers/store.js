@@ -28,8 +28,8 @@ class Products {
   }
 
   static deleteproduct(req, res) {
-    const arr = product.findIndex(c => c.id === parseInt(req.params.id, 10));
-    const products = arr;
+    const result = product.findIndex(c => c.id === parseInt(req.params.id, 10));
+    const products = result;
     if (products!=-1) {
       product.splice(products, 1);
       return res.status(200).send({
@@ -46,8 +46,8 @@ class Products {
 
   static getproduct(req, res) {
     const id = parseInt(req.params.id, 10);
-    const arr = product.find(c => c.id === parseInt(req.params.id, 10));
-    const result = arr;
+    const result = product.find(c => c.id === parseInt(req.params.id, 10));
+    const result = result;
     if (arr) {
       return res.status(200).send({
         success: 'true',
@@ -63,8 +63,8 @@ class Products {
 
 
   static updateproduct(req, res) {
-    const arr = product.findIndex(c => c.id === parseInt(req.params.id, 10));
-    if (arr === -1) {
+    const result = product.findIndex(c => c.id === parseInt(req.params.id, 10));
+    if (result === -1) {
       return res.status(404).send({
         success: 'false',
         message: 'product not found',
