@@ -23,7 +23,7 @@
     "sequelize-cli": "^4.1.1",
     "superagent": "^3.8.3",
     "supertest": "^3.3.0",
-    "travis": "^0.1.1","babel-cli": "^6.26.0"
+    "travis": "^0.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
