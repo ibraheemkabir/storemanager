@@ -41,6 +41,18 @@ describe('/POST products', () => {
       });
   });
 
+  it('it should add new products', (done) => {
+    chai.request(app)
+      .post('/api/v1/products/')
+      .send()
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+
+
 });
 
 describe('/POST order', () => {
@@ -51,6 +63,17 @@ describe('/POST order', () => {
       .send(testorder)
       .end((err, res) => {
         res.should.have.status(201);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+
+  it('it should add new order', (done) => {
+    chai.request(app)
+      .post('/api/v1/order/')
+      .send()
+      .end((err, res) => {
+        res.should.have.status(400);
         res.body.should.be.a('object');
         done();
       });
@@ -68,6 +91,16 @@ describe('/POST categories', () => {
         done();
       });
   });
+  it('it should add new categories', (done) => {
+    chai.request(app)
+      .post('/api/v1/category/')
+      .send()
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
 });
 
 describe('/PUT products', () => {
@@ -77,6 +110,17 @@ describe('/PUT products', () => {
       .send(testproduct)
       .end((err, res) => {
         res.should.have.status(200);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+
+  it('it should update product information', (done) => {
+    chai.request(app)
+      .put('/api/v1/products/1')
+      .send()
+      .end((err, res) => {
+        res.should.have.status(400);
         res.body.should.be.a('object');
         done();
       });
@@ -94,6 +138,16 @@ describe('/GET products', () => {
         done();
       });
   });
+
+  it('it should get a particular product', (done) => {
+    chai.request(app)
+      .get('/api/v1/products/8')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
 });
 describe('/GET products', () => {
   it('it should GET all the products', (done) => {
@@ -105,6 +159,17 @@ describe('/GET products', () => {
         done();
       });
   });
+
+  it('it should GET all the products', (done) => {
+    chai.request(app)
+      .post('/api/v1/order/')
+      .send()
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
 });
 describe('/DELETE products', () => {
   it('it should delete a product', (done) => {
@@ -112,6 +177,16 @@ describe('/DELETE products', () => {
       .delete('/api/v1/products/1')
       .end((err, res) => {
         res.should.have.status(200);
+        res.body.should.be.a('object');
+        done();
+      });
+  });
+
+  it('it should delete a product', (done) => {
+    chai.request(app)
+      .delete('/api/v1/products/5')
+      .end((err, res) => {
+        res.should.have.status(400);
         res.body.should.be.a('object');
         done();
       });

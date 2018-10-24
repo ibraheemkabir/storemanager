@@ -3,7 +3,7 @@ import express from 'express';
 import products from '../models/productsModel';
 
 class Productauth{
-     addproduct(req, res, next) {
+     static addProduct(req, res, next) {
         if (!req.body.name) {
           res.status(400).send({
             success: 'false',
@@ -28,7 +28,7 @@ class Productauth{
         return next();
     }
 
-     deleteproduct(req, res, next) {
+     static deleteProduct(req, res, next) {
         const index = parseInt(req.params.id, 10);
         if (!index) {
           res.status(400).send({
@@ -39,11 +39,11 @@ class Productauth{
         return next();
     }
 
-     allproducts(req, res, next) {
+     static allProducts(req, res, next) {
         return next();
     }
 
-     getproduct(req, res, next) {
+      static getProduct(req, res, next) {
         const index = parseInt(req.params.id, 10);
         if (!index) {
           res.status(400).send({
@@ -54,7 +54,7 @@ class Productauth{
         return next();
     }
 
-     updateproduct(req, res, next) {
+      static updateProduct(req, res, next) {
       if (!req.body.name) {
         res.status(400).send({
           success: 'false',
@@ -79,7 +79,7 @@ class Productauth{
         return next();
     }
 
-     newOrder(req, res, next) {
+   static newOrder(req, res, next) {
         if (!req.body.productsId) {
           res.status(400).send({
             success: 'false',
@@ -94,11 +94,20 @@ class Productauth{
         return next();
     }
 
-     allorders(req, res, next) {
+    static newCategory(req, res, next) {
+      if (!req.body.Category) {
+        res.status(400).send({
+          success: 'false',
+          message: 'category is required',
+        });
+      }
+      return next();
+    }
+
+     static allOrders(req, res, next) {
         return next();
     }
 
 }
 
-const auth = new Productauth();
-export default auth;
+export default Productauth;
