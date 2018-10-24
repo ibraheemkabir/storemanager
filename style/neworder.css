@@ -351,7 +351,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -1279,7 +1279,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -2157,7 +2157,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -3081,7 +3081,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -3959,7 +3959,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -4883,7 +4883,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -5761,7 +5761,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -6685,7 +6685,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -7563,7 +7563,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -8487,7 +8487,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -9365,7 +9365,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -10289,7 +10289,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -10671,7 +10671,8 @@ article {
   padding: 5=px;
 }
 article > header {
-  width: 100%;
+  margin: 20px;
+  width: 90%;
   height: 50px;
   border-bottom: 1px solid #2a3843;
 }
@@ -10737,7 +10738,7 @@ h3#head {
     float: ce;
 }
 article section {
-  padding: 10px;
+  margin-left: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -10813,5 +10814,4 @@ article section table thead th {
   font-size: 0.9rem;
   text-transform: uppercase;
   color: #D3D3D3;
-}
 }

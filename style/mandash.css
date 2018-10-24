@@ -7,12 +7,12 @@
 }
 
 html, body {
-  background-color: lavender;
+  background-color: #202B33;
   color: #738491;
   font-family: "Open Sans";
   font-size: 16px;
   font-smoothing: antialiased;
- 
+  overflow: hidden;
 }
 
 body {
@@ -137,9 +137,13 @@ padding-top: 13%;
       
   }
   .footer {
+    padding: 0px;
     height: 7vh;
     background-color:black;
     padding-top: 10px;
+    text-align: center;
+    font-size: 10px;
+    width: 100vw;
     color: wheat;
 }
   
@@ -347,7 +351,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -618,9 +622,8 @@ padding-top: 13%;
       margin: 0 0 2em 0;
   }
   
-  :last-of-type, p:last-of-type {
+  article:last-of-type, p:last-of-type {
       margin-bottom: 0;
-      /* text-align: center; */
   }
   
   p.intro {
@@ -630,6 +633,10 @@ padding-top: 13%;
        margin: 0 0 1.5em 0;
   }
 
+  .scroll{
+    background-color: #000;
+
+  }
   
   h1, h2 {
       letter-spacing: -1px;
@@ -702,40 +709,38 @@ padding-top: 13%;
   
   
   
-.header{
-  position:absolute;
-}
+
 header {
   color: #D3D3D3;
 }
 
 
- {
+article {
   position: relative;
+  margin: 20px;
   top: 0;
   height: 100vh;
   width: unset;
   bottom: 0;
   right: 0;
-  
   overflow: auto;
-  border-left: solid #2a3843;
+  /* border-left: solid #2a3843; */
   padding: 20px;
+  padding-left: 0px;
+  margin: 20px;
 }
- header {
-  padding-top: 15px;
-  margin: 5px;
-  width: 100%;
-  position: fixed;
-  height: 40px;
-  border-bottom: 1px solid #2a3843;
+article > header {
+  width: 90%;
+    position: absolute;
+    height: 50px;
+    border-bottom: 1px solid #2a3843;
 }
- header .title {
+article > header .title {
   float: left;
   font-size: 1.3rem;
   font-weight: 600;
 }
- header .user {
+article > header .user {
   float: right;
   width: 48px;
   height: 48px;
@@ -755,15 +760,15 @@ img#icon {
   height: 25px;
 }
 
- header .interval {
+article > header .interval {
   float: right;
 }
- header .interval ul {
+article > header .interval ul {
   padding: 0;
   list-style: none;
   margin:0px;
 }
- header .interval ul li {
+article > header .interval ul li {
   float: right;
   text-transform: uppercase;
   font-size: 0.9rem;
@@ -771,43 +776,44 @@ img#icon {
   padding: 2px 10px;
   margin: 0px 10px;
 }
- header .interval ul li.active {
+article > header .interval ul li.active {
   background-color: #D3D3D3;
   color: #202B33;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
- section {
-  margin-top: 70px;
+article section {
+  margin-top: 60px;
   margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
 }
- section header {
+article section > header {
   margin-bottom: 40px;
   font-size: 1.1rem;
   font-weight: 600;
 }
- section .chart {
+article section .chart {
   height: 200px;
 }
- section .inlineChart {
+article section .inlineChart {
   float: left;
   width: 30%;
   margin-bottom: 50px;
 }
- section .inlineChart  {
+article section .inlineChart  {
   border-right-style: solid;
   border-right-width: 0.1px;
   width: auto;
   display: flex;
-  padding: 10px;
+  padding: 15px;
   /* float: left; */
   text-align: center;
   /* border-right-style: none; */
   margin: 7.3px;
-  width: 30%;
 }
- section .inlineChart .info {
+article section .inlineChart .info {
   padding-left: 16px;
   padding-top: 34px;
   /* margin: 0 auto; */
@@ -818,33 +824,20 @@ img#rate {
   /* width: 60%; */
   border-radius: 0;
 }
- section .inlineChart .info .value {
-
-  font-size: 10vh;
+article section .inlineChart .info .value {
+  font-size: 25px;
   color: #D3D3D3;
 }
- section table {
+article section table {
   width: 100%;
-  color: black;
 }
- section table th,  section table td {
+article section table th, article section table td {
   padding: 15px 0px;
   border-bottom: 1px solid #2a3843;
-  text-align: left;
 }
- section table thead th {
+article section table thead th {
   text-align: left;
   font-size: 0.9rem;
   text-transform: uppercase;
-  color: #1c1919;
+  color: #D3D3D3;
 }
-
-#top{
-  margin: 50px;
-  justify-content: center;
-  text-align: start;
-  display: flex;
-  width: auto;
-  justify-content: space-between;
-}
-

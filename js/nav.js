@@ -12,9 +12,7 @@ toggle.addEventListener("click", toggleModal);
 
 const art = document.querySelector('article');
 const nav = document.querySelector('header');
-art.onscroll = () => {
-    if(art.scrollY <= 30) nav.classList.remove("scroll"); else nav.classList.add("scroll");
-  };
+
   (function(){
     /**
      * jQuery
