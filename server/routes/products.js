@@ -19,4 +19,4 @@ router.get('/category', products.getAllCategories);
 router.post('/category',auth.newCategory, products.addCategory);
 
 export default router;
-module.exports = router;
+
