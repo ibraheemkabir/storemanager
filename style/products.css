@@ -7,8 +7,8 @@
 }
 
 html, body {
-  background-color: #202B33;
-  color: #738491;
+  background-color: rgba(240, 241, 242, 0.63);
+  color: #333638;
   font-family: "Open Sans";
   font-size: 16px;
   font-smoothing: antialiased;
@@ -763,11 +763,12 @@ padding-top: 13%;
 
 /* Products */
 .products {
-  height: 100vh;;
+  height: 100vh;
   margin:10px;
   padding: 12px;
+  border-top-color: blue;
+  border-top-style: solid;
   box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.35);
-
 }
 
 /* Product */
@@ -1641,7 +1642,7 @@ padding-top: 13%;
   
 
 header {
-  color: #D3D3D3;
+  color: #928484;
 }
 
 
@@ -1658,15 +1659,16 @@ article {
   padding: 20px;
 }
 article > header {
-  width: 90%;
-   
-    height: 50px;
-    border-bottom: 1px solid #2a3843;
+  width: 98%;
+  margin: auto;
+  height: 50px;
+  border-bottom: 1px solid #2a3843;
 }
 article > header .title {
   float: left;
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   font-weight: 600;
+  color: black;
 }
 article > header .user {
   float: right;
@@ -1727,8 +1729,9 @@ h3#head {
     float: ce;
 }
 article section {
-  margin-top: 60px;
+  margin-top: 20px;
   margin-bottom: 20px;
+  color: black;
 }
 article section > header {
   font-size: 1.1rem;

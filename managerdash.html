@@ -7,8 +7,7 @@
     <meta name="keywords" content="professional web design">
     <meta name="author" content="Ibraheem kabir">
     <title>StoreManager | Welcome</title>
-    <link rel="stylesheet" type="text/css" href="style/mandash.css">
-    <link rel="stylesheet" type="text/css" href="style/navs.css">
+    <link rel="stylesheet" type="text/css" href="style/dashboard.css">
   </head>
 <body>
     <div class="primary-nav">
@@ -19,23 +18,26 @@
             
                 <nav role="navigation" class="menu">
             
-                    <a href="#" class="logotype">LOGO<span>TYPE</span></a>
+                    <a href="#" class="logotype">StoreManager</a>
             
                     <div class="overflow-container">
             
                         <ul class="menu-dropdown">
             
-                            <li><a href="attendantdash.html">Dashboard</a><span class="icon"><img id="icon" src="images/dashbord.png"></i></span></li>
+                            <li><a href="managerdash.html">Dashboard</a><span class="icon"><img id="icon" src="images/dashbord.png"></i></span></li>
             
                             <li class="menu-hasdropdown">
                                 <a href="newOrder.html">New Order!</a><span class="icon"><img id="icon" src="images/order.png"></i></span>
                             </li>
-                            <li><a href="attendantlist.html">Attendant List.</a><span class="icon"><img id="icon" src="images/add.png"></i></span></li>
+        
+                            <li class="menu-hasdropdown">
+                                <a href="attendantlist.html">attendants</a><span class="icon"><img id="icon" src="images/order.png"></i></span>
+                            </li>
+                            <li><a href="products.html">Products Available.</a><span class="icon"><img id="icon" src="images/personn.png"></i></span></li>
 
-                            <li><a href="products.html">available products.</a><span class="icon"><img id="icon" src="images/add.png"></i></span></li>
-                            <li><a href="attendantlist.html">attendant accounts.</a><span class="icon"><img id="icon" src="images/personn.png"></i></span></li>
-
-                            <li><a href="#">salesrecords.html.</a><span class="icon"><img id="icon" src="images/records.png"></i></span></li>
+                            <li><a href="salesrecords.html">sales Records</a><span class="icon"><img id="icon" src="images/records.png"></i></span></li>
+            
+                            <li><a href="profile.html">My  Profile</a><span class="icon"><img id="icon" src="images/records.png"></i></span></li>
             
                         </ul>
             
@@ -47,7 +49,7 @@
         
     <div class="new-wrapper">
         <article>
-            <header>
+            <header class="header">
               <div class="title">Dashboard</div>
               <div class="user"></div>
               <div class="interval">
@@ -89,97 +91,59 @@
             </section>
 
             <div class="row " >
-    
-          <div class="wrappers">
-  
-            <header class="headers">
-                <h4 style="float:left">   New Stock </h4>
-              <i class="[ icon  icon--grid ]  [ fa  fa-th ]  [ icon ]  active"></i>
-              <i class="[ icon  icon--list ]  [ fa  fa-reorder ]  [ icon ]"></i>
-            </header>
-          
-            <section class="products grid group">    
-              <article class="product">
-                <div class="product__inner">
-          
-                  <section class="product__image">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/159934/pitchblack.jpg"></img>
-                  </section>
-          
-                  <div class="product__details">
-          
-                    <section class="product__price">
-                        <span>Product: </span>
-                      Air max</section>
-          
-                    <section class="product__price">
-                        <span>Price: </span>N6.35</section>
-
-                    <section class="product__price">
-                        <span>Category: </span>
-                      Sneakers</section>
-          
-          
-                  </div><!-- /product__details -->
-          
-                </div>
-              </article><!-- /product -->
-              <article class="product">
-                  <div class="product__inner">
-            
-                    <section class="product__image">
-                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/159934/pitchblack.jpg"></img>
-                    </section>
-            
-                    <div class="product__details">
-            
-                      <section class="product__price">
-                          <span>Product: </span>
-                        Air max</section>
-            
-                      <section class="product__price">
-                          <span>Price: </span>N6.35</section>
-  
-                      <section class="product__price">
-                          <span>Category: </span>
-                        Sneakers</section>
-            
-            
-                    </div><!-- /product__details -->
-            
-                  </div>
-                </article><!-- /product -->
-                <article class="product">
-                    <div class="product__inner">
-              
-                      <section class="product__image">
-                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/159934/pitchblack.jpg"></img>
-                      </section>
-              
-                      <div class="product__details">
-              
-                        <section class="product__price">
-                            <span>Product: </span>
-                          Air max</section>
-              
-                        <section class="product__price">
-                            <span>Price: </span>N6.35</section>
-    
-                        <section class="product__price">
-                            <span>Category: </span>
-                          Sneakers</section>
+                
+                <section class="products grid group">    
+                    <table>
+                      <thead>
+                          <tr>
+                            <header class="headers">
+                                <header><h4>  Recent sales</h4> </header>
+                            </header>
                           
-                          
-                          <div class="container">
-
-              
-                      </div><!-- /product__details -->
-              
-                    </div>
-                  </article><!-- /product -->
-            </section><!-- /products -->
+                              <br/>
+                            </tr>
+                         
             
-          </div><!-- /wrapper -->
+                        <tr>
+                          <th>Sale id</th>
+                          <th>Date</th>
+                          <th>Products</th>
+                          <th>Attendant</th>
+                          <th>sale worth</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>20-04-2015</td>
+                          <td>trousers</td>
+                          <td>Tayo</td>
+                          <td>30000</td>
+                        
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>20-04-2015</td>
+                            <td>trousers</td>
+                            <td>Tayo</td>
+                            <td>30000</td>
+                          
+                          </tr>
+                          <tr>
+                              <td>2</td>
+                              <td>20-04-2015</td>
+                              <td>trousers</td>
+                              <td>Tayo</td>
+                              <td>30000</td>
+                            
+                            </tr>
+                        
+                              
+                      </tbody>
+                    </table>
+                  
+                </section><!-- /products -->
             </div>
             
             <div class="footer">
@@ -195,4 +159,4 @@
 </body>
 
 </html>
-<script type="text/javascript" src="js/nav.js"></script>
+<script type="text/javascript" src="js/navs.js"></script>

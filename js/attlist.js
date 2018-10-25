@@ -84,3 +84,20 @@ toggle.addEventListener("click", toggleModal);
     trigger.addEventListener("click", toggleModal2);
     closeButton.addEventListener("click", toggleModal);
     window.addEventListener("click", windowOnClick);
+    var modal = document.querySelector(".modal2");
+    var trigger = document.querySelector(".icon");
+    var closeButton = document.querySelector(".close-button");
+
+    function toggleModal2() {
+        modal.classList.toggle("show-modal");
+    }
+
+    function windowOnClick(event) {
+        if (event.target === modal) {
+            toggleModal2();
+        }
+    }
+
+    trigger.addEventListener("click", toggleModal2);
+    closeButton.addEventListener("click", toggleModal);
+    window.addEventListener("click", windowOnClick);

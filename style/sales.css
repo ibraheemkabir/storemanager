@@ -1639,7 +1639,7 @@ padding-top: 13%;
   
 
 header {
-  color: #D3D3D3;
+  color: #706b6b;
 }
 
 
@@ -1650,10 +1650,10 @@ article {
   width: unset;
   bottom: 0;
   right: 0;
-  
   overflow: auto;
   border-left: solid #2a3843;
   padding: 20px;
+  background-color: #fbf2f2;
 }
 article > header {
   width: 90%;
@@ -1663,8 +1663,9 @@ article > header {
 }
 article > header .title {
   float: left;
-  font-size: 1.3rem;
+  font-size: 1.6em;
   font-weight: 600;
+  color: black;
 }
 article > header .user {
   float: right;
@@ -1725,8 +1726,8 @@ h3#head {
     float: ce;
 }
 article section {
-  margin-top: 60px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 article section > header {
   font-size: 1.1rem;
@@ -1785,6 +1786,7 @@ article section table td#checkout {
 
 
 article section table th, article section table td {
+  color: black;
   padding: 15px 0px;
   border-bottom: 1px solid #2a3843;
 }
@@ -1796,7 +1798,7 @@ td#checkout:hover {
 }
 
 article section table thead th {
-  text-align: left;
+  text-align: center;
   font-size: 0.9rem;
   text-transform: uppercase;
   color: #D3D3D3;

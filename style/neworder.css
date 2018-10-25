@@ -3615,7 +3615,7 @@ article section table thead th {
 }
 
 html, body {
-  background-color: #202B33;
+  background-color: #f2f6f9;
   color: #738491;
   font-family: "Open Sans";
   font-size: 16px;
@@ -9022,7 +9022,8 @@ article section table thead th {
 
 html, body {
   background-color: #202B33;
-  color: #738491;
+  color: #2a4a62;
+  ke;
   font-family: "Open Sans";
   font-size: 16px;
   font-smoothing: antialiased;
@@ -10435,7 +10436,8 @@ padding-top: 13%;
     border: 1px solid lightgray;
     border-radius: 3px;
     padding: 10px;
-    transition: all 0.1s ease-out;  
+    transition: all 0.1s ease-out;
+    background-color: #39639b;
   }
   input,
   select,
@@ -10612,7 +10614,7 @@ padding-top: 13%;
   
       h3, .h3 {font-size: 1.777em;}
   
-      h4, .h4 {font-size: 1.333em;}
+      h4, .h4 {font-size: 1.333em;color: #39;}
   
       p { font-size:1.0625em; }
   
@@ -10667,20 +10669,22 @@ article {
   bottom: 0;
   right: 0;
   overflow: auto;
+  background-color: WHITESMOKE;
   /* border-left: solid #2a3843; */
   padding: 5=px;
 }
 article > header {
-  margin: 20px;
-  width: 90%;
+  margin: 10px;
+  width: 95%;
   height: 50px;
   border-bottom: 1px solid #2a3843;
 }
 article > header .title {
   float: left;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 600;
   margin: 15px;
+  color: black;
 }
 article > header .user {
   float: right;
@@ -10735,6 +10739,7 @@ h5{
 }
 h3#head {
     text-align: center;
+    color: black;
     float: ce;
 }
 article section {
@@ -10810,7 +10815,7 @@ td#checkout:hover {
 }
 
 article section table thead th {
-  text-align: left;
+  text-align: center;
   font-size: 0.9rem;
   text-transform: uppercase;
   color: #D3D3D3;
