@@ -9778,9 +9778,11 @@ padding-top: 13%;
 
 /* Products */
 .products {
+  border-top-color: #af6e7a;
   margin:20px;
   padding: 5px;
   box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.35);
+  border-top-style: solid;
 }
 
 /* Product */
@@ -10806,6 +10808,7 @@ article section table td#checkout {
 article section table th, article section table td {
   padding: 15px 0px;
   border-bottom: 1px solid #2a3843;
+  text-align: center;
 }
 
 
@@ -10818,5 +10821,5 @@ article section table thead th {
   text-align: center;
   font-size: 0.9rem;
   text-transform: uppercase;
-  color: #D3D3D3;
+  color: #171616;
 }

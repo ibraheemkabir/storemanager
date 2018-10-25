@@ -28,26 +28,10 @@ const nav = document.querySelector('header');
         }
     }
 
-    var modal3 = document.querySelector(".modal3");
-    var trigger3 = document.querySelector(".actives2");
-    var closeButton3 = document.querySelector(".close-buttons");
-
-    function toggleModal3() {
-        modal3.classList.toggle("show-modal");
-    }
-
-    function windowOnClick3(event) {
-        if (event.target === modal3) {
-            toggleModal3();
-        }
-    }
-    trigger3.addEventListener("click", toggleModal3);
-    closeButton3.addEventListener("click", toggleModal3);
-    window.addEventListener("click", windowOnClick3);
     trigger2.addEventListener("click", toggleModal2);
     closeButton2.addEventListener("click", toggleModal2);
     window.addEventListener("click", windowOnClick2);
-
+ 
     (function(){
       /**
        * jQuery
