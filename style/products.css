@@ -69,8 +69,9 @@ padding-top: 13%;
       display: flow-root;
       width:95%;
       margin-top: 25vw;
-    /* padding: 2%; */
-    margin: 0px auto;
+      /* padding: 2%; */
+      margin: 0px auto;
+      margin-left: 0px;
 }
   
   #footer {
@@ -763,7 +764,7 @@ padding-top: 13%;
 
 /* Products */
 .products {
-  height: 100vh;
+  height: auto;
   margin:10px;
   padding: 12px;
   border-top-color: blue;
@@ -939,16 +940,15 @@ img#atts:hover{
 /* Widths */
 .grid .product {
   width: 90%;
-  height: unset;
+  height: auto;
   overflow: unset;
   padding-left:5vw;
 }
 
 .list .product {
-  width: 30%;
-    height: unset;
-    overflow: unset;
-   
+  /* width: 30%; */
+  height: unset;
+  overflow: unset;
 }
 
   #container {
@@ -986,9 +986,7 @@ padding-top: 13%;
   }
 
   .row {
-      display: flex;
-    
-    /* padding: 2%; */
+      /* padding: 2%; */
 }
   
   #footer {
@@ -1065,10 +1063,13 @@ padding-top: 13%;
       
   }
   .footer {
+    width: 100vw;
     height: 7vh;
     background-color:black;
     padding-top: 10px;
     color: wheat;
+    font-size: 5px;
+    text-align: center;
 }
   
   .open-panel {
@@ -1653,10 +1654,11 @@ article {
   width: unset;
   bottom: 0;
   right: 0;
-  
   overflow: auto;
   border-left: solid #2a3843;
   padding: 20px;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 article > header {
   width: 98%;

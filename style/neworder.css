@@ -10671,7 +10671,7 @@ article {
   bottom: 0;
   right: 0;
   overflow: auto;
-  background-color: WHITESMOKE;
+  background-color: #e9e8f5;
   /* border-left: solid #2a3843; */
   padding: 5=px;
 }
@@ -10752,6 +10752,7 @@ article section {
 article section > header {
   font-size: 1.1rem;
   font-weight: 600;
+  color: #c2c2da;
 }
 article section .chart {
   height: 200px;
