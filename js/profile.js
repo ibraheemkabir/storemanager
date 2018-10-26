@@ -14,9 +14,9 @@ toggle.addEventListener("click", toggleModal);
     /**
      * jQuery
      */
-    /* Variables */
+    /*constiables */
     /*var icon = $('.icon');
-    var products = $('.products');*/
+   const products = $('.products');*/
   
   
     /* Do Something */
@@ -30,9 +30,9 @@ toggle.addEventListener("click", toggleModal);
     /**
      * Vanilla JS
      */
-    /* Variables */
-    var icon = document.getElementsByClassName('icon');
-    var products = document.getElementsByClassName('products');
+    /*constiables */
+   const icon = document.getElementsByClassName('icon');
+   const products = document.getElementsByClassName('products');
   
     /* Functions */
     // Has class
@@ -67,9 +67,9 @@ toggle.addEventListener("click", toggleModal);
     }
   })();
 
-  var modal = document.querySelector(".modal");
-    var trigger = document.querySelector("#atts");
-    var closeButton = document.querySelector(".close-button");
+ const modal = document.querySelector(".modal");
+   const trigger = document.querySelector("#atts");
+   const closeButton = document.querySelector(".close-button");
 
     function toggleModal() {
         modal.classList.toggle("show-modal");

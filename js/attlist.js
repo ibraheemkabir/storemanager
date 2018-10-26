@@ -11,37 +11,14 @@ toggle.addEventListener("click", toggleModal);
 
 
   (function(){
-    /**
-     * jQuery
-     */
-    /* Variables */
-    /*var icon = $('.icon');
-    var products = $('.products');*/
+    
+   const icon = document.getElementsByClassName('icon');
+   const products = document.getElementsByClassName('products');
   
-  
-    /* Do Something */
-    /*$(icon).click(function(){
-      if($(this).hasClass('active')) return;
-      $(products).toggleClass('list').toggleClass('grid');
-      $(icon).toggleClass('active');
-    });*/
-  
-  
-    /**
-     * Vanilla JS
-     */
-    /* Variables */
-    var icon = document.getElementsByClassName('icon');
-    var products = document.getElementsByClassName('products');
-  
-    /* Functions */
-    // Has class
     function hasClass(elem, className) {
       return elem.classList.contains(className);
     }
   
-    /* Do stuff */
-    // For each icon
     for (var i = 0, len = icon.length; i < len; i++) {
       // On click of icon
       icon[i].addEventListener('click', function() {
@@ -67,9 +44,9 @@ toggle.addEventListener("click", toggleModal);
     }
   })();
 
-  var modal = document.querySelector(".modal");
-    var trigger = document.querySelector("#atts");
-    var closeButton = document.querySelector(".close-button");
+ const modal = document.querySelector(".modal");
+   const trigger = document.querySelector("#atts");
+   const closeButton = document.querySelector(".close-button");
 
     function toggleModal2() {
         modal.classList.toggle("show-modal");
@@ -84,9 +61,9 @@ toggle.addEventListener("click", toggleModal);
     trigger.addEventListener("click", toggleModal2);
     closeButton.addEventListener("click", toggleModal);
     window.addEventListener("click", windowOnClick);
-    var modal = document.querySelector(".modal2");
-    var trigger = document.querySelector(".icon");
-    var closeButton = document.querySelector(".close-button");
+   const modal = document.querySelector(".modal2");
+   const trigger = document.querySelector(".icon");
+   const closeButton = document.querySelector(".close-button");
 
     function toggleModal2() {
         modal.classList.toggle("show-modal");

@@ -287,9 +287,6 @@ padding-bottom: 20px;
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
-.main_howto{
-
-}
 .howto{
     background-image: url("../images/graph.jpg");
     height:30vh;
@@ -350,9 +347,7 @@ list-style-type: none;
   }
   
   li::before {
-    /* Aktuellen Wert ausgeben mit "No." davor und ":" danach ausgeben */
-    content: "No. " counter(list) ":";
-  
+    
     position: absolute;
     left: -70px; top: -4px;
     

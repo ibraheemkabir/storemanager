@@ -16,28 +16,9 @@ window.onscroll = () => {
   };
 
   (function(){
-    /**
-     * jQuery
-     */
-    /* Variables */
-    /*var icon = $('.icon');
-    var products = $('.products');*/
-  
-  
-    /* Do Something */
-    /*$(icon).click(function(){
-      if($(this).hasClass('active')) return;
-      $(products).toggleClass('list').toggleClass('grid');
-      $(icon).toggleClass('active');
-    });*/
-  
-  
-    /**
-     * Vanilla JS
-     */
-    /* Variables */
-    var icon = document.getElementsByClassName('icon');
-    var products = document.getElementsByClassName('products');
+    
+   const icon = document.getElementsByClassName('icon');
+   const products = document.getElementsByClassName('products');
   
     /* Functions */
     // Has class

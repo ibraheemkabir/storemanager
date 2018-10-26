@@ -14,9 +14,9 @@ const art = document.querySelector('article');
 const nav = document.querySelector('header');
 
 
-  var modal2 = document.querySelector(".modal2");
-    var trigger2 = document.querySelector(".actives");
-    var closeButton2 = document.querySelector(".close-buttons");
+ const modal2 = document.querySelector(".modal2");
+   const trigger2 = document.querySelector(".actives");
+   const closeButton2 = document.querySelector(".close-buttons");
 
     function toggleModal2() {
         modal2.classList.toggle("show-modal");
@@ -32,9 +32,9 @@ const nav = document.querySelector('header');
     closeButton2.addEventListener("click", toggleModal2);
     window.addEventListener("click", windowOnClick2);
 
-    var modal3 = document.querySelector(".modal3");
-    var trigger3 = document.querySelector(".actives2");
-    var closeButton3 = document.querySelector(".close-buttons");
+   const modal3 = document.querySelector(".modal3");
+   const trigger3 = document.querySelector(".actives2");
+   const closeButton3 = document.querySelector(".close-buttons");
 
     function toggleModal3() {
         modal3.classList.toggle("show-modal");
@@ -51,28 +51,9 @@ const nav = document.querySelector('header');
     window.addEventListener("click", windowOnClick3);
  
     (function(){
-      /**
-       * jQuery
-       */
-      /* Variables */
-      /*var icon = $('.icon');
-      var products = $('.products');*/
-    
-    
-      /* Do Something */
-      /*$(icon).click(function(){
-        if($(this).hasClass('active')) return;
-        $(products).toggleClass('list').toggleClass('grid');
-        $(icon).toggleClass('active');
-      });*/
-    
-    
-      /**
-       * Vanilla JS
-       */
-      /* Variables */
-      var icon = document.getElementsByClassName('icon');
-      var products = document.getElementsByClassName('products');
+     
+     const icon = document.getElementsByClassName('icon');
+     const products = document.getElementsByClassName('products');
     
       /* Functions */
       // Has class

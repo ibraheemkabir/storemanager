@@ -14,31 +14,10 @@ const art = document.querySelector('article');
 const nav = document.querySelector('header');
 
   (function(){
-    /**
-     * jQuery
-     */
-    /* Variables */
-    /*var icon = $('.icon');
-    var products = $('.products');*/
   
+   const icon = document.getElementsByClassName('icon');
+   const products = document.getElementsByClassName('products');
   
-    /* Do Something */
-    /*$(icon).click(function(){
-      if($(this).hasClass('active')) return;
-      $(products).toggleClass('list').toggleClass('grid');
-      $(icon).toggleClass('active');
-    });*/
-  
-  
-    /**
-     * Vanilla JS
-     */
-    /* Variables */
-    var icon = document.getElementsByClassName('icon');
-    var products = document.getElementsByClassName('products');
-  
-    /* Functions */
-    // Has class
     function hasClass(elem, className) {
       return elem.classList.contains(className);
     }
@@ -70,9 +49,9 @@ const nav = document.querySelector('header');
     }
   })();
 
-  var modal = document.querySelector(".modal");
-    var trigger = document.querySelector(".edit");
-    var closeButton = document.querySelector(".close-button");
+ const modal = document.querySelector(".modal");
+   const trigger = document.querySelector(".edit");
+   const closeButton = document.querySelector(".close-button");
 
     function toggleModal() {
         modal.classList.toggle("show-modal");
