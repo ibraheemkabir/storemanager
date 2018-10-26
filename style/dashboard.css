@@ -138,12 +138,13 @@ padding-top: 13%;
       
   }
   .footer {
+    margin-top: 20px;
     padding: 0px;
     height: 7vh;
     background-color:black;
     padding-top: 10px;
     text-align: center;
-    font-size: 10px;
+    font-size: 7px;
     width: 100vw;
     color: wheat;
 }
@@ -1602,8 +1603,8 @@ body {
   /* Products */
   .products {
   border-top-style: solid;
-  width: 100%;
-  margin: 30px;
+  width: 95%;
+  margin-top: 40px;
   vertical-align: center;
   padding: 12px;
   box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.35);

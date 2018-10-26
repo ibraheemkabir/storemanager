@@ -762,7 +762,7 @@ article {
   overflow: auto;
   border-left: solid #2a3843;
   padding: 20px;
-  background-color: #e8e7e3;
+  background-color: #f3f0f5;
 }
 article > header {
   width: 90%;
@@ -1595,11 +1595,11 @@ padding-top: 13%;
 
 /* Layout */
 .headers {
-  border-bottom: 2px solid gainsboro;
+  /* border-bottom: 2px solid gainsboro; */
   text-align: left;
   margin: 30px;
   margin-left: 0px;
-  color: #5f5050;
+  color: #99a1ce;
 }
 
 /* Icons */
@@ -1630,7 +1630,7 @@ padding-top: 13%;
 .products {
   border-top-style: solid;
   border-top-color: #404093;
-  margin: 50px;
+  margin: 0px;
   padding: 12px;
   box-shadow: 10px 10px 40px 0px rgba(0,0,0,0.35);
 }

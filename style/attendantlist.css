@@ -184,10 +184,13 @@ padding-top: 13%;
       
   }
   .footer {
+    font-size: 10px;
+    text-align: center;
     height: 7vh;
     background-color:black;
     padding-top: 10px;
     color: wheat;
+    width: 100vw;
 }
   
   .open-panel {
@@ -759,16 +762,18 @@ article {
   width: unset;
   bottom: 0;
   right: 0;
-  
   overflow: auto;
   border-left: solid #2a3843;
   padding: 20px;
+  padding-left: 0px;
 }
 article > header {
-  width: 90%;
-    position: fixed;
-    height: 50px;
-    border-bottom: 1px solid #2a3843;
+  width: 95%;
+  position: absolute;
+  height: 49px;
+  border-bottom: 1px solid #2a3843;
+  margin: 20p;
+  margin-left: 20px;
 }
 article > header .title {
   float: left;
