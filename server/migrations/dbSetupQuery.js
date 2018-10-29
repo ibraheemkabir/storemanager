@@ -1,10 +1,16 @@
-const users = `
-CREATE TABLE IF NOT EXISTS users(
+const attendants = `
+CREATE TABLE IF NOT EXISTS attendants(
   id SERIAL PRIMARY KEY,
   "fistname" VARCHAR(100) NOT NULL,
   "lastname" VARCHAR(100) NOT NULL,
    email TEXT UNIQUE NOT NULL,
-  "authId" SERIAL UNIQUE ,
+   "age" VARCHAR(100) NOT NULL,
+   "emergency_contact" VARCHAR(100) NOT NULL,
+   "phonenumber" INTEGER UNIQUE NOT NULL,
+   "address" INTEGER NOT NULL,
+   "created" DATE NOT NULL,
+    "authId" INTEGER UNIQUE ,
+    "DATE" CURRENT_TIMESTAMP NOT NULL,
   ON DELETE CASCADE
 );`;
 
@@ -14,6 +20,7 @@ CREATE TABLE IF NOT EXISTS authentication(
   username VARCHAR(150) UNIQUE NOT NULL,
   password TEXT NOT NULL
   "Authorisation" VARCHAR(100) NOT NULL,
+  "edited" CURRENT_TIMESTAMP NOT NULL
 );`;
 
 const products = `
@@ -21,8 +28,9 @@ CREATE TABLE IF NOT EXISTS products(
   id SERIAL PRIMARY KEY,
   "productId" INT,
   name TEXT NOT NULL,
-  "Price" INT,
+  "price" INT,
   "category" TEXT NOT NULL,
+  "image" TEXT NOT NULL,
   created timestamp (0) without time zone default now(),
   edited timestamp (0) without time zone default now(),
   ON DELETE CASCADE  
@@ -40,12 +48,12 @@ CREATE TABLE IF NOT EXISTS categories(
 const orders = `
 CREATE TABLE IF NOT EXISTS orders(
   id SERIAL PRIMARY KEY,
-  "productId" Array,
+  "productsId" Array,
   "Total" INT,
-  "AttendantId" INT,
+  "Attendantid" INT,
+  "quantity" INT,
   created timestamp (0) without time zone default now(),
   edited timestamp (0) without time zone default now(),
-  CONSTRAINT FK_Entries_Users FOREIGN KEY ("AttendantId") REFERENCES users(authId)
   ON DELETE CASCADE  
 );`;
 
@@ -56,5 +64,5 @@ DROP TABLE IF EXISTS products cascade;
 DROP TABLE IF EXISTS categories cascade;
 DROP TABLE IF EXISTS "orders" cascade;
 `;
-export default `${authentication}${users}${products}${categories}${orders}`;
+export default `${authentication}${attendants}${products}${categories}${orders}`;
 export { dropTables };
