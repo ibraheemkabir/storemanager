@@ -4,6 +4,9 @@ node_js:
 - "stable"
 addons:
   chrome: stable
+before_script:
+- psql -c 'drop database if exists store;' -U postgres
+ - psql -c 'create database store;' -U postgres
 script:
 - npm test
 - npm run coverage
