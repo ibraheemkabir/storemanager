@@ -5,20 +5,26 @@ import { category } from '../helpers/productarray';
 import { Prods } from '../models/productsModel';
 import { categoryArray } from '../models/productsModel';
 import { orders } from '../models/productsModel';
+import  queries  from '../models/queries';
+import { client } from '../helpers/connection';
 
 class Products {
 
-  static addProduct(req, res) {
-    const {name, category, price, size } = req.body;
-    const newProduct = product.push(new Prods(product.length + 1, name, category, price, size));
+  static async addProduct(req, res) {
+    const { name , category ,price, image, quantity} = req.body;
+    const add = new queries({name , category, price, image, quantity});
+;    const newProduct = await add.addProduct();
     return res.status(201).send({
       success: 'true',
       message: 'product added successfuly',
-      product,
+      newProduct,
     });
   }
 
-  static getAllProducts(req, res) {
+  static async getAllProducts(req, res) {
+    const { name , category ,price, image, quantity} = req.body;
+    const add = new queries({name , category, price, image, quantity});
+    const product = await add.getAllProducts();
     return res.status(200).send({
       success: 'true',
       message: 'poducts retrieved successfuly',
@@ -26,32 +32,28 @@ class Products {
     });
   }
 
-  static deleteProduct(req, res) {
-    const result = product.findIndex(c => c.id === parseInt(req.params.id, 10));
-    const products = result;
-    if (products!=-1) {
-      product.splice(products, 1);
-      return res.status(200).send({
-        success: 'true',
-        message: 'product deleted successfuly',
-        products,
-      });
-    }
+  static async deleteProduct(req, res) {
+    const id = parseInt(req.params.id, 10);
+    const { name , category ,price, image, quantity} = req.body;
+    const add = new queries({name , category, price, image, quantity});
+    const product = await add.deleteProduct(id);
     return res.status(400).send({
-      success: 'false',
-      message: 'product not found',
+      success: 'true',
+      message: 'product deleted successfully',
+      product,
     });
   }
 
-  static getProduct(req, res) {
+  static async getProduct(req, res) {
     const id = parseInt(req.params.id, 10);
-    const result = product.find(c => c.id === parseInt(req.params.id, 10));
-    const response = result;
-    if (response) {
+    const { name , category ,price, image, quantity} = req.body;
+    const add = new queries({name , category, price, image, quantity});
+    const product = await add.getProduct(id);
+    if (product) {
       return res.status(200).send({
         success: 'true',
         message: 'product retrieved successfully',
-        products_list: result,
+        products: product,
       });
     }
     return res.status(400).send({
@@ -60,54 +62,64 @@ class Products {
     });
   }
 
-  static updateProduct(req, res) {
-    const result = product.findIndex(c => c.id === parseInt(req.params.id, 10));
-    if (result === -1) {
+  static async updateProduct(req, res) {
+    const id = parseInt(req.params.id, 10);
+    const { name , category ,price, image, quantity} = req.body;
+    const add = new queries({name , category, price, image, quantity});
+    const product = await add.updateProduct(id);    
+    if (product) {
       return res.status(400).send({
         success: 'false',
         message: 'product not found',
       });
     }
-    const updatedProduct = {
-      id: parseInt(req.params.id, 10),
-      name: req.body.name || result.name,
-      category: req.body.category || result.category,
-      size: req.body.size || result.size,
-      price: req.body.price || result.price,
-    };
-
-    product.splice(result, 1, updatedProduct);
 
     return res.status(200).send({
       success: 'true',
       message: 'product updated successfully',
-      updatedProduct,
+      product,
     });
   }
 
-  static addCategory(req, res) {
-    const { Category } = req.body;
-    const newCategory = category.push(new categoryArray(category.length+1, Category));
+  static async addCategory(req, res) {
+    const { category } = req.body;
+    const add = new queries({category});
+    const categories = await add.addCategory(); 
     return res.status(201).send({
       success: 'true',
       message: 'category added successfuly',
-      category,
+      categories,
     });
   }
 
-  static getAllCategories(req, res) {
+  static async getAllCategories(req, res) {
+    const { name , category ,price, image, quantity} = req.body;
+    const add = new queries({name , category, price, image, quantity})
+    const categories = await add.getCategories();
     return res.status(200).send({
       success: 'true',
       message: 'categories retrieved successfuly',
-      category,
+      categories,
+    });
+  }
+
+  static async deleteCategory(req, res) {
+    const id = parseInt(req.params.id, 10);
+    const { category } = req.body;
+    const add = new queries({ category });
+    const product = await add.deleteCategory(id);
+    return res.status(400).send({
+      success: 'true',
+      message: 'Category deleted successfully',
+      product,
     });
   }
 
 
-  static newOrder(req, res) {
-    const { productsId } = req.body;
-    const { total } = req.body;
-    const newOrder = Order.push(new orders(Order.length+1, productsId, total));
+  static async newOrder(req, res) {
+    const { productsId , Total, attendantId, quantity} = req.body;
+    const add = new queries({productsId , Total, attendantId, quantity})
+    const Order = await add.newOrder();
     return res.status(201).send({
       success: 'true',
       message: 'order created successfuly',
@@ -115,11 +127,27 @@ class Products {
     });
   }
 
-  static getAllOrders(req, res) {
+  static async getAttendantorder(req, res) {
+    const id = parseInt(req.params.id, 10);
+    const { productsId , Total, attendantId, quantity} = req.body;
+    const add = new queries({productsId , Total, attendantId, quantity});
+    const Order = await add.getattendantOrder(id);
+    return res.status(201).send({
+      success: 'true',
+      message: 'order created successfuly',
+      Order,
+    });
+  }
+
+  static async getAllOrders(req, res) {
+    const id = parseInt(req.params.id, 10);
+    const { productsId , Total, attendantId, quantity} = req.body;
+    const add = new queries({productsId , Total, attendantId, quantity});
+    const Orders = await add.allorders();
     return res.status(200).send({
       success: 'true',
       message: 'orders retrieved successfuly',
-      Order,
+      Orders,
     });
   }
 

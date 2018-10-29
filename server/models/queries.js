@@ -1,58 +1,87 @@
 import express from 'express';
+import client from '../helpers/connection';
+import { createDecipher } from 'crypto';
 
-import { product } from '../helpers/productarray';
-import { Order } from '../helpers/productarray';
-import { catigory } from '../helpers/productarray';
-import { Prods } from './productsModel';
-import { category } from './productsModel';
-import { orders } from './productsModel';
+
 
 export default class queries {
-
-  static async addProduct(req,res,next) {
-    const { name, category, price, size } = req.body ;
-    const newProduct = product.push(new Prods(product.length,name,category,price,size));
-    return next();
+  constructor({ name, category, price, image, quantity, productsId, Total, attendantId}) {
+    this.name = name;
+    this.category = category;
+    this.price = price;
+    this.image = image;
+    this.quantity = quantity;
+    this.productsId = productsId;
+    this.Total = Total;
+    this.attendantId = attendantId;
   }
 
-  static async allProducts(req, res,next) {
-    return next();
+  async addProduct() {
+    const addProductQuery = 'INSERT INTO products("name", category, "price", "image", "quantity", "created") VALUES($1, $2, $3, $4, $5, CURRENT_TIMESTAMP) RETURNING *';
+    const addProduct = await client.query(addProductQuery, [this.name, this.category, this.price, this.image, this.quantity]);
+    return addProduct.rows[0];
   }
 
-  static async deleteproduct(req, res, next) {
-    const arr = product.find(c => c.id === parseInt(req.params.id, 10));
-    const products = await (arr);
-    return next();
+  async getAllProducts() {
+    const getAllProductsQuery = 'SELECT * FROM public.products';
+    const getAllProducts = await client.query(getAllProductsQuery);
+    return getAllProducts.rows;
   }
 
-  static async getproduct(req, res,next) {
-    const id = parseInt(req.params.id, 10);
-    const arr = product.find(c => c.id === parseInt(req.params.id, 10));
-    return next();
+  async deleteProduct(id) {
+    const deleteProduct = await client.query(`DELETE FROM products WHERE "Id" = ${id}`);
+    if (deleteProduct.rowCount === 0) throw new Error('entry not found');
+    return deleteProduct.rows;
+  }
+
+  async getProduct(id) {
+    const getProduct = await client.query(`SELECT * FROM products WHERE "Id" = ${id}`);
+    if (getProduct.rowCount === 0) throw new Error('entry not found');
+    return getProduct.rows[0]; 
   }
 
 
-  static async updateproduct(req, res,next) {
-    const arr = product.find(c => c.id === parseInt(req.params.id, 10));
-    return next();
+  async updateProduct(id) {
+    const updateProduct = await client.query(`UPDATE products SET name='${this.name}', price='${this.price}, image='${this.image}, category='${this.category}', quantity='${this.quantity}', edited=CURRENT_TIMESTAMP WHERE Id=${id} RETURNING *`);
+    return updateProduct.row;
     }
   
 
-  static async addcategory(req, res) {
-    const { Category } = req.body ;
-    const newcategory = catigory.push(new category(catigory.length,Category));
+  async addCategory() {
+    const addCategory = 'INSERT INTO categories("category","created") VALUES($1,CURRENT_TIMESTAMP) RETURNING *';
+    const addCategories = await client.query(addCategory, [this.category]);
+    return addCategories.rows[0];
   }
 
-  static async getcategories(req, res) {
+  async getCategories() {
+    const getCategories = 'SELECT  * FROM categories';
+    const getAllCategories = await client.query(getCategories);
+    return getAllCategories;
+  }
+
+  async deleteCategory(id) {
+    const deleteCategory = await client.query(`DELETE FROM categories WHERE "id" = ${id}`);
+    if (deleteCategory.rowCount === 0) throw new Error('category not found');
+    return deleteCategory.rows;
   }
 
 
-  static async newOrder(req, res) {
-    const { productsId } = req.body;
-    const { total } = req.body;
-    const neworder = Order.push(new orders(Order.length,productsId,total));
+  async newOrder() {
+    const addnewOrderQuery = 'INSERT INTO orders("productsId", "Total", "Attendantid", "quantity", "created") VALUES($1, $2, $3, $4, CURRENT_TIMESTAMP) RETURNING *';
+    const addnewOrder = await client.query(addnewOrderQuery, [this.productsId, this.Total, this.attendantId, this.quantity]);
+    return addnewOrder.rows[0];
   }
 
-  static async allorders(req, res) {
+  async getattendantOrder(id) {
+    const getattendantOrder = `SELECT * FROM orders WHERE "Attendantid"=${id}`;
+    const getorder = await client.query(getattendantOrder);
+    return getorder.rows;
   }
+
+  async allorders() {
+    const getallOrders = 'SELECT  * FROM orders';
+    const order = await client.query(getallOrders);
+    return order.rows;
+  }
+
 }

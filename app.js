@@ -12,9 +12,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const products = require('./server/routes/products');
-const home = require('./server/routes/index');
-const categories = require('./server/routes/products');
+import products from './server/routes/products';
+import home from './server/routes/index';
+import categories from './server/routes/products';
 
 app.use('/api/v1/', categories);
 app.use('/api/v1/', products);
