@@ -14,6 +14,7 @@ export default class queries {
     this.productsId = productsId;
     this.Total = Total;
     this.attendantId = attendantId;
+    this.quantity = quantity;
   }
 
   async addProduct() {
@@ -42,8 +43,8 @@ export default class queries {
 
 
   async updateProduct(id) {
-    const updateProduct = await client.query(`UPDATE products SET name='${this.name}', price='${this.price}, image='${this.image}, category='${this.category}', quantity='${this.quantity}', edited=CURRENT_TIMESTAMP WHERE Id=${id} RETURNING *`);
-    return updateProduct.row;
+    const updateProduct = await client.query(`UPDATE products SET name='${this.name}', price='${this.price}', image='${this.image}', category='${this.category}', quantity='${this.quantity}', edited=CURRENT_TIMESTAMP WHERE Id=${id} RETURNING *`);
+    return updateProduct;
     }
   
 

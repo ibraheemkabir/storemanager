@@ -4,6 +4,8 @@ import products from '../controllers/store';
 
 import attendant from '../controllers/users';
 
+import authentication from '../controllers/authentication';
+
 import auth from '../middleware/productauth';
 
 
@@ -28,7 +30,7 @@ router.get('/users/:id', attendant.getAttendant);
 router.put('/users/:id', attendant.updateattendantauth);
 router.put('/users/info/:id', attendant.updateattendantinfo);
 router.delete('/users/info/:id', attendant.deleteAttendant);
-router.post('/users/auth/login', attendant.signin);
+router.post('/users/auth/login', authentication.signin, attendant.signin);
 
 
 module.exports = router;

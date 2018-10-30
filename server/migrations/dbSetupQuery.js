@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS attendants(
    "address" INTEGER NOT NULL,
    "created" DATE NOT NULL,
     "authId" INTEGER UNIQUE ,
+    "Id" SERIAL UNIQUE,
     created timestamp (0) without time zone default now()
 );`;
 

@@ -16,6 +16,7 @@ const testproduct = {
   price:'2000',
   category:'shirts',
   size:'2016',
+  quantity:'12',
 };
 
 const testorder = {
@@ -25,7 +26,7 @@ const testorder = {
 
 
 const testcategory = {
-  Category:'trousers',
+  category:'trousers',
 };
 
 describe('/POST products', () => {
@@ -59,7 +60,7 @@ describe('/POST order', () => {
 
   it('it should add new order', (done) => {
     chai.request(app)
-      .post('/api/v1/order/')
+      .post('/api/v1/sales/')
       .send(testorder)
       .end((err, res) => {
         res.should.have.status(201);
@@ -70,7 +71,7 @@ describe('/POST order', () => {
 
   it('it should add new order', (done) => {
     chai.request(app)
-      .post('/api/v1/order/')
+      .post('/api/v1/sales/')
       .send()
       .end((err, res) => {
         res.should.have.status(400);
@@ -106,7 +107,7 @@ describe('/POST categories', () => {
 describe('/PUT products', () => {
   it('it should update product information', (done) => {
     chai.request(app)
-      .put(`/api/v1/products/1`)
+      .put(`/api/v1/products/10`)
       .send(testproduct)
       .end((err, res) => {
         res.should.have.status(200);
@@ -162,7 +163,7 @@ describe('/GET products', () => {
 
   it('it should GET all the products', (done) => {
     chai.request(app)
-      .post('/api/v1/order/')
+      .get('/api/v1/sales/')
       .send()
       .end((err, res) => {
         res.should.have.status(400);
@@ -174,7 +175,7 @@ describe('/GET products', () => {
 describe('/DELETE products', () => {
   it('it should delete a product', (done) => {
     chai.request(app)
-      .delete('/api/v1/products/1')
+      .delete('/api/v1/products/2')
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
@@ -184,7 +185,7 @@ describe('/DELETE products', () => {
 
   it('it should delete a product', (done) => {
     chai.request(app)
-      .delete('/api/v1/products/5')
+      .delete('/api/v1/products/6')
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.a('object');

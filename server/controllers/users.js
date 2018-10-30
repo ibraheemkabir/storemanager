@@ -6,8 +6,8 @@ import queries from '../models/userqueries';
 export default class Attendants {
 
   static async addAttendant(req, res) {
-    const { firstname, lastname, username } = req.body;
-    const add = new queries({ firstname, lastname, username});
+    const { firstname, lastname, username, password } = req.body;
+    const add = new queries({ firstname, lastname, username, password});
 ;    const newattendant = await add.addAttendant();
     return res.status(201).json({
       success: 'true',

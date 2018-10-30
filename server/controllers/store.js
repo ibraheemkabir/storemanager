@@ -67,7 +67,8 @@ class Products {
     const { name , category ,price, image, quantity} = req.body;
     const add = new queries({name , category, price, image, quantity});
     const product = await add.updateProduct(id);    
-    if (product) {
+    const products = product.rows;
+    if (product.rowCount===0) {
       return res.status(400).send({
         success: 'false',
         message: 'product not found',
@@ -77,7 +78,7 @@ class Products {
     return res.status(200).send({
       success: 'true',
       message: 'product updated successfully',
-      product,
+      products,
     });
   }
 
