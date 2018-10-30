@@ -10,17 +10,16 @@ CREATE TABLE IF NOT EXISTS attendants(
    "address" INTEGER NOT NULL,
    "created" DATE NOT NULL,
     "authId" INTEGER UNIQUE ,
-    "DATE" CURRENT_TIMESTAMP NOT NULL,
-  ON DELETE CASCADE
+    created timestamp (0) without time zone default now()
 );`;
 
 const authentication = `
 CREATE TABLE IF NOT EXISTS authentication(
   id SERIAL PRIMARY KEY,
   username VARCHAR(150) UNIQUE NOT NULL,
-  password TEXT NOT NULL
-  "Authorisation" VARCHAR(100) NOT NULL,
-  "edited" CURRENT_TIMESTAMP NOT NULL
+  password TEXT NOT NULL,
+  "authorisation" INT NOT NULL,
+  edited timestamp (0) without time zone default now()
 );`;
 
 const products = `
@@ -32,8 +31,7 @@ CREATE TABLE IF NOT EXISTS products(
   "category" TEXT NOT NULL,
   "image" TEXT NOT NULL,
   created timestamp (0) without time zone default now(),
-  edited timestamp (0) without time zone default now(),
-  ON DELETE CASCADE  
+  edited timestamp (0) without time zone default now()
 );`;
 
 const categories = `
@@ -41,20 +39,19 @@ CREATE TABLE IF NOT EXISTS categories(
   id SERIAL PRIMARY KEY,
   "category" TEXT NOT NULL,
   created timestamp (0) without time zone default now(),
-  edited timestamp (0) without time zone default now(),
-  ON DELETE CASCADE  
+  edited timestamp (0) without time zone default now() 
 );`;
 
 const orders = `
 CREATE TABLE IF NOT EXISTS orders(
   id SERIAL PRIMARY KEY,
-  "productsId" Array,
+  "productsId" INT,
   "Total" INT,
   "Attendantid" INT,
   "quantity" INT,
   created timestamp (0) without time zone default now(),
-  edited timestamp (0) without time zone default now(),
-  ON DELETE CASCADE  
+  edited timestamp (0) without time zone default now()
+   
 );`;
 
 const dropTables = `

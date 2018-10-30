@@ -28,7 +28,7 @@ router.get('/users/:id', attendant.getAttendant);
 router.put('/users/:id', attendant.updateattendantauth);
 router.put('/users/info/:id', attendant.updateattendantinfo);
 router.delete('/users/info/:id', attendant.deleteAttendant);
-router.post('auth/login', attendant.signin);
+router.post('/users/auth/login', attendant.signin);
 
 
 module.exports = router;
