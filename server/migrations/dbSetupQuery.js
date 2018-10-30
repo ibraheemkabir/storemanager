@@ -8,7 +8,6 @@ CREATE TABLE IF NOT EXISTS attendants(
    "emergency_contact" VARCHAR(100) NOT NULL,
    "phonenumber" INTEGER UNIQUE NOT NULL,
    "address" INTEGER NOT NULL,
-   "created" DATE NOT NULL,
     "authId" INTEGER UNIQUE ,
     "Id" SERIAL UNIQUE,
     created timestamp (0) without time zone default now()
