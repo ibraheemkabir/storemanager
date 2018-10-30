@@ -5,7 +5,7 @@ node_js:
 addons:
   chrome: stable
 before_script:
-- psql -c "CREATE USER root WITH PASSWORD 'password';" -U postgres
+- psql -c "CREATE USER root WITH PASSWORD 'root';" -U postgres
 - psql -c 'drop database if exists store;' -U postgres
 - psql -c 'create database store;' -U postgres
 script:
