@@ -30,6 +30,8 @@ CREATE TABLE IF NOT EXISTS products(
   "price" INT,
   "category" TEXT NOT NULL,
   "image" TEXT NOT NULL,
+  "quantity" INT NOT NULL,
+  "Id" SERIAL UNIQUE,
   created timestamp (0) without time zone default now(),
   edited timestamp (0) without time zone default now()
 );`;
