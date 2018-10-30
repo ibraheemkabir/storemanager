@@ -33,7 +33,7 @@ export default class queries {
     const deleteProduct = await client.query(`DELETE FROM products WHERE "Id" = ${id}`);
     if (deleteProduct.rowCount === 0) throw new Error('entry not found');
     return deleteProduct.rows;
-  }y
+  }
 
   async getProduct(id) {
     const getProduct = await client.query(`SELECT * FROM products WHERE "Id" = ${id}`);
