@@ -26,11 +26,11 @@ const products = `
 CREATE TABLE IF NOT EXISTS products(
   id SERIAL PRIMARY KEY,
   "productId" INT,
-  name TEXT NOT NULL,
+  name TEXT ,
   "price" INT,
-  "category" TEXT NOT NULL,
-  "image" TEXT NOT NULL,
-  "quantity" INT NOT NULL,
+  "category" TEXT ,
+  "image" TEXT ,
+  "quantity" INT ,
   "Id" SERIAL UNIQUE,
   created timestamp (0) without time zone default now(),
   edited timestamp (0) without time zone default now()
