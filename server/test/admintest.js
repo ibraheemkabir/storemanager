@@ -44,7 +44,7 @@ describe('/POST products', () => {
   let ids;
   before(async () => {
     const res = await chai.request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v1/auth/signup')
       .send(userCredentials)
         token = res.body.token;
   });
