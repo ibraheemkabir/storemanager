@@ -23,6 +23,7 @@ export default class userQueries {
     return { attendant_info: attendantinfo.rows[0], account_info: authinfo.rows[0] };
     }
   
+    
 
     async updateattendantauth(id) {
     const updateattendantauth= await client.query(`UPDATE authentication SET username='${this.username}', password='${this.password}', edited=CURRENT_TIMESTAMP WHERE Id=${id} RETURNING *`);
