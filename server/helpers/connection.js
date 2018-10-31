@@ -5,7 +5,7 @@ import { Client } from 'pg';
 
 const client = new pg.Client({
     host: 'localhost',
-    user: 'root',
+    user: 'User',
     password: 'root',
     database: 'store',
 });

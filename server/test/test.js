@@ -153,11 +153,25 @@ describe('/PUT products', () => {
 
 describe('/GET products', () => {
 
+  before('it should add new products', (done) => {
+    chai.request(app)
+      .post('/api/v1/products/')
+      .set('token', `${token}`)
+      .send(testproduct)
+      .end((err, res) => {
+        res.should.have.status(401);
+        res.body.should.be.a('object');
+        id=res.body.id;
+        
+        done();
+      });
+  });
+
   it('it should get a particular product', (done) => {
     chai.request(app)
-      .get(`/api/v1/products/10`)
+      .get(`/api/v1/products/${id}`)
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(400);
         res.body.should.be.a('object');
         done();
       });
