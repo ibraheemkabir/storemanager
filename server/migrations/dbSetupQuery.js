@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS authentication(
   id SERIAL PRIMARY KEY,
   username VARCHAR(150) UNIQUE NOT NULL,
   password TEXT NOT NULL,
-  "authorisation" TEXT NOT NULL default ('0'),
+  "authorisation" INT NOT NULL,
   edited timestamp (0) without time zone default now()
 );`;
 
@@ -57,7 +57,6 @@ CREATE TABLE IF NOT EXISTS orders(
    
 );`;
 
-
 const dropTables = `
 DROP TABLE IF EXISTS authentication cascade;
 DROP TABLE IF EXISTS attendants cascade;
@@ -65,7 +64,5 @@ DROP TABLE IF EXISTS products cascade;
 DROP TABLE IF EXISTS categories cascade;
 DROP TABLE IF EXISTS orders cascade;
 `;
-
-
 export default `${authentication}${attendants}${products}${categories}${orders}`;
 export { dropTables };
