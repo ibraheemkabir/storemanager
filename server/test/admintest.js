@@ -20,7 +20,7 @@ const testproduct = {
 };
 
 const userCredentials = {
-  username: 'testguy36',
+  username: 'testguy37',
   password: 'test',
 
 };
