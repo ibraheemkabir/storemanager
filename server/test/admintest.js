@@ -2,6 +2,7 @@ import app from '../../app';
 import { product } from '../helpers/productarray';
 import { Order } from '../helpers/productarray';
 import { Prods } from '../models/productsModel';
+import { beforeEach } from 'mocha';
 
 const chaiHttp = require('chai-http');
 
@@ -20,8 +21,8 @@ const testproduct = {
 };
 
 const userCredentials = {
-  username: 'testguy36',
-  password: 'test',
+  username: 'admin',
+  password: 'admin',
 };
 
 const testorder = {
@@ -33,32 +34,34 @@ const testorder = {
 
 
 const testcategory = {
-  category:'skirts',
+  category:'shoes',
 };
 
 describe('/POST products', () => {
 
   let token;
   let id;
+  let ids;
   before(async () => {
     const res = await chai.request(app)
-      .post('/api/v1/auth/signup')
+      .post('/api/v1/auth/signin')
       .send(userCredentials)
         token = res.body.token;
-        id = res.body.token;
   });
 
-  before('it should add new products', (done) => {
+  before(async() => {
     chai.request(app)
       .post('/api/v1/products/')
       .set('token', `${token}`)
       .send(testproduct)
-      .end((err, res) => {
-        res.should.have.status(401);
+      .end((err, res) => {  
+        res.should.have.status(201);
         res.body.should.be.a('object');
-        done();
+        ids = res.body.newProduct.id;
+        
       });
-  });
+    }); 
+    
   
   it('it should add new products', (done) => {
     chai.request(app)
@@ -71,9 +74,9 @@ describe('/POST products', () => {
       });
   });
 
-  describe('/POST order', () => {
+  
 
-    it('it should add new order', (done) => {
+        it('it should add new order', (done) => {
       chai.request(app)
         .post('/api/v1/sales/')
         .send(testorder)
@@ -83,9 +86,9 @@ describe('/POST products', () => {
           done();
           return err;
         });
-    });
+        });
   
-    it('it should add new order', (done) => {
+        it('it should add new order', (done) => {
       chai.request(app)
         .post('/api/v1/sales/')
         .send()
@@ -95,44 +98,17 @@ describe('/POST products', () => {
           done();
          
         });
-    });
+        });
 
 
-  
-
-    describe('/POST categories', () => {
-      it('it should add new categories', (done) => {
-        chai.request(app)
-          .post('/api/v1/category/')
-          .set('token', `${token}`)
-          .send(testcategory)
-          .end((err, res) => {
-            res.should.have.status(401);
-            res.body.should.be.a('object');
-            done();
-          });
-      });
-      it('it should add new categories', (done) => {
-        chai.request(app)
-          .post('/api/v1/category/')
-          .send()
-          .end((err, res) => {
-            res.should.have.status(401);
-            res.body.should.be.a('object');
-            done();
-          });
-      });
-    });
-
-
-describe('/PUT products', () => {
+    
   it('it should update product information', (done) => {
     chai.request(app)
       .put(`/api/v1/products/10`)
       .set('token', `${token}`)
       .send(testproduct)
       .end((err, res) => {
-        res.should.have.status(401);
+        res.should.have.status(200);
         res.body.should.be.a('object');
         done();
       });
@@ -148,18 +124,16 @@ describe('/PUT products', () => {
         done();
       });
   });
-});
+    
 
-describe('/GET products', () => {
-
-  it('it should get a particular product', (done) => {
-    chai.request(app)
-      .get(`/api/v1/products/10`)
-      .end((err, res) => {
+        it('it should get a particular product', (done) => {
+        chai.request(app)
+        .get(`/api/v1/products/${ids}`)
+        .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
         done();
-      });
+        });
   });
 
   it('it should get a particular product', (done) => {
@@ -171,9 +145,8 @@ describe('/GET products', () => {
         done();
       });
   });
-});
 
-describe('/GET products', () => {
+
   it('it should GET all the products', (done) => {
     chai.request(app)
       .get('/api/v1/products')
@@ -194,15 +167,15 @@ describe('/GET products', () => {
             done();
           });
       });
-    });
+
     
-    describe('/DELETE products', () => {
+    
       it('it should delete a product', (done) => {
         chai.request(app)
-          .delete(`/api/v1/products/20`)
+          .get(`/api/v1/products/${ids}`)
           .set('token', `${token}`)
           .end((err, res) => {
-            res.should.have.status(401);
+            res.should.have.status(200);
             res.body.should.be.a('object');
            done();
           })
@@ -217,23 +190,21 @@ describe('/GET products', () => {
             done();
           });
       });
-    });
+    
 
-    describe('/POST order', () => {
+    
 
       it('it should get all order', (done) => {
         chai.request(app)
           .get('/api/v1/sales/')
+          .set('token', `${token}`)
           .end((err, res) => {
-            res.should.have.status(401);
+            res.should.have.status(200);
             res.body.should.be.a('object');
             done();
             return err;
           });
       });
-    });
-  
-
-
-    })
+    
 });
+  

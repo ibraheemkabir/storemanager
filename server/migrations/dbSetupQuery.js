@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS products(
   "image" TEXT ,
   "quantity" INT ,
   "Id" SERIAL UNIQUE,
+  "products" json NOT NULL,
   created timestamp (0) without time zone default now(),
   edited timestamp (0) without time zone default now()
 );`;

@@ -118,8 +118,8 @@ class Products {
 
 
   static async newOrder(req, res) {
-    const { productsId , Total, attendantId, quantity} = req.body;
-    const add = new queries({productsId , Total, attendantId, quantity})
+    const { productsId , Total, attendantId, quantity } = req.body;
+    const add = new queries({productsId , Total, attendantId, quantity })
     const Order = await add.newOrder();
     return res.status(201).send({
       success: 'true',

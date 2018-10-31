@@ -59,4 +59,10 @@ export default class userQueries {
         const signin = await client.query(signinquery);
         return signin;
     }
+
+    async authorize(id) {
+        const authorizequery =`SELECT * FROM public.authentication WHERE "id"='${id}'`;
+        const authorize = await client.query(authorizequery);
+        return authorize;
+    }
 }
