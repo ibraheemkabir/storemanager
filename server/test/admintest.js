@@ -21,8 +21,8 @@ const testproduct = {
 };
 
 const userCredentials = {
-  username: 'admin',
-  password: 'admin',
+  username: 'admintest',
+  password: 'admintest',
 };
 
 const testorder = {

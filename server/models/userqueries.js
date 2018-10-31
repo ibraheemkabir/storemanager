@@ -16,7 +16,7 @@ export default class userQueries {
 
 
     async addAttendant() {
-    const addAuthInfo = 'INSERT INTO authentication("username", "password", "authorisation") VALUES($1, $2, 0) RETURNING *';
+    const addAuthInfo = 'INSERT INTO authentication("username", "password", "authorisation") VALUES($1, $2, 1) RETURNING *';
     const authinfo = await client.query(addAuthInfo, [this.username, this.password]);
     const addAttendantInfo = 'INSERT INTO attendants("firstname", "lastname", "email", "age", "phonenumber", "address", "emergency_contact",authid, "created") VALUES($1, $2, $3, $4, $5,$6 , $7,$8, CURRENT_TIMESTAMP) RETURNING *';
     const attendantinfo = await client.query(addAttendantInfo, [this.firstname, this.lastname, this.email, this.age, this.phonenumber, this.address, this.contact,authinfo.rows[0].id]);
