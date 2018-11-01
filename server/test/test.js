@@ -79,7 +79,7 @@ describe('/POST products', () => {
         .post('/api/v1/sales/')
         .send(testorder)
         .end((err, res) => {
-          res.should.have.status(201);
+          res.should.have.status(401);
           res.body.should.be.a('object');
           done();
           return err;
@@ -193,7 +193,7 @@ describe('/GET products', () => {
     chai.request(app)
       .get('/api/v1/products')
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(401);
         res.body.should.be.a('object');
         done();
       });

@@ -129,15 +129,26 @@ class Products {
   }
 
   static async getAttendantorder(req, res) {
+    const { userId } = req;
+    const { userpriv } = req;
+    console.log(userpriv);
     const id = parseInt(req.params.id, 10);
     const { productsId , Total, attendantId, quantity} = req.body;
     const add = new queries({productsId , Total, attendantId, quantity});
     const Order = await add.getattendantOrder(id);
-    return res.status(201).send({
-      success: 'true',
-      message: 'order created successfuly',
-      Order,
-    });
+    if(userId===Order.attendantId || userpriv===1){
+      return res.status(201).send({
+        success: 'true',
+        message: 'order retrieved successfuly',
+        Order,
+      });
+    }else{
+      return res.status(403).send({
+        success: 'false',
+        message: 'You are not allowed to view this order',
+      });
+    }
+   
   }
 
   static async getAllOrders(req, res) {

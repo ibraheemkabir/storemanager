@@ -22,7 +22,15 @@ export default class userQueries {
     const attendantinfo = await client.query(addAttendantInfo, [this.firstname, this.lastname, this.email, this.age, this.phonenumber, this.address, this.contact,authinfo.rows[0].id]);
     return { attendant_info: attendantinfo.rows[0], account_info: authinfo.rows[0] };
     }
-  
+    
+    async addAdmin() {
+        const addAuthInfo = 'INSERT INTO authentication("username", "password", "authorisation") VALUES($1, $2, 1) RETURNING *';
+        const authinfo = await client.query(addAuthInfo, [this.username, this.password]);
+        const addAttendantInfo = 'INSERT INTO attendants("firstname", "lastname", "email", "age", "phonenumber", "address", "emergency_contact",authid, "created") VALUES($1, $2, $3, $4, $5,$6 , $7,$8, CURRENT_TIMESTAMP) RETURNING *';
+        const attendantinfo = await client.query(addAttendantInfo, [this.firstname, this.lastname, this.email, this.age, this.phonenumber, this.address, this.contact,authinfo.rows[0].id]);
+        return { attendant_info: attendantinfo.rows[0], account_info: authinfo.rows[0] };
+        }
+      
     
 
     async updateattendantauth(id) {

@@ -24,7 +24,6 @@ class authentication{
             message: 'user does not exist',
           });
         }else {
-           
             bcrypt.compare(password, sign.rows[0].password)
               .then((validPassword) => {
                 const user = {
@@ -83,8 +82,41 @@ class authentication{
       token,
       }); 
       }) 
-}
+    }
 
+      async signupadmin(req, res) {
+        const { username, password } = req.body;
+        const add = new queries({ username });
+        const sign = await add.signin();
+        if (!username || !password) {
+            return res.status(400).send({
+              success: 'false',
+              message: 'username and password is required',
+            });
+          }
+        else 
+        if(sign.rowCount !== 0){
+          return res.status(400).send({
+            success: 'false',
+            message: 'user exists',
+          });
+        }
+        bcrypt.hash(password, saltRounds)
+        .then(async (hash) => {
+        const add = new queries({username, password: hash});
+        const sign = await add.addAdmin();
+        let id = await sign;
+        const token = createtoken(id.attendant_info.id);
+        return res.status(200)
+        .header('Authorization', `Bearer ${token}`)
+        .send({
+        status: 'success',
+        message: 'User successfully created and succesfully signed in',
+        token,
+        }); 
+        }) 
+  
+      }
 }
 
 const authentications = new authentication();

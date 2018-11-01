@@ -8,31 +8,31 @@ import authentication from '../middleware/authentication';
 
 import auth from '../middleware/productauth';
 
-
 import authorize from '../helpers/authorize';
 
 const router = express.Router();
 
-router.post('/products',auth.addProduct,authorize,products.addProduct);
-router.post('/category',authorize,auth.newCategory, products.addCategory);
-router.post('/sales', auth.newSales,products.newOrder);
+router.post('/products',auth.addProduct,authorize.adminauthenticate,products.addProduct);
+router.post('/category',authorize.adminauthenticate,auth.newCategory, products.addCategory);
+router.post('/sales', auth.newSales,authorize.authenticate,products.newOrder);
 router.post('/auth/signup',authentication.signup);
 router.post('/auth/signin',authentication.signin);
+router.post('/auth/signupAdmin',authentication.signupadmin);
 
-router.get('/products', auth.allProducts, products.getAllProducts);
+router.get('/products', auth.allProducts,authorize.authenticate, products.getAllProducts);
 router.get('/products/:id', auth.getProduct, products.getProduct);
-router.get('/sales',authorize, products.getAllOrders);
-router.get('/sales/:id',products.getAttendantorder);
-router.get('/category',products.getAllCategories);
-router.get('/users',authorize,attendant.getAllAttendants);
-router.get('/users/:id',authorize,attendant.getAttendant);
+router.get('/sales',authorize.adminauthenticate, products.getAllOrders);
+router.get('/sales/:id',authorize.authenticate,products.getAttendantorder);
+router.get('/category',authorize.authenticate,products.getAllCategories);
+router.get('/users',authorize.adminauthenticate,attendant.getAllAttendants);
+router.get('/users/:id',authorize.adminauthenticate,attendant.getAttendant);
 
-router.delete('/category/:id',authorize, products.deleteCategory);
-router.delete('/products/:id',auth.deleteProduct,authorize, products.deleteProduct);
-router.delete('/users/info/:id',authorize,attendant.deleteAttendant);
+router.delete('/category/:id',authorize.adminauthenticate, products.deleteCategory);
+router.delete('/products/:id',auth.deleteProduct,authorize.adminauthenticate, products.deleteProduct);
+router.delete('/users/info/:id',authorize.adminauthenticate,attendant.deleteAttendant);
 
-router.put('/products/:id', auth.addProduct,authorize, products.updateProduct);
-router.put('/users/:id', attendant.updateattendantauth);
-router.put('/users/info/:id', attendant.updateattendantinfo);
+router.put('/products/:id', auth.addProduct,authorize.adminauthenticate, products.updateProduct);
+router.put('/users/:id',authorize.authenticate, attendant.updateattendantauth);
+router.put('/users/info/:id',authorize.authenticate, attendant.updateattendantinfo);
 
 module.exports = router;

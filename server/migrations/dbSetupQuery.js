@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS orders(
    
 );`;
 
+
 const dropTables = `
 DROP TABLE IF EXISTS authentication cascade;
 DROP TABLE IF EXISTS attendants cascade;
@@ -64,5 +65,7 @@ DROP TABLE IF EXISTS products cascade;
 DROP TABLE IF EXISTS categories cascade;
 DROP TABLE IF EXISTS orders cascade;
 `;
+
+
 export default `${authentication}${attendants}${products}${categories}${orders}`;
 export { dropTables };

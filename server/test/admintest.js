@@ -20,8 +20,8 @@ const testproduct = {
 };
 
 const userCredentials = {
-  username: 'testguy37',
-  password: 'test',
+  username: 'admin',
+  password: 'admin',
 
 };
 
@@ -43,7 +43,7 @@ describe('/POST products', () => {
   let id;
   before(async () => {
     const res = await chai.request(app)
-      .post('/api/v1/auth/signup')
+      .post('/api/v1/auth/signin')
       .send(userCredentials)
         token = res.body.token;
         id = res.body.token;
@@ -55,7 +55,7 @@ describe('/POST products', () => {
       .set('token', `${token}`)
       .send(testproduct)
       .end((err, res) => {
-        res.should.have.status(401);
+        res.should.have.status(201);
         res.body.should.be.a('object');
         done();
       });
@@ -79,7 +79,7 @@ describe('/POST products', () => {
         .post('/api/v1/sales/')
         .send(testorder)
         .end((err, res) => {
-          res.should.have.status(201);
+          res.should.have.status(401);
           res.body.should.be.a('object');
           done();
           return err;
@@ -108,7 +108,7 @@ describe('/POST products', () => {
           .set('token', `${token}`)
           .send(testcategory)
           .end((err, res) => {
-            res.should.have.status(401);
+            res.should.have.status(400);
             res.body.should.be.a('object');
             done();
           });
@@ -133,7 +133,7 @@ describe('/PUT products', () => {
       .set('token', `${token}`)
       .send(testproduct)
       .end((err, res) => {
-        res.should.have.status(401);
+        res.should.have.status(200);
         res.body.should.be.a('object');
         done();
       });
@@ -179,7 +179,7 @@ describe('/GET products', () => {
     chai.request(app)
       .get('/api/v1/products')
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(401);
         res.body.should.be.a('object');
         done();
       });
@@ -200,11 +200,11 @@ describe('/GET products', () => {
     describe('/DELETE products', () => {
       it('it should delete a product', (done) => {
         chai.request(app)
-          .delete(`/api/v1/products/20`)
+          .delete(`/api/v1/products/${id}`)
           .set('token', `${token}`)
           .end((err, res) => {
-            res.should.have.status(401);
-            res.body.should.be.a('object');
+            res.should.have.status(400);
+            res.body.should.be.a('array');
            done();
           })
       });

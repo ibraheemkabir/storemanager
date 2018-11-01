@@ -74,7 +74,7 @@ export default class queries {
   }
 
   async getattendantOrder(id) {
-    const getattendantOrder = `SELECT * FROM orders WHERE "Attendantid"=${id}`;
+    const getattendantOrder = `SELECT * FROM orders WHERE "id"=${id}`;
     const getorder = await client.query(getattendantOrder);
     return getorder.rows;
   }

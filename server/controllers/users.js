@@ -16,6 +16,17 @@ export default class Attendants {
     });
   }
 
+  static async addAdmin(req, res) {
+    const { firstname, lastname, username, password } = req.body;
+    const add = new queries({ firstname, lastname, username, password});
+;    const newattendant = await add.addAttendant();
+    return res.status(201).json({
+      success: 'true',
+      message: 'new Admin added successfuly',
+      newattendant,
+    });
+  }
+
   static async getAllAttendants(req, res) {
     const { firstname, lastname, username } = req.body;
     const add = new queries({ firstname, lastname, username});
