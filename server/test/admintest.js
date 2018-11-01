@@ -43,7 +43,7 @@ describe('/POST products', () => {
   let id;
   before(async () => {
     const res = await chai.request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v1/auth/signup')
       .send(userCredentials)
         token = res.body.token;
         id = res.body.token;
@@ -55,7 +55,7 @@ describe('/POST products', () => {
       .set('token', `${token}`)
       .send(testproduct)
       .end((err, res) => {
-        res.should.have.status(201);
+        res.should.have.status(401);
         res.body.should.be.a('object');
         done();
       });
@@ -108,7 +108,7 @@ describe('/POST products', () => {
           .set('token', `${token}`)
           .send(testcategory)
           .end((err, res) => {
-            res.should.have.status(400);
+            res.should.have.status(401);
             res.body.should.be.a('object');
             done();
           });
@@ -133,7 +133,7 @@ describe('/PUT products', () => {
       .set('token', `${token}`)
       .send(testproduct)
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(401);
         res.body.should.be.a('object');
         done();
       });
