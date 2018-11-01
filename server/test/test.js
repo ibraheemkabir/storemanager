@@ -49,7 +49,7 @@ describe('/POST products', () => {
         id = res.body.token;
   });
 
-  before('it should add new products', (done) => {
+  it('it should add new products', (done) => {
     chai.request(app)
       .post('/api/v1/products/')
       .set('token', `${token}`)
