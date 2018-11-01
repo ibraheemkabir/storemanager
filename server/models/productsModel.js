@@ -1,10 +1,10 @@
 
-const Prods = (id,name,size,category,price) =>{
-    return {id,name,size,category,price}
+const Prods = (id,name,size,category,price,image,Quantity) =>{
+    return {id,name,size,category,price,image,Quantity}
 }
 
-const orders = (id,products_id,total) =>{
-    return {id,products_id,total}
+const orders = (id,products_id,attendantid,total) =>{
+    return {id,products_id,attendantid,total}
 }
 
 const categoryArray = (id,category) =>{
