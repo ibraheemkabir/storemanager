@@ -107,7 +107,7 @@ export default class Attendants {
     const add = new queries({ username });
     const sign = await add.signin();
     if (sign.rowCount === 0) {
-      return res.status(200).json({
+      return res.status(403).json({
         success: 'false',
         message: 'user does not exist',
       });
