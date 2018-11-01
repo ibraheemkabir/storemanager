@@ -144,7 +144,7 @@ describe('/PUT products', () => {
       .put('/api/v1/products/1')
       .send()
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(401);
         res.body.should.be.a('object');
         done();
       });

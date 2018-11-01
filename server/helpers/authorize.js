@@ -20,7 +20,7 @@ class authorize {
     try {
       const verifiedToken = jwt.verify(token, secret);        
       const priviledge = parseInt(verifiedToken.id.priv,10);   
-      if(priviledge === 0){
+      if(priviledge !== 1){
         return res.status(401).json({
           success: 'false',
           message: 'you are not allowed to view this page',
