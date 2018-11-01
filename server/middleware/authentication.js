@@ -15,13 +15,12 @@ class authentication{
             return res.status(400).send({
               success: 'false',
               message: 'username and password is required',
-              sign,
             });
           }
         if (sign.rowCount === 0) {
           return res.status(200).json({
             success: 'false',
-            message: 'user does not exist',
+            message: 'User does not exist',
           });
         }else {
             bcrypt.compare(password, sign.rows[0].password)

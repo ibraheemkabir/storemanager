@@ -118,7 +118,9 @@ class Products {
 
 
   static async newOrder(req, res) {
-    const { productsId , Total, attendantId, quantity } = req.body;
+    const { userId } = req;
+    const { productsId , Total,quantity } = req.body;
+    let attendantId=userId;
     const add = new queries({productsId , Total, attendantId, quantity })
     const Order = await add.newOrder();
     return res.status(201).send({
@@ -131,12 +133,12 @@ class Products {
   static async getAttendantorder(req, res) {
     const { userId } = req;
     const { userpriv } = req;
-    console.log(userpriv);
+    let userid = userId;
     const id = parseInt(req.params.id, 10);
     const { productsId , Total, attendantId, quantity} = req.body;
     const add = new queries({productsId , Total, attendantId, quantity});
     const Order = await add.getattendantOrder(id);
-    if(userId===Order.attendantId || userpriv===1){
+    if(userid === Order[0].Attendantid || userpriv === 1 ){
       return res.status(201).send({
         success: 'true',
         message: 'order retrieved successfuly',

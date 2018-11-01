@@ -18,12 +18,23 @@ const categoryschema = joi.object().keys({
     category: joi.string().required(),
 })
 
+const infoschema = joi.object().keys({
+  firstname: joi.string().required(),
+  email: joi.string().required(),
+  lastname: joi.string().required(),
+  age: joi.number().required(),
+  phonenumber: joi.number().required(),
+  address: joi.string().required(),
+  contact: joi.number().required(),
+})
+
 const salesschema = joi.object().keys({
   productsId: joi.string().required(),
   Total: joi.string().required(),
   quantity: joi.number().required(),
-  attendantId: joi.number().required(),
 })
+
+
 
 class Productauth{
      
@@ -69,8 +80,8 @@ class Productauth{
     }
 
     static newSales(req, res, next) {
-      const { productsId , Total, attendantId, quantity} = req.body;
-      const newsalesvalidate= joi.validate({ productsId , Total, attendantId, quantity} ,salesschema);
+      const { productsId , Total,  quantity} = req.body;
+      const newsalesvalidate= joi.validate({ productsId , Total, quantity} ,salesschema);
       if(newsalesvalidate.error){
         const error = newsalesvalidate.error.details[0].message;
         return res.status(400).send({
@@ -98,7 +109,7 @@ class Productauth{
         return next();
     }
 
-      static getProduct(req, res, next) {
+      static async getProduct(req, res, next) {
         const index = parseInt(req.params.id, 10);
         const idvalidate= joi.validate({index},idschema);
         if(idvalidate.error){
@@ -111,8 +122,19 @@ class Productauth{
         return next();
     }
 
-   
-    
+    static async info(req, res, next) {
+      const { firstname, lastname, email, age, phonenumber, address, contact} = req.body;
+      const infovalidate= joi.validate({firstname, lastname, email, age, phonenumber, address, contact},infoschema);
+      if(!infovalidate){
+        let message = infovalidate.error.details[0].message;
+      return res.status(400).send(
+        {
+        message,
+        });
+        }
+      return next();
+      }
+
 
 }
 

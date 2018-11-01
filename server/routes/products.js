@@ -15,7 +15,7 @@ const router = express.Router();
 router.post('/products',auth.addProduct,authorize.adminauthenticate,products.addProduct);
 router.post('/category',authorize.adminauthenticate,auth.newCategory, products.addCategory);
 router.post('/sales', auth.newSales,authorize.authenticate,products.newOrder);
-router.post('/auth/signup',authentication.signup);
+router.post('/auth/signup',authorize.adminauthenticate,authentication.signup);
 router.post('/auth/signin',authentication.signin);
 router.post('/auth/signupAdmin',authentication.signupadmin);
 
@@ -31,8 +31,8 @@ router.delete('/category/:id',authorize.adminauthenticate, products.deleteCatego
 router.delete('/products/:id',auth.deleteProduct,authorize.adminauthenticate, products.deleteProduct);
 router.delete('/users/info/:id',authorize.adminauthenticate,attendant.deleteAttendant);
 
-router.put('/products/:id', auth.addProduct,authorize.adminauthenticate, products.updateProduct);
+router.put('/products/:id',authorize.adminauthenticate, auth.addProduct, products.updateProduct);
 router.put('/users/:id',authorize.authenticate, attendant.updateattendantauth);
-router.put('/users/info/:id',authorize.authenticate, attendant.updateattendantinfo);
+router.put('/users/info/:id',authorize.authenticate,auth.info, attendant.updateattendantinfo);
 
 module.exports = router;
