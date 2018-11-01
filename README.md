@@ -16,14 +16,21 @@ store manager is a web application that helps store owners manage sales and prod
 - Delete a store product
 - Modify a store product
 - View Particular store product.
+- Add product category.
+- Delete product category.
+- fetch all products.
 
 ### sales order
 - View All sales orders
 - View particular sales order
+- View particular attendant order
 
 ### User
+- user register as attendant.
+- User login and verification
+- Routes authentication and validation
+- User piriviledges and routes restriction
 
-- Pending Functionality
 
 ## Installation
 
@@ -73,24 +80,77 @@ API is deployed at [here](https://store-maneger.herokuapp.com/) on heroku.
 		<td>Get all products</td>
 	</tr>
 	<tr>
+		<td>GET</td>
+		<td>/api/v1/category/</td> 
+		<td>Get all categories</td>
+	</tr>
+	<tr>
+		<td>GET</td>
+		<td>/api/v1/sales/</td> 
+		<td>Get all product sales</td>
+	</tr>
+	<tr>
+		<td>GET</td>
+		<td>/api/v1/sales/id</td> 
+		<td>Get all particular product sale</td>
+	</tr>
+	<tr>
+		<td>GET</td>
+		<td>/api/v1/users/</td> 
+		<td>Get all attendants</td>
+	</tr>
+	<tr>
+		<td>GET</td>
+		<td>/api/v1/users/id</td> 
+		<td>Get particular attendant</td>
+	</tr>
+	<tr>
 		<td>POST</td>
 		<td>/api/v1/products</td> 
 		<td>Add a new store product</td>
 	</tr>
 	<tr>
-		<td>GET single product</td>
-		<td>/api/v1/product/id</td> 
-		<td>Get a particular product with id</td>
+		<td>POST</td>
+		<td>/api/v1/category</td> 
+		<td>Add a new category</td>
+	</tr>
+	<tr>
+		<td>POST</td>
+		<td>/api/v1/sales</td> 
+		<td>Create a new sale order</td>
+	</tr>
+	<tr>
+		<td>POST</td>
+		<td>/api/v1/signup</td> 
+		<td>create a new attendant account</td>
+	</tr>
+	<tr>
+		<td>POST</td>
+		<td>/api/v1/signup</td> 
+		<td>Use Log in</td>
 	</tr>
 	<tr>
 		<td>DELETE</td>
-		<td>/api/v1/product/id</td> 
+		<td>/api/v1/products/id</td> 
 		<td>Delete a product with id </td>
+	</tr>
+	<tr>
+		<td>DELETE</td>
+		<td>/api/v1/category/id</td> 
+		<td>Delete a category with id </td>
 	</tr>
 	<tr>
 		<td>PUT</td>
 			<td>/api/v1/products/id</td> 
 		<td>UPDATE a product information</td>
+	</tr>
+	<td>PUT</td>
+			<td>/api/v1/users/id</td> 
+		<td>UPDATE attendant user information</td>
+	</tr>
+	<td>PUT</td>
+			<td>/api/v1/users/info/id</td> 
+		<td>UPDATE attendant login information</td>
 	</tr>
 </table>
 
