@@ -6,7 +6,7 @@
 
 store manager is a web application that helps store owners manage sales and product inventory records.
 
-**View UI template:** [Click]()
+**View UI template:** [Click](https://ibraheemkabir.github.io/storemanager/)
 
 ## Features
 
@@ -57,7 +57,7 @@ npm test          /* Runs Mocha test */
 
 ## API
 
-API is deployed at [here]() on heroku.
+API is deployed at [here](https://store-maneger.herokuapp.com/) on heroku.
 
 ### API Routes
 
