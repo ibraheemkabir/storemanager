@@ -60,7 +60,7 @@ export default class userQueries {
         const deleteauthQuery = `DELETE FROM public.authentication WHERE id=${id} RETURNING *`;
         const deleteQuery = await client.query(deleteAttendantQuery);
         const deletequery = await client.query(deleteauthQuery);
-        return deleteQuery.rows;
+        return deletequery.rows;
     }
 
     async signin() {
