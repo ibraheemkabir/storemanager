@@ -138,7 +138,7 @@ class Products {
     const { productsId , Total, attendantId, quantity} = req.body;
     const add = new queries({productsId , Total, attendantId, quantity});
     const Order = await add.getattendantOrder(id);
-    if(userid === Order[0].Attendantid || userpriv === 1 ){
+    if(userpriv === 1 || userid === Order[0].Attendantid ){
       return res.status(201).send({
         success: 'true',
         message: 'order retrieved successfuly',

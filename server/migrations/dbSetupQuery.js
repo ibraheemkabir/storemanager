@@ -57,9 +57,11 @@ CREATE TABLE IF NOT EXISTS orders(
 );`;
 
 const admin_del= `DELETE FROM authentication WHERE username='admin';`;
-const value = "admin";
-const admin= `INSERT INTO authentication (username,password,authorisation) values ('${value}','$2b$12$SAbHP1gVJNvkAh97GXEz5.uW5M7Wb4VhcyhCRm22hKssdJFrEUCr2',1)`;
 
+const value = "admin";
+const admin= `INSERT INTO authentication (username,password,authorisation) values ('${value}','$2b$12$SAbHP1gVJNvkAh97GXEz5.uW5M7Wb4VhcyhCRm22hKssdJFrEUCr2',1);`;
+
+const cat= `DELETE FROM categories WHERE category='testcategory';`;
 
 const dropTables = `
 DROP TABLE IF EXISTS authentication cascade;
@@ -70,5 +72,5 @@ DROP TABLE IF EXISTS orders cascade;
 `;
 
 
-export default `${authentication}${attendants}${products}${categories}${orders}${admin_del}${admin}`;
+export default `${authentication}${attendants}${products}${categories}${orders}${admin_del}${admin}${cat}`;
 export { dropTables };
