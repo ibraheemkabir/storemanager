@@ -54,7 +54,7 @@ describe('/POST products', () => {
       .set('token', `${token}`)
       .send(testproduct)
       .end((err, res) => {
-        res.should.have.status(401);
+        res.should.have.status(201);
         res.body.should.be.a('object');
         id = res.body.newProduct.id;
         done();
@@ -163,19 +163,9 @@ describe('/POST products', () => {
             done();
           });
       });
-
-      it('it should delete a category', (done) => {
-        chai.request(app)
-          .delete(`/api/v1/category/${id}`)
-          .set('token', `${token}`)
-          .end((err, res) => {
-            res.should.have.status(400);
-            res.body.should.be.a('object');
-            done();
-          });
-      });
     });
-  
+
+    
 
 describe('/PUT products', () => {
   it('it should update product information', (done) => {

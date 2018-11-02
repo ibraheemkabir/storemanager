@@ -60,13 +60,13 @@ describe('/POST products', () => {
 
   
 
-  before('it should add new products', (done) => {
+  it('it should add new products', (done) => {
     chai.request(app)
       .post('/api/v1/products/')
       .set('token', `${token}`)
       .send(testproduct)
       .end((err, res) => {
-        res.should.have.status(401);
+        res.should.have.status(201);
         res.body.should.be.a('object');
 
         
