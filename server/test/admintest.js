@@ -57,7 +57,6 @@ describe('/POST products', () => {
         res.should.have.status(201);
         res.body.should.be.a('object');
         id = res.body.newProduct.id;
-       
         done();
       });
   });
@@ -130,18 +129,7 @@ describe('/POST products', () => {
   
 
     describe('/POST categories', () => {
-      it('it should add new categories', (done) => {
-        chai.request(app)
-          .post('/api/v1/category/')
-          .set('token', `${token}`)
-          .send(testcategory)
-          .end((err, res) => {
-            res.should.have.status(400);
-            res.body.should.be.a('object');
-        
-            done();
-          });
-      });
+      
       it('it should get all categories', (done) => {
         chai.request(app)
           .get('/api/v1/category/')
