@@ -68,8 +68,8 @@ describe('/POST products', () => {
       .end((err, res) => {
         res.should.have.status(401);
         res.body.should.be.a('object');
-        id = res.body.newProduct.id;
-       
+
+        
         done();
       });
   });
