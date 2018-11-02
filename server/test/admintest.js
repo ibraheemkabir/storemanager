@@ -54,7 +54,7 @@ describe('/POST products', () => {
       .set('token', `${token}`)
       .send(testproduct)
       .end((err, res) => {
-        res.should.have.status(201);
+        res.should.have.status(401);
         res.body.should.be.a('object');
         id = res.body.newProduct.id;
         done();
