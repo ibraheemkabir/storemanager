@@ -37,7 +37,6 @@ export default class queries {
 
   async getProduct(id) {
     const getProduct = await client.query(`SELECT * FROM products WHERE "Id" = ${id}`);
-    if (getProduct.rowCount === 0) throw new Error('entry not found');
     return getProduct.rows[0]; 
   }
 
