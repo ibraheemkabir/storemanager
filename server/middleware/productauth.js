@@ -49,11 +49,12 @@ class Productauth{
       }else{
       const getcategory = `SELECT * FROM categories WHERE "category"='${category}'`;
       const getcategories = await client.query(getcategory);
-      if(getcategories.rowCount){
+      if(getcategories.rowCount===0){
         return res.status(400).send({
           success: 'false',
           error: 'product category does not exist',  
-          });   
+          getcategories,  
+        });   
       }else return next();
       }
     }
@@ -125,11 +126,10 @@ class Productauth{
     static async info(req, res, next) {
       const { firstname, lastname, email, age, phonenumber, address, contact} = req.body;
       const infovalidate= joi.validate({firstname, lastname, email, age, phonenumber, address, contact},infoschema);
-      if(!infovalidate){
-        let message = infovalidate.error.details[0].message;
+      if(infovalidate){
       return res.status(400).send(
         {
-        message,
+        infovalidate,
         });
         }
       return next();

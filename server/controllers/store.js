@@ -28,7 +28,7 @@ class Products {
     return res.status(200).send({
       success: 'true',
       message: 'poducts retrieved successfuly',
-      product,
+      products,
     });
   }
 
@@ -37,7 +37,7 @@ class Products {
     const { name , category ,price, image, quantity} = req.body;
     const add = new queries({name , category, price, image, quantity});
     const product = await add.deleteProduct(id);
-    return res.status(400).send({
+    return res.status(204).send({
       success: 'true',
       message: 'product deleted successfully',
       product,
@@ -53,7 +53,7 @@ class Products {
       return res.status(200).send({
         success: 'true',
         message: 'product retrieved successfully',
-        products: product,
+        product: product,
       });
     }
     return res.status(400).send({
@@ -89,14 +89,15 @@ class Products {
     return res.status(201).send({
       success: 'true',
       message: 'category added successfuly',
-      categories,
+      category,
     });
   }
 
   static async getAllCategories(req, res) {
     const { name , category ,price, image, quantity} = req.body;
     const add = new queries({name , category, price, image, quantity})
-    const categories = await add.getCategories();
+    const result = await add.getCategories();
+    const categories = result.rows;
     return res.status(200).send({
       success: 'true',
       message: 'categories retrieved successfuly',
@@ -109,10 +110,10 @@ class Products {
     const { category } = req.body;
     const add = new queries({ category });
     const product = await add.deleteCategory(id);
-    return res.status(400).send({
+    return res.status(204).send({
       success: 'true',
       message: 'Category deleted successfully',
-      product,
+      category,
     });
   }
 
@@ -137,12 +138,12 @@ class Products {
     const id = parseInt(req.params.id, 10);
     const { productsId , Total, attendantId, quantity} = req.body;
     const add = new queries({productsId , Total, attendantId, quantity});
-    const Order = await add.getattendantOrder(id);
+    const myOrders = await add.getattendantOrder(id);
     if(userpriv === 1 || userid === Order[0].Attendantid ){
-      return res.status(201).send({
+      return res.status(200).send({
         success: 'true',
         message: 'order retrieved successfuly',
-        Order,
+        myOrders,
       });
     }else{
       return res.status(403).send({

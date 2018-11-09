@@ -19,10 +19,10 @@ app.use(bodyParser.json());
 
 import products from './server/routes/products';
 import home from './server/routes/index';
-import categories from './server/routes/products';
+import users from './server/routes/users';
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(documentation, { customCss: '.swagger-ui .topbar { display: none }' }));
-app.use('/api/v1/', categories);
+app.use('/api/v1/users/', users);
 app.use('/api/v1/', products);
 app.use('/', home);
 

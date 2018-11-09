@@ -60,7 +60,7 @@ export default class queries {
   }
 
   async deleteCategory(id) {
-    const deleteCategory = await client.query(`DELETE FROM categories WHERE "id" = ${id}`);
+    const deleteCategory = await client.query(`DELETE FROM categories WHERE "id" ='${id}'`);
     if (deleteCategory.rowCount === 0) throw new Error('category not found');
     return deleteCategory.rows;
   }

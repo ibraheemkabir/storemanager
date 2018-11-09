@@ -18,7 +18,7 @@ class authentication{
             });
           }
         if (sign.rowCount === 0) {
-          return res.status(200).json({
+          return res.status(404).json({
             success: 'false',
             message: 'User does not exist',
           });
@@ -40,7 +40,7 @@ class authentication{
                       token,
                     });
                 } else {
-                  res.status(200).send({
+                  res.status(400).send({
                     success: 'true',
                     message: 'password not correct',
                   });
