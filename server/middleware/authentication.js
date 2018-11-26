@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import createtoken from '../helpers/createtoken';
 import  queries  from '../models/userqueries';
+import cookieParser from 'cookie-parser';
 
 
 const saltRounds = 12;
@@ -32,12 +33,17 @@ class authentication{
                
                 const token = createtoken(user);
                 if (validPassword) {
+                  const priviledge = user.priv;
+                  const userid = user.id;
                   res.status(200)
                     .header('Authorization', `${token}`)
+                    .cookie('jwt', `${token}`)
                     .send({
                       success: 'true',
                       message: 'User logged in',
                       token,
+                      priviledge,
+                      userid,
                     });
                 } else {
                   res.status(400).send({

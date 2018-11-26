@@ -30,7 +30,7 @@ export default class queries {
   }
 
   async deleteProduct(id) {
-    const deleteProduct = await client.query(`DELETE FROM products WHERE "Id" = ${id}`);
+    const deleteProduct = await client.query(`DELETE FROM products WHERE "id" = ${id}`);
     if (deleteProduct.rowCount === 0) throw new Error('entry not found');
     return deleteProduct.rows;
   }
@@ -67,19 +67,37 @@ export default class queries {
 
 
   async newOrder() {
-    const addnewOrderQuery = 'INSERT INTO orders("productsId", "Total", "Attendantid", "quantity", "created") VALUES($1, $2, $3, $4, CURRENT_TIMESTAMP) RETURNING *';
+    const addnewOrderQuery = 'INSERT INTO orders("productid", "Total", "Attendantid", "quantity", "created") VALUES($1, $2, $3, $4, CURRENT_TIMESTAMP) RETURNING *';
+    const addnewOrder = await client.query(addnewOrderQuery, [this.productsId, this.Total, this.attendantId, this.quantity]);
+    return addnewOrder.rows[0];
+  }
+
+  async validation (table, parameter, value) {
+    const getvalue = await client.query(`SELECT * FROM ${table} WHERE ${parameter}='${value}'`);
+    return getvalue;
+  }
+
+  async updateOrder(id) {
+    const addnewOrderQuery = `INSERT INTO orders("productid", "Total", "Attendantid", "quantity", "edited", "saleid") VALUES($1, $2, $3, $4, CURRENT_TIMESTAMP, '${id}') RETURNING *`;
     const addnewOrder = await client.query(addnewOrderQuery, [this.productsId, this.Total, this.attendantId, this.quantity]);
     return addnewOrder.rows[0];
   }
 
   async getattendantOrder(id) {
-    const getattendantOrder = `SELECT * FROM orders WHERE "id"=${id}`;
+    const getattendantOrder = `SELECT products.name,orders.quantity,orders.saleid,orders.productid,"Attendantid",orders.edited,"Total" FROM orders  LEFT JOIN products ON orders.productid=products.id WHERE "Attendantid"=${id}` ;
+    const getorder = await client.query(getattendantOrder);
+    return getorder.rows;
+  }
+
+  async getparticularOrder(id) {
+    const getattendantOrder = `SELECT products.name,orders.quantity,orders.saleid,orders.productid,"Attendantid",orders.edited,"Total" FROM orders  LEFT JOIN products ON orders.productid=products.id WHERE "saleid"=${id}` ;
     const getorder = await client.query(getattendantOrder);
     return getorder.rows;
   }
 
   async allorders() {
-    const getallOrders = 'SELECT  * FROM orders';
+  
+    const getallOrders =  `SELECT products.name,orders.quantity,orders.productid,orders.saleid,"Attendantid",orders.edited,"Total",orders.created FROM orders LEFT JOIN products ON orders.productid=products.id ` ;
     const order = await client.query(getallOrders);
     return order.rows;
   }

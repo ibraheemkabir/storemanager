@@ -1,13 +1,14 @@
 import express from 'express';
 import client from '../helpers/connection';
 import joi from 'joi';
+import queries from '../models/queries'
 
 const schema = joi.object().keys({
   price: joi.number().required(),
   category: joi.string().required(),
   name: joi.string().required(),
   quantity: joi.number().required(),
-  image: joi.string().required(),
+  image: joi.required(),
 })
 
 const idschema = joi.object().keys({
@@ -36,41 +37,52 @@ const salesschema = joi.object().keys({
 
 
 
+
 class Productauth{
-     
+    
+
     static async addProduct(req, res, next) {
-      const { name , category ,price, image, quantity} = req.body;
+      const { name , category ,price, quantity} = req.body;
+      const image = req.file;
       const addproductvalidate= joi.validate({ name , category ,price, image, quantity},schema);
       if(addproductvalidate.error){
+        const error =addproductvalidate.error.details[0].message;
         return res.status(400).send({
           success: 'false',
-          addproductvalidate,  
+          error,  
       });
       }else{
-      const getcategory = `SELECT * FROM categories WHERE "category"='${category}'`;
-      const getcategories = await client.query(getcategory);
-      if(getcategories.rowCount===0){
+        const add = new queries({name , category ,price, image, quantity});
+        const newProduct = await add.validation('products','name',name);
+        const category = await add.validation('categories','category',category);
+        if(newProduct.rowCount != 0){
         return res.status(400).send({
           success: 'false',
-          error: 'product category does not exist',  
-          getcategories,  
+          error: 'product already exists',  
         });   
-      }else return next();
-      }
+      }else if(!category){
+        return res.status(400).send({
+          success: 'false',
+          error: 'category does not exist',  
+          category
+        });   
+      } else return next();
+
     }
+  }
 
     static async newCategory(req, res, next) {
       const { category } = req.body;
       const newcategoryvalidate= joi.validate({ category },categoryschema);
-      if(newcategoryvalidate.error){
+      if(newcategoryvalidate.error.details){
         const error = newcategoryvalidate.error.details[0].message;
         return res.status(400).send({
           success: 'false',
           error,  
       });
       }else{ 
-      const getcategory = `SELECT * FROM categories WHERE "category"='${category}'`;
-      const getcategories = await client.query(getcategory);
+        const add = new queries({category});
+        const getcategories = await add.validation('categories','category',category);
       if(getcategories.rowCount!==0){
         return res.status(400).send({
           success: 'false',
@@ -80,18 +92,25 @@ class Productauth{
       }
     }
 
-    static newSales(req, res, next) {
+    static async newSales(req, res, next) {
       const { productsId , Total,  quantity} = req.body;
       const newsalesvalidate= joi.validate({ productsId , Total, quantity} ,salesschema);
+      const add = new queries({productsId});
+      const newProduct = await add.validation('products','id',productsId);
+      const category = await add.validation('categories','category',category);
       if(newsalesvalidate.error){
         const error = newsalesvalidate.error.details[0].message;
         return res.status(400).send({
           success: 'false',
           error,  
       });
-      }else return next();
-    }
-
+      }else if(newProduct.rowCount === 0){
+      return res.status(400).send({
+        success: 'false',
+        error: `product with the id ${productsId} does not exist`,  
+      }); 
+    }  else return next();
+  }
 
      static allOrders(req, res, next) {
         return next();

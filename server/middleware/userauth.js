@@ -53,7 +53,7 @@ class userauth{
     return res.status(400).send(
     {
         success: 'false',
-        error: infovalidate,
+        error: error,
     });}
     return next();
     }

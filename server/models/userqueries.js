@@ -52,7 +52,7 @@ export default class userQueries {
     async getAttendant(id) {
         const getAttendantQuery = `SELECT * FROM public.attendants WHERE id=${id}`;
         const getAttendant = await client.query(getAttendantQuery);
-        return getAttendant;
+        return getAttendant.rows;
     }
 
     async deleteAttendant(id){

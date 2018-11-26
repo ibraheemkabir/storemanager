@@ -34,7 +34,7 @@ export default class Attendants {
     return res.status(200).json({
       success: 'true',
       message: 'All Attendants retrieved successfuly',
-      allAttendant,
+      newattendant,
     });
   }
 
@@ -47,7 +47,7 @@ export default class Attendants {
     if (result.rowCount===0) {
       return res.status(404).json({
         success: 'false',
-        message: 'product not found',
+        message: 'info not found',
       });
     }
     return res.status(200).json({
