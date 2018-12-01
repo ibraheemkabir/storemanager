@@ -52,7 +52,7 @@ describe('Test all product operations using admin credentials', () => {
       .post('/api/v1/products')
       .set('token', `${token}`)
       .field(testproduct)
-      .attach('image','..\\baby.jpg')
+      .attach('image','uploads/baby.jpg')
       .end((err, res) => {
         id=res.body.newProduct.id;
         done();
