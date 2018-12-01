@@ -1,5 +1,4 @@
 var toggle = document.querySelector(".nav-toggle");
-
 var tog = document.querySelector("HTML");
 
 function toggleModal() {
@@ -10,14 +9,19 @@ function toggleModal() {
 
 toggle.addEventListener("click", toggleModal);
 
-const art = document.querySelector('article');
-const nav = document.querySelector('header');
+
+window.onscroll = () => {
+    const nav = document.querySelector('.new-wrapper');
+    nav.classList.add("scroll");
+  };
 
   (function(){
-  
+    
    const icon = document.getElementsByClassName('icon');
    const products = document.getElementsByClassName('products');
   
+    /* Functions */
+    // Has class
     function hasClass(elem, className) {
       return elem.classList.contains(className);
     }
@@ -48,21 +52,3 @@ const nav = document.querySelector('header');
   
     }
   })();
-
- const modal = document.querySelector(".modal");
-   const trigger = document.querySelector(".edit");
-   const closeButton = document.querySelector(".close-button");
-
-    function toggleModal() {
-        modal.classList.toggle("show-modal");
-    }
-
-    function windowOnClick(event) {
-        if (event.target === modal) {
-            toggleModal();
-        }
-    }
-
-    trigger.addEventListener("click", toggleModal);
-    closeButton.addEventListener("click", toggleModal);
-    window.addEventListener("click", windowOnClick);

@@ -357,7 +357,7 @@ padding-top: 13%;
     text-transform: uppercase;
     font-weight: 800;
     color: #000;
-    font-size: 21px;
+    font-size: 18px;
     padding: 10px;
   }
   
@@ -544,7 +544,7 @@ padding-top: 13%;
       padding: 1.6em;
   }
   
-  code, kbd, tt, var {
+  code, kbd, tt,const {
       font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
       font-size: 15px;
       font-size: 0.9375rem;

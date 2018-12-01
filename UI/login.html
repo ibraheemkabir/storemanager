@@ -9,34 +9,30 @@
     <meta name="author" content="Ibraheem kabir">
     <title>StoreManager | Welcome</title>
 <link rel="stylesheet" type="text/css" href="style/login.css">
-  </head>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+</head>
 <body>
-
-
-  <div id="slideBox">
-       
-              
-  
-        
+   
+  <div id="slideBox">   
     <div class="right">
             <div class="nav">
                     <div class="nav-header">
                       <div class="nav-title">StoreManager</div>
                     </div>
-                    </div>
-
-    
-      <div class="content">   
-        	<div class="login">
+            </div>
+    <div class="content">   
+      <div class="login">
   <div class="login-triangle"></div>
   
   <h2 class="login-header">Log in</h2>
 
   <form class="login-container">
-    <p><input type="email" placeholder="Username"></p>
-    <p><input type="password" placeholder="Password"></p>
+      <p id="response"></p>
+    <p><input class='user' type="email" placeholder="Username"></p>
+    <p><input class='pass' type="password" placeholder="Password"></p>
     <p><input class="submit"  id='login'  value="Sign in"></p>
-    <p> <a href="signup.html">Forgot Your Password?</a></p>
   </form>
   </div>
  </form>
@@ -50,3 +46,4 @@
 </html>
 
 <script type="text/javascript" src="js/main.js"></script>
+<script src="./build/toastr.min.js"></script>

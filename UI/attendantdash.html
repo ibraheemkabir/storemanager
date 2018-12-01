@@ -7,15 +7,16 @@
     <meta name="keywords" content="professional web design">
     <meta name="author" content="Ibraheem kabir">
     <title>StoreManager | Welcome</title>
-  
-    <link rel="stylesheet" type="text/css" href="style/nav.css">
-   
-   
+    <link rel="stylesheet" type="text/css" href="style/dashboard.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
-    
+
   </head>
 <body>
-        <div class="primary-nav">
+  
+    <div class="primary-nav">
 
                 <button href="#" class="hamburger open-panel nav-toggle">
             <span class="screen-reader-text">Menu</span>
@@ -23,144 +24,111 @@
             
                 <nav role="navigation" class="menu">
             
-                    <a href="#" class="logotype">LOGO<span>TYPE</span></a>
+                    <a href="#" class="logotype">StoreManager</a>
             
                     <div class="overflow-container">
             
                         <ul class="menu-dropdown">
             
-                            <li><a href="#">Dashboard</a><span class="icon"><i class="fa fa-dashboard"></i></span></li>
-            
-                            <li class="menu-hasdropdown">
-                                <a href="#">New Order!</a><span class="icon"><i class="fa fa-gear"></i></span>
-                            </li>
-            
-                            <li><a href="#">Recent Order.</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-            
-                            <li><a href="#">View Product Inventory.</a><span class="icon"><i class="fa fa-envelope"></i></span></li>
+                        <script src="nav.js"></script>
 
-                            <li><a href="#">Edit Profile.</a><span class="icon"><i class="fa fa-envelope"></i></span></li>
-            
                         </ul>
             
                     </div>
             
                 </nav>
             
-        </div>
-        
-        <div class="nav">
-                    <div class="nav-header">
-                    <div class="nav-title">StoreManager</div>
-                    </div>
-                    <div class="nav-btn">
-                      <label for="nav-check">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </label>
-                    </div>
-                      <input type="checkbox" id="nav-check">
-                      <div class="nav-links">
-                            <a href="#0">
-                                    <img src="https://yt3.ggpht.com/-MEN5SjDNHRo/AAAAAAAAAAI/AAAAAAAAAAA/owyT3rb7mNI/s900-c-k-no/photo.jpg" alt="avatar">
-                                </a>
-                      </div>
-        </div>
-
-    <div>
-        <div class="new-wrapper">
-            
-            <div id="main">
-            <div class="row " >
-                            <div class="col-lg-6 col-md-8">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <i class="fa fa-medkit fa-5x"></i>
-                                            </div>
-                                            <div class="col-xs-9 text-right">
-                                                <div class="huge">26</div>
-                                                <div>New Health Tips!</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="#">
-                                        <div class="panel-footer">
-                                            <span class="pull-left">View Details</span>
-                                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-            </div>
-
-            <div class="row " >
-                    <div class="col-lg-6 col-md-8">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-medkit fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
-                                        <div>New Health Tips!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-            </div>
-            
-            <div class="row " >
-                    <div class="col-lg-6 col-md-8">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-medkit fa-5x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
-                                        <div>New Health Tips!</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-            </div>
-             <div id="main2">
-              <header>
-                  New stock!.
-              </header>
-                <hr>
-           </div>               
-            </div>
-
-           
-                        
-        </div>
-            
     </div>
-            
+        
+    <div class="new-wrapper">
+       
+            <div class="header">
+              <div class="title">Dashboard</div>
+              <div class="user"></div>
+              <div class="interval">
+                <ul>
+                  <li>Tayo</li>
+                  <li class="active">attendant</li>
+                </ul>
+              </div>
             </div>
-    </body>
+            
+              <div id="records">
+                  <section>
+                  <header><h4>  Sales History</h4> </header>
+              
+                  <div class="inlineChart">
+                    <div>
+                        <img id="rate" src="images/chart.png">
+                    </div>
+                    <div class="info">
+                      <div class="value">N0.00</div>
+                      <div class="title">Total sales</div>
+                    </div>
+                  </div>
+                  <div class="inlineChart">
+                    <div>
+                        <img id="rate" src="images/quantity.png">
+                    </div>
+                    <div class="info">
+                      <div class="value2">23</div>
+                      <div class="title">Quantity Sold</div>
+                    </div>
+                  </div>
+                  <div class="inlineChart">
+                    <div>
+                        <img id="rate" src="images/pay.png">
+                    </div>                <div class="info">
+                      <div class="value">N15,650</div>
+                      <div class="title">Current month sales</div>
+                    </div>
+                  </div>
+                </section>
+    
+              </div>
+             
+            <div class="row " >
+                
+                <section class="products grid group">    
+                    <table id="mytable">
+                      <thead>
+                          <tr>
+                            <header class="headers">
+                                <header><h4>  Recent sales</h4> </header>
+                            </header>
+                          
+                              <br/>
+                            </tr>
+                         
+            
+                        <tr>
+                          <th>Sale id</th>
+                          <th>quantity</th>
+                          <th>Products</th>
+                          <th>sale worth</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                            
+                      </tbody>
+                    </table>
+                  
+                </section><!-- /products -->
+            </div>
+            
+            <div class="footer">
+                <header><h3>Kbair 2018</h3></header>
+            </div>
+      </div> 
+      
+          </div>    
+          
+                   
+    
+    
+</body>
+
 </html>
-<script type="text/javascript" src="js/nav.js"></script>
+<script type="text/javascript" src="js/dash.js"></script>
+<script src="restrict.js"></script>
