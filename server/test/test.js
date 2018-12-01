@@ -110,7 +110,7 @@ describe('Test all product operations using admin credentials', () => {
     chai.request(app)
       .put(`/api/v1/products/${id}`)
       .set('token', `${token}`)
-      .attach('image','uploads\\baby.jpg')
+      .attach('image','uploads/baby.jpg')
       .field(testproduct)
       .end((err, res) => {
         res.should.have.status(400);
