@@ -4,6 +4,8 @@ node_js:
 - "stable"
 addons:
   chrome: stable
+install:
+- npm ci
 cache:
   directories:
      - ~/.npm
