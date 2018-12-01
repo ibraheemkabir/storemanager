@@ -4,6 +4,10 @@ node_js:
 - "stable"
 addons:
   chrome: stable
+cache:
+  directories:
+     - ~/.npm
+     - node_modules
 before_script:
 - psql -c "CREATE USER root WITH PASSWORD 'root';" -U postgres
 - psql -c 'drop database if exists store;' -U postgres
