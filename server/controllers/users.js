@@ -30,11 +30,11 @@ export default class Attendants {
   static async getAllAttendants(req, res) {
     const { firstname, lastname, username } = req.body;
     const add = new queries({ firstname, lastname, username});
-;    const newattendant = await add.getAllAttendants();
+;    const attendants = await add.getAllAttendants();
     return res.status(200).json({
       success: 'true',
       message: 'All Attendants retrieved successfuly',
-      newattendant,
+      attendants,
     });
   }
 
@@ -63,7 +63,7 @@ export default class Attendants {
     const { firstname, lastname, email, age, phonenumber, address, contact} = req.body;
     const add = new queries({ firstname, lastname, email, age, phonenumber, address, contact});
     const result = await add.updateattendantinfo(id);
-    if (result.rowCount===0) {
+    if (!result) {
       return res.status(404).json({
         success: 'false',
         message: 'User not found',
@@ -81,7 +81,7 @@ export default class Attendants {
     const { firstname, lastname, username } = req.body;
     const add = new queries({ firstname, lastname, username});
 ;    const attendant= await add.deleteAttendant(id);
-    if (delattedant) {
+    if (attendant) {
       return res.status(200).json({
         success: 'true',
         message: 'Attendant deleted successfuly',
@@ -98,12 +98,12 @@ export default class Attendants {
     const id = parseInt(req.params.id, 10);
     const { firstname, lastname, username } = req.body;
     const add = new queries({ firstname, lastname, username});
-    const newattendant = await add.getAttendant(id);
-    if (newattendant.rowCount!=0) {
+    const attendant = await add.getAttendant(id);
+    if (attendant.rowCount!=0) {
       return res.status(200).json({
         success: 'true',
         message: 'Attendant retrieved successfully',
-        newattendant,
+        attendant,
       });
     }else
     return res.status(404).json({

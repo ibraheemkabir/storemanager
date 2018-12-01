@@ -74,7 +74,7 @@ class Productauth{
     static async newCategory(req, res, next) {
       const { category } = req.body;
       const newcategoryvalidate= joi.validate({ category },categoryschema);
-      if(newcategoryvalidate.error.details){
+      if(newcategoryvalidate.error){
         const error = newcategoryvalidate.error.details[0].message;
         return res.status(400).send({
           success: 'false',

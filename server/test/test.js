@@ -12,59 +12,106 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 const testproduct = {
-  name:'balertest',
-  price:'2000',
+  name:'testproduct27',
+  price:2000,
   category:'shirts',
-  image:'/age/size',
-  quantity:'12',
+  quantity:12,
 };
 
 const userCredentials = {
-  username: 'testguy36',
-  password: 'test',
+  username: 'admin',
+  password: 'admin',
 
 };
 
 const testorder = {
-  productsId:'23',
-  Total:'2000',
-  attendantId:'12',
-  quantity: '2',
+  productsId:23,
+  Total:2000,
+  quantity: 2,
 };
 
 
 const testcategory = {
-  category:'skirts',
+  category:'suits3',
 };
 
-describe('/POST products', () => {
+describe('Test all product operations using admin credentials', () => {
 
   let token;
   let id;
+  let ids;
   before(async () => {
     const res = await chai.request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v1/users/auth/signin')
       .send(userCredentials)
         token = res.body.token;
-        id = res.body.token;
   });
 
   it('it should add new products', (done) => {
     chai.request(app)
-      .post('/api/v1/products/')
+      .post('/api/v1/products')
       .set('token', `${token}`)
-      .send(testproduct)
+      .field(testproduct)
+      .attach('image','uploads\\baby.jpg')
       .end((err, res) => {
-        res.should.have.status(401);
-        res.body.should.be.a('object');
+        id=res.body.newProduct.id;
         done();
       });
   });
   
-  it('it should add new products', (done) => {
+  it('it should require inputs when adding new products', (done) => {
     chai.request(app)
       .post('/api/v1/products/')
       .send()
+      .end((err, res) => {
+        res.should.have.status(401);
+        res.body.should.be.a('object');
+        done();
+
+      });
+  });
+
+    it('it should add new order', (done) => {
+      chai.request(app)
+        .post('/api/v1/sales/')
+        .send(testorder)
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.should.be.a('object');
+          done();
+          return err;
+        });
+    });
+
+      it('it should add new categories', (done) => {
+        chai.request(app)
+          .post('/api/v1/category/')
+          .set('token', `${token}`)
+          .send(testcategory)
+          .end((err, res) => {
+            ids=res.body.categories.id;
+            done();
+          });
+      });
+
+      it('it should require inputs add new categories', (done) => {
+        chai.request(app)
+          .post('/api/v1/category/')
+          .set('token', `${token}`)
+          .send()
+          .end((err, res) => {
+            res.should.have.status(400);
+            res.body.should.be.a('object');
+            done();
+          });
+      });
+
+  it('it should update product information', (done) => {
+    chai.request(app)
+      .put(`/api/v1/products/${id}`)
+      .set('token', `${token}`)
+      .attach('image','uploads\\baby.jpg')
+      .field(testproduct)
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.a('object');
@@ -72,74 +119,7 @@ describe('/POST products', () => {
       });
   });
 
-  describe('/POST order', () => {
-
-    it('it should add new order', (done) => {
-      chai.request(app)
-        .post('/api/v1/sales/')
-        .send(testorder)
-        .end((err, res) => {
-          res.should.have.status(401);
-          res.body.should.be.a('object');
-          done();
-          return err;
-        });
-    });
-  
-    it('it should add new order', (done) => {
-      chai.request(app)
-        .post('/api/v1/sales/')
-        .send()
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.body.should.be.a('object');
-          done();
-         
-        });
-    });
-
-
-  
-
-    describe('/POST categories', () => {
-      it('it should add new categories', (done) => {
-        chai.request(app)
-          .post('/api/v1/category/')
-          .set('token', `${token}`)
-          .send(testcategory)
-          .end((err, res) => {
-            res.should.have.status(401);
-            res.body.should.be.a('object');
-            done();
-          });
-      });
-      it('it should add new categories', (done) => {
-        chai.request(app)
-          .post('/api/v1/category/')
-          .send()
-          .end((err, res) => {
-            res.should.have.status(401);
-            res.body.should.be.a('object');
-            done();
-          });
-      });
-    });
-
-
-describe('/PUT products', () => {
-  it('it should update product information', (done) => {
-    chai.request(app)
-      .put(`/api/v1/products/10`)
-      .set('token', `${token}`)
-      .send(testproduct)
-      .end((err, res) => {
-        res.should.have.status(401);
-        res.body.should.be.a('object');
-        done();
-      });
-  });
-
-  it('it should update product information', (done) => {
+  it('it should require info to update product information', (done) => {
     chai.request(app)
       .put('/api/v1/products/1')
       .send()
@@ -149,51 +129,38 @@ describe('/PUT products', () => {
         done();
       });
   });
-});
 
-describe('/GET products', () => {
-
-  before('it should add new products', (done) => {
-    chai.request(app)
-      .post('/api/v1/products/')
-      .set('token', `${token}`)
-      .send(testproduct)
-      .end((err, res) => {
-        res.should.have.status(401);
-        res.body.should.be.a('object');
-        id=res.body.id;
-        
-        done();
-      });
-  });
 
   it('it should get a particular product', (done) => {
     chai.request(app)
       .get(`/api/v1/products/${id}`)
+      .set('token', `${token}`)
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(200);
         res.body.should.be.a('object');
         done();
       });
   });
 
-  it('it should get a particular product', (done) => {
+  it('it should not get an invalid particular product', (done) => {
     chai.request(app)
       .get(`/api/v1/products/string`)
+      .set('token', `${token}`)
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.a('object');
         done();
       });
   });
-});
 
-describe('/GET products', () => {
+
+
   it('it should GET all the products', (done) => {
     chai.request(app)
       .get('/api/v1/products')
+      .set('token', `${token}`)
       .end((err, res) => {
-        res.should.have.status(401);
+        res.should.have.status(200);
         res.body.should.be.a('object');
         done();
       });
@@ -202,6 +169,7 @@ describe('/GET products', () => {
       it('it should GET all the products', (done) => {
         chai.request(app)
           .get('/api/v1/product/')
+          .set('token', `${token}`)
           .send()
           .end((err, res) => {
             res.should.have.status(404);
@@ -209,21 +177,11 @@ describe('/GET products', () => {
             done();
           });
       });
-    });
     
-    describe('/DELETE products', () => {
-      it('it should delete a product', (done) => {
-        chai.request(app)
-          .delete(`/api/v1/products/20`)
-          .set('token', `${token}`)
-          .end((err, res) => {
-            res.should.have.status(401);
-            res.body.should.be.a('object');
-           done();
-          })
-      });
     
-      it('it should delete a product', (done) => {
+   
+    
+      it('it should not delete invalid products', (done) => {
         chai.request(app)
           .delete(`/api/v1/products/"stiring"`)
           .end((err, res) => {
@@ -232,23 +190,36 @@ describe('/GET products', () => {
             done();
           });
       });
-    });
+    
 
-    describe('/POST order', () => {
 
       it('it should get all order', (done) => {
         chai.request(app)
           .get('/api/v1/sales/')
+          .set('token', `${token}`)
           .end((err, res) => {
-            res.should.have.status(401);
+            res.should.have.status(200);
             res.body.should.be.a('object');
             done();
             return err;
           });
       });
-    });
   
+      it('it should delete category', (done) => {
+        chai.request(app)
+          .delete(`/api/v1/category/${ids}`)
+          .set('token', `${token}`)
+          .end((err, res) => {
+            done();
+          });
+      });
 
-
-    })
+    it('it should delete products', (done) => {
+      chai.request(app)
+        .delete(`/api/v1/products/${id}`)
+        .set('token', `${token}`)
+        .end((err, res) => {
+          done();
+        });
+    });
 });

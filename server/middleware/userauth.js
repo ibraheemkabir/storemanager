@@ -43,12 +43,12 @@ class userauth{
     const infovalidate= joi.validate({firstname, lastname, email, age, phonenumber, address, contact},infoschema);
     const { userId } = req;
     const id = parseInt(req.params.id, 10);
-    if(userId !== id){
+    if(userId === id){
       return res.status(201).send({
         success: 'false',
         message: 'You cannot update this info',
     });
-    }else if(infovalidate){
+    }else if(infovalidate.error){
         const error = infovalidate.error.details[0].message;
     return res.status(400).send(
     {

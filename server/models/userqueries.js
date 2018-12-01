@@ -39,18 +39,18 @@ export default class userQueries {
     }
 
     async updateattendantinfo(id) {
-        const updateattendantinfo= await client.query(`UPDATE attendants SET firstname='${this.firstname}', lastname='${this.lastname}',age='${this.age}',email='${this.email}', phonenumber='${this.phonenumber}', address='${this.address}', emergency_contact='${this.contact}', edited=CURRENT_TIMESTAMP WHERE authid=${id} RETURNING *`);
+        const updateattendantinfo= await client.query(`UPDATE attendants SET firstname='${this.firstname}', lastname='${this.lastname}',age='${this.age}',email='${this.email}', phonenumber='${this.phonenumber}', address='${this.address}', emergency_contact='${this.contact}', edited=CURRENT_TIMESTAMP WHERE authid=${id}`);
         return updateattendantinfo;
     }
 
     async getAllAttendants() {
-        const getAllAttendantsQuery = 'SELECT * FROM public.attendants';
+        const getAllAttendantsQuery = 'SELECT * FROM public.attendants LEFT JOIN authentication ON attendants.authid=authentication.id';
         const getAllQuery = await client.query(getAllAttendantsQuery);
         return getAllQuery.rows;
     }
 
     async getAttendant(id) {
-        const getAttendantQuery = `SELECT * FROM public.attendants WHERE id=${id}`;
+        const getAttendantQuery = `SELECT * FROM public.attendants WHERE authid=${id}`;
         const getAttendant = await client.query(getAttendantQuery);
         return getAttendant.rows;
     }

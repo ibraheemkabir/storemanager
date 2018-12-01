@@ -8,10 +8,11 @@ CREATE TABLE IF NOT EXISTS attendants(
    "emergency_contact" VARCHAR(100) NOT NULL,
    "phonenumber" INTEGER UNIQUE NOT NULL,
    "address" INTEGER NOT NULL,
-    "authId" INTEGER UNIQUE ,
+    "authid" INTEGER UNIQUE ,
     "Id" SERIAL UNIQUE,
-    created timestamp (0) without time zone default now()
-);`;
+    created timestamp (0) without time zone default now(),
+    edited timestamp (0) without time zone default now()
+    );`;
 
 const authentication = `
 CREATE TABLE IF NOT EXISTS authentication(
@@ -51,6 +52,8 @@ CREATE TABLE IF NOT EXISTS orders(
   "Total" INT,
   "Attendantid" INT,
   "quantity" INT,
+  "saleid" INT,
+  "productid" INT,
   created timestamp (0) without time zone default now(),
   edited timestamp (0) without time zone default now()
    

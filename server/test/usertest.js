@@ -11,16 +11,14 @@ const should = chai.should();
 
 chai.use(chaiHttp);
 
-const testproduct = {
-  name:'balertest',
-  price:'2000',
-  category:'shirts',
-  image:'/age/size',
-  quantity:'12',
+const adminCredentials = {
+  username: 'admin',
+  password: 'admin',
+
 };
 
-const userCredentials = {
-  username: 'testguy20',
+const attendantCredentials = {
+  username: 'testuser',
   password: 'test',
 
 };
@@ -31,68 +29,31 @@ const badCredentials = {
   };
 
   const badpassword= {
-    username: 'testguy20',
+    username: 'admin',
     password: 'test2655',
   };
 
-const testorder = {
-  productsId:'23',
-  Total:'2000',
-  attendantId:'12',
-  quantity: '2',
-};
-
-
-const testcategory = {
-  category:'jins',
-};
-
-describe('/POST products', () => {
+describe('user authentication and login tests', () => {
 
   let token;
   let id;
   before(async () => {
     const res = await chai.request(app)
-      .post('/api/v1/auth/signin')
-      .send(userCredentials)
+      .post('/api/v1/users/auth/signin')
+      .send(adminCredentials)
         token = res.body.token;
+        console.log(token); 
   });
 
-  
+       
 
-  it('it should add new products', (done) => {
-    chai.request(app)
-      .post('/api/v1/products/')
-      .set('token', `${token}`)
-      .send(testproduct)
-      .end((err, res) => {
-        res.should.have.status(401);
-        res.body.should.be.a('object');
-
-        
-        done();
-      });
-  });
-
-  it('should signin new user ', (done) => {
-    chai.request(app)
-      .post('/api/v1/auth/signin')
-      .set('token', `${token}`)
-      .send(userCredentials)
-        .end((err,res)=>{
-            console.log(err);
-        res.should.have.status(200);
-        done();
-        })
-    });
-    it('should signin bad credentials ', (done) => {
+    it('should reject users bad credentials ', (done) => {
             chai.request(app)
-              .post('/api/v1/auth/signin')
+              .post('/api/v1/users/auth/signin')
               .set('token', `${token}`)
               .send(badCredentials)
                 .end((err,res)=>{
-                    console.log(err);
-                res.should.have.status(200);
+                res.should.have.status(404);
                 done();
             })
         });
@@ -100,14 +61,59 @@ describe('/POST products', () => {
   
     it('should check for badpassword ', (done) => {
     chai.request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v1/users/auth/signin')
       .set('token', `${token}`)
       .send(badpassword)
         .end((err,res)=>{
-            console.log(err);
-        res.should.have.status(200);
+        res.should.have.status(400);
         done();
         })
-        });
+    });
+
+    
+    it('should reject unregistered credentials ', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/auth/signin')
+        .set('token', `${token}`)
+        .send(badCredentials)
+          .end((err,res)=>{
+          res.should.have.status(404);
+          done();
+      })
+  });
+
+  it('should reject user signup without token', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/auth/signup')
+      .send(attendantCredentials)
+        .end((err,res)=>{
+        res.should.have.status(401);
+        done();
+    })
+});
+
+it('should require input fields for signup', (done) => {
+  chai.request(app)
+  .post('/api/v1/users/auth/signup')
+  .set('token', `${token}`)
+  .send()
+      .end((err,res)=>{
+      res.should.have.status(400);
+      done();
+  })
+});
+
+it('should require input fields for signin', (done) => {
+  chai.request(app)
+  .post('/api/v1/users/auth/signin')
+  .set('token', `${token}`)
+  .send()
+      .end((err,res)=>{
+      res.should.have.status(400);
+      done();
+  })
+});
+
+
 
 });
