@@ -1,68 +1,36 @@
-var toggle = document.querySelector(".nav-toggle");
+document.write('\
+\
+<li>\
+<a class="dash" href="attendantdash.html">Dashboard</a>\
+\<span class="icon">\
+\
+<img id="icon" src="images/dashbord.png">\
+</i></span></li>\
+<li class="menu-hasdropdown">\
+    <a href="newOrder.html">New Order!</a><span class="icon"><img id="icon" src="images/order.png"></i></span>\
+</li>\
+<li><a href="products.html">Products Available.</a><span class="icon"><img id="icon" src="images/personn.png"></i></span></li>\
+\ <li class="res1">\
+<a href="attendantlist.html">attendantlist</a><span class="icon"><img id="icon" src="images/order.png"></i></span>\
+</li>\
+<li class="res2"><a href="salesrecords.html">sales Records</a><span class="icon"><img id="icon" src="images/records.png"></i></span></li>\
+<li class="res3"><a href="profile.html">My  Profile</a><span class="icon"><img id="icon" src="images/records.png"></i></span></li>\
+\
+');
+let tokens = JSON.parse(localStorage.getItem('token'));
+const dash= document.querySelector(".dash");
+const res1= document.querySelector(".res1");
+const res2= document.querySelector(".res2");
+const res3= document.querySelector(".res3");
 
-var tog = document.querySelector("HTML");
+if(tokens.priviledge!=1){
 
-function toggleModal() {
-    toggle.classList.toggle("active");
-    tog.classList.toggle("openNav")
-}
+        res1.setAttribute('style','display:none') 
+        res2.setAttribute('style','display:none') 
+    
+    dash.href="attendantdash.html" 
+  }else{
+    dash.href="managerdash.html" 
+    res3.setAttribute('style','display:none') 
 
-
-toggle.addEventListener("click", toggleModal);
-
-const art = document.querySelector('article');
-const nav = document.querySelector('header');
-
-  (function(){
-  
-   const icon = document.getElementsByClassName('icon');
-   const products = document.getElementsByClassName('products');
-  
-    function hasClass(elem, className) {
-      return elem.classList.contains(className);
-    }
-  
-    /* Do stuff */
-    // For each icon
-    for (var i = 0, len = icon.length; i < len; i++) {
-      // On click of icon
-      icon[i].addEventListener('click', function() {
-        // If clicked icon has 'active' class
-        if (hasClass(this, 'active')) {
-          // Do nothing
-          return;
-        // If clicked icon doesn't have 'active' class
-        } else {
-          // For each icon
-          for (var j = 0, len = icon.length; j < len; j++) {
-            // Toggle the 'active' class
-            icon[j].classList.toggle('active');
-          }
-          // Toggle the 'list' and 'grid' classes
-          products[0].classList.toggle('list');
-          products[0].classList.toggle('grid');
-  
-        }
-  
-      });
-  
-    }
-  })();
-
- const modal = document.querySelector(".modal");
-   const trigger = document.querySelector(".edit");
-   const closeButton = document.querySelector(".close-button");
-
-    function toggleModal() {
-        modal.classList.toggle("show-modal");
-    }
-
-    function windowOnClick(event) {
-        if (event.target === modal) {
-            toggleModal();
-        }
-    }
-
-    trigger.addEventListener("click", toggleModal);
-    closeButton.addEventListener("click", toggleModal);
-    window.addEventListener("click", windowOnClick);
+  }

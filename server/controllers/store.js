@@ -179,7 +179,7 @@ class Products {
       total+=element.price;
     })
     cart.push({'attendantId':attendant,'Date':date,'SaleTotal': total,'Product_Details':products});
-    if(userpriv === 1 || userid === Order[0].Attendantid ){
+    if(userpriv === 1 || userid === cart[0].attendantId ){
       return res.status(200).send({
         success: 'true',
         message: 'order retrieved successfuly',

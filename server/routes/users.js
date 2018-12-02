@@ -18,7 +18,7 @@ router.post('/auth/signin',authentication.signin);
 router.post('/auth/signupAdmin',authentication.signupadmin);
 
 router.get('/',authorize.adminauthenticate,attendant.getAllAttendants);
-router.get('/:id',authorize.adminauthenticate,attendant.getAttendant);
+router.get('/:id',authorize.authenticate,attendant.getAttendant);
 
 router.delete('/:id',authorize.adminauthenticate,attendant.deleteAttendant);
 

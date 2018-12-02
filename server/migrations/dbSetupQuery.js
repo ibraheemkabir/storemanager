@@ -1,18 +1,17 @@
 const attendants = `
 CREATE TABLE IF NOT EXISTS attendants(
   id SERIAL PRIMARY KEY,
-  "fistname" VARCHAR(100) NOT NULL,
+  "firstname" VARCHAR(100) NOT NULL,
   "lastname" VARCHAR(100) NOT NULL,
    email TEXT UNIQUE NOT NULL,
    "age" VARCHAR(100) NOT NULL,
    "emergency_contact" VARCHAR(100) NOT NULL,
    "phonenumber" INTEGER UNIQUE NOT NULL,
    "address" INTEGER NOT NULL,
-    "authid" INTEGER UNIQUE ,
+    "authId" INTEGER UNIQUE ,
     "Id" SERIAL UNIQUE,
-    created timestamp (0) without time zone default now(),
-    edited timestamp (0) without time zone default now()
-    );`;
+    created timestamp (0) without time zone default now()
+);`;
 
 const authentication = `
 CREATE TABLE IF NOT EXISTS authentication(
@@ -52,8 +51,6 @@ CREATE TABLE IF NOT EXISTS orders(
   "Total" INT,
   "Attendantid" INT,
   "quantity" INT,
-  "saleid" INT,
-  "productid" INT,
   created timestamp (0) without time zone default now(),
   edited timestamp (0) without time zone default now()
    
