@@ -1248,6 +1248,20 @@ fetch(`http://localhost:3000/api/v1/sales/`,{
 }
 const login = () => {
   
+  const toast = () => {
+    const div = document.createElement("div");
+    div.id='toast';
+    div.className= 'show';
+    const text = document.createTextNode(msg);
+    div.appendChild(text);
+    document.body.appendChild(div);
+
+    setTimeout(()=>{
+      div.className=div.className.replace("show","");
+      div.parentNode.removeChild(div);
+    },3000);
+
+  }
 const login = document.getElementById("login");
 const user = document.querySelector(".user");
 const pass = document.querySelector(".pass");
@@ -1281,10 +1295,10 @@ if(user.value==='' && pass.value === ''){
     error.innerHTML="username and password field are required";
 }else if(user.value===''){
     pass.classList.add("error");   
-    toastr.error('username field is required');
+    toast('username field is required');
 }else if(pass.value===''){
     pass.classList.add("error");
-    toastr.error('password field is required');
+    toast('password field is required');
 }else
 fetch('http://localhost:3000/api/v1/users/auth/signin',{
     method: 'POST', // or 'PUT'
@@ -1303,7 +1317,7 @@ fetch('http://localhost:3000/api/v1/users/auth/signin',{
                 setTimeout(() => window.location.assign('attendantdash.html'), 1000);
             }else {setTimeout(() => window.location.assign('managerdash.html'), 1000);}
         }else{
-            toastr.error(response.message);
+            toast(response.message);
         }
     })
 .catch(error => console.error('Error:', error));
