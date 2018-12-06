@@ -1347,13 +1347,13 @@ switch (window.location.pathname) {
             case '/storemanager/products.html':
           products();
             break;  
-            case '/storemanager/UI/profile.html':
+            case '/storemanager/profile.html':
           profile();
             break;
             case '/storemanager/salesrecords.html':
           records();
             break;
-            case '/storemanager/UI/login.html':
+            case '/storemanager/login.html':
           login();
             break;       
    
