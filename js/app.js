@@ -1286,7 +1286,7 @@ if(user.value==='' && pass.value === ''){
     pass.classList.add("error");
     toasterror('password field is required');
 }else
-fetch('localhost:3000/api/v1/users/auth/signin',{
+fetch('https://store-maneger.herokuapp.com/api/v1/users/auth/signin',{
     method: 'POST', // or 'PUT'
     body: JSON.stringify(data), // data can be `string` or {object}!
     headers:{
@@ -1318,28 +1318,28 @@ login.addEventListener("click", () => {
 }
 
 switch (window.location.pathname) {
-    case '/storemanager/docs/attendantdash.html':
+    case '/storemanager/attendantdash.html':
     attendantdashboard();
       break;
-      case '/storemanager/docs/attendantlist.html':
+      case '/storemanager/attendantlist.html':
       attendantlist();
         break; 
-        case '/storemanager/docs/managerdash.html':
+        case '/storemanager/managerdash.html':
         attendantlist();
           break;
-          case '/storemanager/docs/newOrder.html':
+          case '/storemanager/newOrder.html':
           neworder();
             break;
-            case '/storemanager/docs/products.html':
+            case '/storemanager/products.html':
           products();
             break;  
-            case '/storemanager/docs/profile.html':
+            case '/storemanager/profile.html':
           profile();
             break;
-            case '/storemanager/docs/salesrecords.html':
+            case '/storemanager/salesrecords.html':
           records();
             break;
-            case '/storemanager/docs/login.html':
+            case '/storemanager/login.html':
           login();
             break;       
    
