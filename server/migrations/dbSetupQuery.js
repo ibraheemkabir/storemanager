@@ -53,6 +53,7 @@ CREATE TABLE IF NOT EXISTS orders(
   "Attendantid" INT,
   "quantity" INT,
   "productid" INT,
+  "saleid" INT,
   created timestamp (0) without time zone default now(),
   edited timestamp (0) without time zone default now()
    
