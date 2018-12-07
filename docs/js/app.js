@@ -803,7 +803,7 @@ btn.addEventListener("click", () => {
     
      
 const products = () =>{
-      fetch('https://store-maneger.herokuapp.com/api/v1/products',{
+      fetch('http://localhost:3000/api/v1/products',{
         method: 'GET', // or 'PUT'
     // data can be `string` or {object}!
         headers:{
@@ -845,7 +845,7 @@ formData.append('category',category.value);
 formData.append('price',price.value);
 formData.append('quantity',quantity.value);
 formData.append('image', image);
-    fetch('https://store-maneger.herokuapp.com/api/v1/products',{
+    fetch('http://localhost:3000/api/v1/products',{
       method: 'POST', // or 'PUT'
       body: formData, // data can be `string` or {object}!
       headers:{
@@ -1286,7 +1286,7 @@ if(user.value==='' && pass.value === ''){
     pass.classList.add("error");
     toasterror('password field is required');
 }else
-fetch('https://store-maneger.herokuapp.com/api/v1/users/auth/signin',{
+fetch('http://localhost:3000/api/v1/users/auth/signin',{
     method: 'POST', // or 'PUT'
     body: JSON.stringify(data), // data can be `string` or {object}!
     headers:{
@@ -1318,28 +1318,28 @@ login.addEventListener("click", () => {
 }
 
 switch (window.location.pathname) {
-    case '/storemanager/attendantdash.html':
+    case '/storemanager/docs/attendantdash.html':
     attendantdashboard();
       break;
-      case '/storemanager/attendantlist.html':
+      case '/storemanager/docs/attendantlist.html':
       attendantlist();
         break; 
-        case '/storemanager/managerdash.html':
+        case '/storemanager/docs/managerdash.html':
         attendantlist();
           break;
-          case '/storemanager/newOrder.html':
+          case '/storemanager/docs/newOrder.html':
           neworder();
             break;
-            case '/storemanager/products.html':
+            case '/Users/kabiribraheem/Documents/bootcamp/storemanager/docs/products.html':
           products();
             break;  
-            case '/storemanager/profile.html':
+            case '/storemanager/docs/profile.html':
           profile();
             break;
-            case '/storemanager/salesrecords.html':
+            case '/storemanager/docs/salesrecords.html':
           records();
             break;
-            case '/storemanager/login.html':
+            case '/Users/kabiribraheem/Documents/bootcamp/storemanager/docs/login.html':
           login();
             break;       
    
