@@ -803,7 +803,7 @@ btn.addEventListener("click", () => {
     
      
 const products = () =>{
-      fetch('http://localhost:3000/api/v1/products',{
+      fetch('https://store-maneger.herokuapp.com/api/v1/products',{
         method: 'GET', // or 'PUT'
     // data can be `string` or {object}!
         headers:{
@@ -845,7 +845,7 @@ formData.append('category',category.value);
 formData.append('price',price.value);
 formData.append('quantity',quantity.value);
 formData.append('image', image);
-    fetch('http://localhost:3000/api/v1/products',{
+    fetch('https://store-maneger.herokuapp.com/api/v1/products',{
       method: 'POST', // or 'PUT'
       body: formData, // data can be `string` or {object}!
       headers:{
@@ -1286,7 +1286,7 @@ if(user.value==='' && pass.value === ''){
     pass.classList.add("error");
     toasterror('password field is required');
 }else
-fetch('http://localhost:3000/api/v1/users/auth/signin',{
+fetch('https://store-maneger.herokuapp.com/api/v1/users/auth/signin',{
     method: 'POST', // or 'PUT'
     body: JSON.stringify(data), // data can be `string` or {object}!
     headers:{
@@ -1330,7 +1330,7 @@ switch (window.location.pathname) {
           case '/storemanager/docs/newOrder.html':
           neworder();
             break;
-            case '/Users/kabiribraheem/Documents/bootcamp/storemanager/docs/products.html':
+            case '/storemanager/docs/products.html':
           products();
             break;  
             case '/storemanager/docs/profile.html':
@@ -1339,7 +1339,7 @@ switch (window.location.pathname) {
             case '/storemanager/docs/salesrecords.html':
           records();
             break;
-            case '/Users/kabiribraheem/Documents/bootcamp/storemanager/docs/login.html':
+            case '/storemanager/docs/login.html':
           login();
             break;       
    
