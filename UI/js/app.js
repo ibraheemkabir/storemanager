@@ -2663,28 +2663,28 @@ login.addEventListener("click", () => {
 }
 
 switch (window.location.pathname) {
-    case '/storemanager/docs/attendantdash.html':
+    case '/storemanager/UI/attendantdash.html':
     attendantdashboard();
       break;
-      case '/storemanager/docs/attendantlist.html':
+      case '/storemanager/UI/attendantlist.html':
       attendantlist();
         break; 
-        case '/storemanager/docs/managerdash.html':
+        case '/storemanager/UI/managerdash.html':
         attendantlist();
           break;
-          case '/storemanager/docs/newOrder.html':
+          case '/storemanager/UI/newOrder.html':
           neworder();
             break;
-            case '/storemanager/docs/products.html':
+            case '/storemanager/UI/products.html':
           products();
             break;  
-            case '/storemanager/docs/profile.html':
+            case '/storemanager/UI/profile.html':
           profile();
             break;
-            case '/storemanager/docs/salesrecords.html':
+            case '/storemanager/UI/salesrecords.html':
           records();
             break;
-            case '/storemanager/docs/login.html':
+            case '/storemanager/UI/login.html':
           login();
             break;       
    

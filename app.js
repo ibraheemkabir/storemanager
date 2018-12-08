@@ -37,7 +37,7 @@ app.use('/api/v1/users/', users);
 app.use('/api/v1/', products);
 app.use('/', home);
 
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 8080));
 app.listen(app.get('port'), () => {
   console.log('Listening on port...');
 });
