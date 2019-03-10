@@ -1,16 +1,18 @@
 import express from 'express';
+import multer from 'multer';
 import { product } from '../helpers/productarray';
 import { Order } from '../helpers/productarray';
-import  queries  from '../models/queries';
-import multer from 'multer';
+import queries from '../models/queries';
 import { client } from '../helpers/connection';
 
 class Products {
-
-  static async addProduct (req, res){   
-    const { name , category ,price, quantity} = req.body;
-    const image = req.file.path;
-    const add = new queries({name , category, price, image, quantity});
+  static async addProduct(req, res) {
+    const {
+      name, category, price, quantity, image,
+    } = req.body;
+    const add = new queries({
+      name, category, price, image, quantity,
+    });
     const newProduct = await add.addProduct();
     return res.status(201).send({
       success: 'true',
@@ -18,9 +20,14 @@ class Products {
       newProduct,
     });
   }
+
   static async getAllProducts(req, res) {
-    const { name , category ,price, image, quantity} = req.body;
-    const add = new queries({name , category, price, image, quantity});
+    const {
+      name, category, price, image, quantity,
+    } = req.body;
+    const add = new queries({
+      name, category, price, image, quantity,
+    });
     const product = await add.getAllProducts();
     return res.status(200).send({
       success: 'true',
@@ -31,8 +38,12 @@ class Products {
 
   static async deleteProduct(req, res) {
     const id = parseInt(req.params.id, 10);
-    const { name , category ,price, image, quantity} = req.body;
-    const add = new queries({name , category, price, image, quantity});
+    const {
+      name, category, price, image, quantity,
+    } = req.body;
+    const add = new queries({
+      name, category, price, image, quantity,
+    });
     const product = await add.deleteProduct(id);
     return res.status(200).send({
       success: 'true',
@@ -42,14 +53,18 @@ class Products {
 
   static async getProduct(req, res) {
     const id = parseInt(req.params.id, 10);
-    const { name , category ,price, image, quantity} = req.body;
-    const add = new queries({name , category, price, image, quantity});
+    const {
+      name, category, price, image, quantity,
+    } = req.body;
+    const add = new queries({
+      name, category, price, image, quantity,
+    });
     const product = await add.getProduct(id);
     if (product) {
       return res.status(200).send({
         success: 'true',
         message: 'product retrieved successfully',
-        product: product,
+        product,
       });
     }
     return res.status(400).send({
@@ -60,11 +75,15 @@ class Products {
 
   static async updateProduct(req, res) {
     const id = parseInt(req.params.id, 10);
-    const { name , category ,price, image, quantity} = req.body;
-    const add = new queries({name , category, price, image, quantity});
-    const product = await add.updateProduct(id);    
+    const {
+      name, category, price, image, quantity,
+    } = req.body;
+    const add = new queries({
+      name, category, price, image, quantity,
+    });
+    const product = await add.updateProduct(id);
     const products = product.rows;
-    if (product.rowCount===0) {
+    if (product.rowCount === 0) {
       return res.status(400).send({
         success: 'false',
         message: 'product not found',
@@ -80,8 +99,8 @@ class Products {
 
   static async addCategory(req, res) {
     const { category } = req.body;
-    const add = new queries({category});
-    const categories = await add.addCategory(); 
+    const add = new queries({ category });
+    const categories = await add.addCategory();
     return res.status(201).send({
       success: 'true',
       message: 'category added successfuly',
@@ -90,8 +109,12 @@ class Products {
   }
 
   static async getAllCategories(req, res) {
-    const { name , category ,price, image, quantity} = req.body;
-    const add = new queries({name , category, price, image, quantity})
+    const {
+      name, category, price, image, quantity,
+    } = req.body;
+    const add = new queries({
+      name, category, price, image, quantity,
+    });
     const result = await add.getCategories();
     const categories = result.rows;
     return res.status(200).send({
@@ -115,10 +138,12 @@ class Products {
 
   static async newOrder(req, res) {
     const { userId } = req;
-    const { productsId , Total,quantity } = req.body;
-    let attendantId=parseInt(userId, 10);
+    const { productsId, Total, quantity } = req.body;
+    const attendantId = parseInt(userId, 10);
     console.log(attendantId);
-    const add = new queries({productsId , Total, attendantId, quantity })
+    const add = new queries({
+      productsId, Total, attendantId, quantity,
+    });
     const Order = await add.newOrder();
     return res.status(201).send({
       success: 'true',
@@ -130,26 +155,28 @@ class Products {
   static async updateOrder(req, res) {
     const id = parseInt(req.params.id, 10);
     const { userId } = req;
-    const { productsId , Total,quantity } = req.body;
-    let attendantId=parseInt(userId, 10);
-    const add = new queries({productsId , Total, attendantId, quantity })
+    const { productsId, Total, quantity } = req.body;
+    const attendantId = parseInt(userId, 10);
+    const add = new queries({
+      productsId, Total, attendantId, quantity,
+    });
     const Order = await add.updateOrder(id);
     const myOrders = await add.getparticularOrder(id);
-    let total=0;
-    let attendant='';
-    let date='';
-    let cart=[];
-    let product= '';   
-    myOrders.forEach(element => {
-      attendant=element.Attendantid;
-      date=element.edited;   
-      cart.push({'product': element.productid,'quantity': element.quantity,'price': element.Total*element.quantity})
+    let total = 0;
+    let attendant = '';
+    let date = '';
+    const cart = [];
+    const product = '';
+    myOrders.forEach((element) => {
+      attendant = element.Attendantid;
+      date = element.edited;
+      cart.push({ product: element.productid, quantity: element.quantity, price: element.Total * element.quantity });
     });
-  
-    cart.forEach(element=>{
-      total+=element.price;
-    })
-    cart.push({'attendantId':attendant,'Date':date,'orderTotal':total});
+
+    cart.forEach((element) => {
+      total += element.price;
+    });
+    cart.push({ attendantId: attendant, Date: date, orderTotal: total });
     return res.status(201).send({
       success: 'true',
       message: 'product added to order successfully',
@@ -160,76 +187,90 @@ class Products {
   static async getAttendantorder(req, res) {
     const { userId } = req;
     const { userpriv } = req;
-    let userid = userId;
+    const userid = userId;
     const id = parseInt(req.params.id, 10);
-    const { productsId , Total, attendantId, quantity} = req.body;
-    const add = new queries({productsId , Total, attendantId, quantity});
-    const myOrders = await add.getattendantOrder(id);
-    let total=0;
-    let attendant='';
-    let products=[];
-    let date='';
-    let cart=[];
-    myOrders.forEach(element => {
-      attendant=element.Attendantid;
-      date=element.created;
-      products.push({'saleid':element.saleid,'product': element.name,'quantity': element.quantity,'price': element.Total*element.quantity});
+    const {
+      productsId, Total, attendantId, quantity,
+    } = req.body;
+    const add = new queries({
+      productsId, Total, attendantId, quantity,
     });
-    products.forEach(element=>{
-      total+=element.price;
-    })
-    cart.push({'attendantId':attendant,'Date':date,'SaleTotal': total,'Product_Details':products});
-    if(userpriv === 1 || userid === cart[0].attendantId ){
+    const myOrders = await add.getattendantOrder(id);
+    let total = 0;
+    let attendant = '';
+    const products = [];
+    let date = '';
+    const cart = [];
+    myOrders.forEach((element) => {
+      attendant = element.Attendantid;
+      date = element.created;
+      products.push({
+        saleid: element.saleid, product: element.name, quantity: element.quantity, price: element.Total * element.quantity,
+      });
+    });
+    products.forEach((element) => {
+      total += element.price;
+    });
+    cart.push({
+      attendantId: attendant, Date: date, SaleTotal: total, Product_Details: products,
+    });
+    if (userpriv === 1 || userid === cart[0].attendantId) {
       return res.status(200).send({
         success: 'true',
         message: 'order retrieved successfuly',
         cart,
       });
-    }else{
-      return res.status(403).send({
-        success: 'false',
-        message: 'You are not allowed to view this order',
-      });
     }
-   
+    return res.status(403).send({
+      success: 'false',
+      message: 'You are not allowed to view this order',
+    });
   }
 
   static async getparicularorder(req, res) {
     const { userId } = req;
     const { userpriv } = req;
-    let userid = userId;
+    const userid = userId;
     const id = parseInt(req.params.id, 10);
-    const { productsId , Total, attendantId, quantity} = req.body;
-    const add = new queries({productsId , Total, attendantId, quantity});
+    const {
+      productsId, Total, attendantId, quantity,
+    } = req.body;
+    const add = new queries({
+      productsId, Total, attendantId, quantity,
+    });
     const myOrders = await add.getparticularOrder(id);
-    if(userpriv === 1 || userid === Order[0].Attendantid ){
+    if (userpriv === 1 || userid === Order[0].Attendantid) {
       return res.status(200).send({
         success: 'true',
         message: 'order retrieved successfuly',
         myOrders,
       });
-    }else{
-      return res.status(403).send({
-        success: 'false',
-        message: 'You are not allowed to view this order',
-      });
     }
-   
+    return res.status(403).send({
+      success: 'false',
+      message: 'You are not allowed to view this order',
+    });
   }
 
   static async getAllOrders(req, res) {
     const id = parseInt(req.params.id, 10);
-    const { productsId , Total, attendantId, quantity} = req.body;
-    const add = new queries({productsId , Total, attendantId, quantity});
+    const {
+      productsId, Total, attendantId, quantity,
+    } = req.body;
+    const add = new queries({
+      productsId, Total, attendantId, quantity,
+    });
     const Orders = await add.allorders();
-    let sales=[];
-    let result=[];
-    let total=0;
-   Orders.forEach(element=>{
-    total+=element.Total;
-    sales.push({'saleid':element.saleid,'attendant':element.Attendantid,'product':element.name,'price':element.Total,'quantity':element.quantity,'date':element.created});
-   })
-   result.push({'total':total,'sales':sales})
+    const sales = [];
+    const result = [];
+    let total = 0;
+    Orders.forEach((element) => {
+      total += element.Total;
+      sales.push({
+        saleid: element.saleid, attendant: element.Attendantid, product: element.name, price: element.Total, quantity: element.quantity, date: element.created,
+      });
+    });
+    result.push({ total, sales });
 
     return res.status(200).send({
       success: 'true',
@@ -237,8 +278,6 @@ class Products {
       result,
     });
   }
-
-
 }
 
 export default Products;
