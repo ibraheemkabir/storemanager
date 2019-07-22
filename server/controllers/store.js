@@ -1,15 +1,13 @@
 import express from 'express';
-import multer from 'multer';
-import { product } from '../helpers/productarray';
 import { Order } from '../helpers/productarray';
 import queries from '../models/queries';
-import { client } from '../helpers/connection';
 
 class Products {
   static async addProduct(req, res) {
     const {
-      name, category, price, quantity, image,
+      name, category, price, quantity,
     } = req.body;
+    const image = req.file.path;
     const add = new queries({
       name, category, price, image, quantity,
     });
@@ -170,7 +168,11 @@ class Products {
     myOrders.forEach((element) => {
       attendant = element.Attendantid;
       date = element.edited;
-      cart.push({ product: element.productid, quantity: element.quantity, price: element.Total * element.quantity });
+      cart.push({
+        product: element.productid,
+        quantity: element.quantity,
+        price: element.Total * element.quantity,
+      });
     });
 
     cart.forEach((element) => {
@@ -267,7 +269,12 @@ class Products {
     Orders.forEach((element) => {
       total += element.Total;
       sales.push({
-        saleid: element.saleid, attendant: element.Attendantid, product: element.name, price: element.Total, quantity: element.quantity, date: element.created,
+        saleid: element.saleid,
+        attendant: element.Attendantid,
+        product: element.name,
+        price: element.Total,
+        quantity: element.quantity,
+        date: element.created,
       });
     });
     result.push({ total, sales });
